@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark theme (hero/nav) */
+    --background: 60 5% 11%;
+    --foreground: 0 0% 100%;
+
+    --card: 60 5% 14%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 60 5% 11%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 266 52% 43%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 60 5% 18%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 60 5% 20%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 266 52% 43%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 60 5% 25%;
+    --input: 60 5% 20%;
+    --ring: 266 52% 43%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(266 52% 43%), hsl(266 52% 55%));
+    --gradient-dark: linear-gradient(180deg, hsl(60 5% 11%), hsl(60 5% 8%));
+    --shadow-glow: 0 0 60px hsl(266 52% 43% / 0.3);
+    --shadow-card: 0 10px 40px hsl(0 0% 0% / 0.3);
+
+    /* Light section tokens */
+    --section-background: 0 0% 100%;
+    --section-foreground: 60 5% 11%;
+    --section-card: 0 0% 97%;
+    --section-card-foreground: 60 5% 11%;
+    --section-muted: 0 0% 94%;
+    --section-muted-foreground: 0 0% 40%;
+    --section-border: 0 0% 88%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Open Sans', sans-serif;
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .glass-card {
+    @apply bg-card/50 backdrop-blur-md border border-border/50;
+  }
+
+  .glow-accent {
+    box-shadow: var(--shadow-glow);
+  }
+}
+
+@layer utilities {
+  .animate-fade-cycle {
+    animation: fadeInOut 4s ease-in-out;
+  }
+
+  @keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(10px); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px hsl(266 52% 43% / 0.4); }
+    50% { box-shadow: 0 0 40px hsl(266 52% 43% / 0.6); }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+}
