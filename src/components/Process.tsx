@@ -25,11 +25,11 @@ const steps = [
 
 export const Process = () => {
   return (
-    <section id="process" className="py-24 bg-section">
+    <section id="process" className="py-16 bg-section">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold text-section-foreground mb-4">How It <span className="text-primary">Works</span></h2>
-          <p className="text-section-muted-foreground text-lg max-w-2xl mx-auto">
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 className="text-3xl md:text-5xl font-bold text-section-foreground mb-4">How It <span className="text-primary">Works</span></h2>
+          <p className="text-section-muted-foreground text-lg max-w-2xl mx-auto animate-slide-up [animation-delay:100ms]">
             Our simple 4-step process to get you started
           </p>
         </div>
@@ -37,7 +37,11 @@ export const Process = () => {
         <div className="max-w-5xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8">
             {steps.map((step, index) => (
-              <div key={step.title} className="relative text-center luxe-section-card p-6">
+              <div
+                key={step.title}
+                className="relative text-center luxe-section-card p-6 animate-slide-up"
+                style={{ animationDelay: `${index * 120 + 120}ms` }}
+              >
                 {/* Connector Line */}
                 {index < steps.length - 1 && (
                   <div className="hidden md:block absolute top-12 left-1/2 w-full h-0.5 bg-section-border" />

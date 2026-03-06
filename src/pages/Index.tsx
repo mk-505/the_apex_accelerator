@@ -1,6 +1,5 @@
 import { Navigation } from '@/components/Navigation';
 import { Hero } from '@/components/Hero';
-import { About } from '@/components/About';
 import { Team } from '@/components/Team';
 import { Services } from '@/components/Services';
 import { Mindset } from '@/components/Mindset';
@@ -9,14 +8,16 @@ import { Testimonials } from '@/components/Testimonials';
 import { Apply } from '@/components/Apply';
 import { Process } from '@/components/Process';
 import { FAQ } from '@/components/FAQ';
-import { Contact } from '@/components/Contact';
+import { Footer } from '@/components/Footer';
+import { useScrollReveal } from '@/hooks/use-scroll-reveal';
 
 const Index = () => {
+  useScrollReveal();
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
       <Hero />
-      <About />
       <Team />
       <Services />
       <Mindset />
@@ -25,7 +26,7 @@ const Index = () => {
       <Apply />
       <Process />
       <FAQ />
-      <Contact />
+      <Footer />
     </div>
   );
 };

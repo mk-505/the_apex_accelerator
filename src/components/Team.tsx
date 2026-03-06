@@ -1,4 +1,4 @@
-import { GraduationCap, Award, Globe } from 'lucide-react';
+import { GraduationCap, Award } from 'lucide-react';
 
 const founders = [
   {
@@ -21,28 +21,47 @@ const founders = [
       'Engineering Science at University of Toronto',
       'Accepted to all programs he applied to',
       'Prestigious scholarship recipient with multiple offers',
-      'Accepted to top US universities including Stanford',
+      'Accepted to top Canadian programs across engineering and science',
     ],
-    icon: Globe,
+    icon: GraduationCap,
   },
 ];
 
 export const Team = () => {
   return (
-    <section id="team" className="py-24 bg-section">
+    <section id="team" className="relative py-20 bg-section overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="edge-orb edge-orb-left animate-drift" />
+        <div className="edge-orb edge-orb-right animate-float-slow" />
+      </div>
+
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold text-section-foreground mb-4">Meet the <span className="text-primary">Founders</span></h2>
-          <p className="text-section-muted-foreground text-lg max-w-2xl mx-auto">
-            Young leaders who've navigated the exact journey you're about to take
+        <div className="max-w-4xl mx-auto text-center mb-14" data-reveal="zoom">
+          <span className="luxe-kicker mb-5">Our Edge</span>
+          <h2 className="text-3xl md:text-5xl font-bold text-section-foreground mb-6">
+            We <span className="text-primary">understand</span> you.
+          </h2>
+          <p className="text-lg md:text-xl text-section-muted-foreground leading-relaxed edge-copy max-w-3xl mx-auto">
+            We were just in your shoes, and this is exactly what we were able to accomplish.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {founders.map((founder) => (
+        <div className="text-center mb-14" data-reveal="up" style={{ ['--reveal-delay' as string]: '120ms' }}>
+          <h3 className="text-3xl md:text-5xl font-bold text-section-foreground mb-4">
+            Meet the <span className="text-primary">Founders</span>
+          </h3>
+          <p className="text-section-muted-foreground text-lg max-w-2xl mx-auto">
+            Young leaders who've navigated the exact journey you're about to take.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto relative z-10">
+          {founders.map((founder, index) => (
             <div
               key={founder.name}
-              className="luxe-section-card p-8 hover:border-primary/45 hover:-translate-y-1"
+              className="luxe-section-card founder-card p-8 hover:border-primary/45 hover:-translate-y-1"
+              data-reveal={index === 0 ? 'left' : 'right'}
+              style={{ ['--reveal-delay' as string]: `${index * 140 + 180}ms` }}
             >
               <div className="flex flex-col items-center text-center mb-6">
                 <div className="relative mb-4">
@@ -61,7 +80,11 @@ export const Team = () => {
 
               <ul className="space-y-3">
                 {founder.achievements.map((achievement, i) => (
-                  <li key={i} className="flex items-start gap-3 text-section-muted-foreground">
+                  <li
+                    key={i}
+                    className="achievement-item flex items-start gap-3 text-section-muted-foreground"
+                    style={{ ['--item-delay' as string]: `${i * 95}ms` }}
+                  >
                     <Award className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                     <span>{achievement}</span>
                   </li>
@@ -71,11 +94,11 @@ export const Team = () => {
           ))}
         </div>
 
-        <div className="mt-16 text-center">
-          <div className="luxe-section-card inline-block p-8">
+        <div className="mt-16 text-center" data-reveal="pop" style={{ ['--reveal-delay' as string]: '340ms' }}>
+          <div className="luxe-section-card inline-block p-8 max-w-3xl">
             <h3 className="text-xl font-bold text-section-foreground mb-3">Plus Our <span className="text-primary">Extended Team</span></h3>
             <p className="text-section-muted-foreground max-w-xl">
-              A network of mentors from top universities across Canada and the US,
+              A network of mentors from top universities across Canada,
               ready to guide you on your unique path to success.
             </p>
           </div>

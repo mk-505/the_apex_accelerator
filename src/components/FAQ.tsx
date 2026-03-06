@@ -8,7 +8,7 @@ import {
 const faqs = [
   {
     question: 'Who is The Apex Accelerator for?',
-    answer: 'We work with ambitious high school students who are targeting top universities in Canada and the US. Whether you\'re aiming for engineering, business, medicine, or any other competitive program, we can help you stand out.',
+    answer: 'We work with ambitious high school students who are targeting top universities in Canada. Whether you\'re aiming for engineering, business, medicine, or any other competitive program, we can help you stand out.',
   },
   {
     question: 'When should I start working with you?',
@@ -34,10 +34,10 @@ const faqs = [
 
 export const FAQ = () => {
   return (
-    <section id="faq" className="py-24 bg-section-muted">
+    <section id="faq" className="py-16 bg-section-muted">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold text-section-foreground mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-section-foreground mb-4">
             Frequently Asked <span className="text-primary">Questions</span>
           </h2>
           <p className="text-section-muted-foreground text-lg max-w-2xl mx-auto">
@@ -62,6 +62,20 @@ export const FAQ = () => {
               </AccordionItem>
             ))}
           </Accordion>
+
+          <p
+            id="contact"
+            className="mt-8 text-center text-section-muted-foreground text-base"
+          >
+            If you have any questions, please feel free to reach out to us at{' '}
+            <a
+              href="mailto:contact@apexaccelerator.ca"
+              className="font-semibold text-primary hover:opacity-85 transition-opacity"
+            >
+              contact@apexaccelerator.ca
+            </a>
+            .
+          </p>
         </div>
       </div>
     </section>

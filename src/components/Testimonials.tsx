@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { X, Play, Quote } from 'lucide-react';
+import { X, Play, Quote, ArrowUpRight } from 'lucide-react';
 
 const testimonials = [
   {
@@ -40,28 +40,35 @@ export const Testimonials = () => {
   const [selectedTestimonial, setSelectedTestimonial] = useState<typeof testimonials[0] | null>(null);
 
   return (
-    <section id="testimonials" className="py-24 bg-section">
+    <section id="testimonials" className="py-16 bg-section" data-reveal="zoom">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold text-section-foreground mb-4">
+        <div className="text-center mb-16" data-reveal="up">
+          <h2 className="text-3xl md:text-5xl font-bold text-section-foreground mb-4">
             Don't just take <span className="text-primary">our word</span> for it
           </h2>
-          <p className="text-section-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-section-muted-foreground text-base max-w-2xl mx-auto" data-reveal="up" style={{ ['--reveal-delay' as string]: '100ms' }}>
             Hear from students who've transformed their futures with The <span className="text-primary font-semibold">Apex</span> Accelerator
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-          {testimonials.map((testimonial) => (
+          {testimonials.map((testimonial, index) => (
             <div
               key={testimonial.name}
               onClick={() => setSelectedTestimonial(testimonial)}
-              className="luxe-section-card rounded-xl p-6 cursor-pointer hover:border-primary/45 hover:scale-[1.03]"
+              className="luxe-section-card rounded-xl p-6 cursor-pointer group hover:border-primary/45 hover:scale-[1.03] transition-all duration-300"
+              data-reveal="pop"
+              style={{ ['--reveal-delay' as string]: `${index * 110 + 120}ms` }}
             >
+              <div className="flex justify-end">
+                <span className="w-8 h-8 rounded-full border border-primary/35 bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                  <ArrowUpRight className="w-4 h-4 text-primary group-hover:text-primary-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+                </span>
+              </div>
               <img
                 src={testimonial.image}
                 alt={testimonial.name}
-                className="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-2 border-primary/30"
+                className="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-2 border-primary/30 group-hover:border-primary/70 transition-colors duration-300"
               />
               <h3 className="font-bold text-section-foreground text-center">{testimonial.name}</h3>
               <p className="text-primary text-sm text-center mb-2">{testimonial.university}</p>

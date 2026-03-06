@@ -4,7 +4,7 @@ import heroBg from '@/assets/hero-bg.jpg';
 const heroTexts = [
   { text: 'The ', highlight: 'APEX', suffix: ' Accelerator' },
   { text: 'We help young people ', highlight: 'create', suffix: ' their futures' },
-  { text: 'We level students up for ', highlight: 'top universities', suffix: '.' },
+  { text: 'We level students up for ', highlight: 'top programs', suffix: '.' },
 ];
 
 export const Hero = () => {
@@ -37,14 +37,14 @@ export const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 text-center pt-24">
+      <div className="relative z-10 container mx-auto px-6 text-center pt-20">
         <div className="luxe-kicker mb-8 animate-drift">
           <span>Admissions Strategy</span>
           <span className="h-1 w-1 rounded-full bg-primary" />
           <span>Elite Results</span>
         </div>
         <h1
-          className={`font-serif text-5xl md:text-7xl lg:text-8xl leading-[0.95] text-foreground transition-all duration-500 ${
+          className={`font-serif text-4xl md:text-6xl lg:text-7xl leading-[0.95] text-foreground transition-all duration-500 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
         >
@@ -53,8 +53,8 @@ export const Hero = () => {
           {heroTexts[currentIndex].suffix}
         </h1>
 
-        <p className="mx-auto mt-8 max-w-3xl text-lg md:text-xl text-foreground/80">
-          A high-touch mentorship experience for students targeting competitive Canadian and US universities,
+        <p className="mx-auto mt-8 max-w-3xl text-base md:text-lg text-foreground/80">
+          A high-touch mentorship experience for students targeting competitive Canadian universities,
           scholarships, and standout personal narratives.
         </p>
 
