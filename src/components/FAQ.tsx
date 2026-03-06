@@ -37,7 +37,7 @@ export const FAQ = () => {
     <section id="faq" className="py-24 bg-section-muted">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-section-foreground mb-4">
+          <h2 className="text-4xl md:text-6xl font-bold text-section-foreground mb-4">
             Frequently Asked <span className="text-primary">Questions</span>
           </h2>
           <p className="text-section-muted-foreground text-lg max-w-2xl mx-auto">
@@ -51,7 +51,7 @@ export const FAQ = () => {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="bg-section-card border border-section-border rounded-xl px-6 shadow-sm"
+                className="luxe-section-card rounded-xl px-6"
               >
                 <AccordionTrigger className="text-left font-semibold text-section-foreground hover:text-primary hover:no-underline">
                   {faq.question}

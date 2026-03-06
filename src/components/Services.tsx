@@ -38,7 +38,7 @@ export const Services = () => {
     <section id="services" className="py-24 bg-section-muted">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-section-foreground mb-4">What We <span className="text-primary">Provide</span></h2>
+          <h2 className="text-4xl md:text-6xl font-bold text-section-foreground mb-4">What We <span className="text-primary">Provide</span></h2>
           <p className="text-section-muted-foreground text-lg max-w-2xl mx-auto">
             Comprehensive support for every aspect of your university journey
           </p>
@@ -48,7 +48,7 @@ export const Services = () => {
           {services.map((service) => (
             <div
               key={service.title}
-              className="bg-section-card border border-section-border rounded-xl p-6 hover:border-primary/50 transition-all duration-300 group shadow-sm"
+              className="luxe-section-card rounded-xl p-6 hover:border-primary/45 hover:-translate-y-1 group"
             >
               <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/30 transition-colors">
                 <service.icon className="w-6 h-6 text-primary" />
@@ -61,7 +61,7 @@ export const Services = () => {
 
         {/* Money Back Guarantee */}
         <div className="max-w-3xl mx-auto">
-          <div className="bg-primary/10 border border-primary/30 rounded-2xl p-8 text-center">
+          <div className="rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/10 via-section-card to-primary/5 p-8 text-center shadow-sm">
             <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
               <ShieldCheck className="w-8 h-8 text-primary" />
             </div>

@@ -7,7 +7,7 @@ export const Contact = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold text-section-foreground mb-4">Get In <span className="text-primary">Touch</span></h2>
+            <h2 className="text-4xl md:text-6xl font-bold text-section-foreground mb-4">Get In <span className="text-primary">Touch</span></h2>
             <p className="text-section-muted-foreground text-lg">
               Ready to start your journey? Reach out and let's talk.
             </p>
@@ -52,8 +52,8 @@ export const Contact = () => {
               </div>
             </div>
 
-            <div className="bg-section-card border border-section-border rounded-2xl p-8 shadow-sm">
-              <h3 className="text-xl font-bold text-section-foreground mb-6">Send a Message</h3>
+            <div className="luxe-section-card p-8">
+              <h3 className="text-3xl font-bold text-section-foreground mb-6">Send a Message</h3>
               <form className="space-y-4">
                 <div>
                   <input
@@ -78,7 +78,7 @@ export const Contact = () => {
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+                  className="btn-luxe-primary w-full"
                 >
                   Send Message
                 </button>
@@ -88,14 +88,13 @@ export const Contact = () => {
         </div>
       </div>
 
-      {/* Footer */}
       <div className="mt-24 pt-8 border-t border-section-border">
         <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <img src={logo} alt="Apex Accelerator" className="h-6 w-auto invert" />
           </div>
           <p className="text-section-muted-foreground text-sm">
-            © {new Date().getFullYear()} The Apex Accelerator. All rights reserved.
+            (c) {new Date().getFullYear()} The Apex Accelerator. All rights reserved.
           </p>
         </div>
       </div>

@@ -32,7 +32,7 @@ export const Team = () => {
     <section id="team" className="py-24 bg-section">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-section-foreground mb-4">Meet the <span className="text-primary">Founders</span></h2>
+          <h2 className="text-4xl md:text-6xl font-bold text-section-foreground mb-4">Meet the <span className="text-primary">Founders</span></h2>
           <p className="text-section-muted-foreground text-lg max-w-2xl mx-auto">
             Young leaders who've navigated the exact journey you're about to take
           </p>
@@ -42,7 +42,7 @@ export const Team = () => {
           {founders.map((founder) => (
             <div
               key={founder.name}
-              className="bg-section-card border border-section-border rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 shadow-sm"
+              className="luxe-section-card p-8 hover:border-primary/45 hover:-translate-y-1"
             >
               <div className="flex flex-col items-center text-center mb-6">
                 <div className="relative mb-4">
@@ -72,7 +72,7 @@ export const Team = () => {
         </div>
 
         <div className="mt-16 text-center">
-          <div className="bg-section-card border border-section-border inline-block rounded-2xl p-8 shadow-sm">
+          <div className="luxe-section-card inline-block p-8">
             <h3 className="text-xl font-bold text-section-foreground mb-3">Plus Our <span className="text-primary">Extended Team</span></h3>
             <p className="text-section-muted-foreground max-w-xl">
               A network of mentors from top universities across Canada and the US,

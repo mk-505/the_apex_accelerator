@@ -43,7 +43,7 @@ export const Testimonials = () => {
     <section id="testimonials" className="py-24 bg-section">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-section-foreground mb-4">
+          <h2 className="text-4xl md:text-6xl font-bold text-section-foreground mb-4">
             Don't just take <span className="text-primary">our word</span> for it
           </h2>
           <p className="text-section-muted-foreground text-lg max-w-2xl mx-auto">
@@ -56,7 +56,7 @@ export const Testimonials = () => {
             <div
               key={testimonial.name}
               onClick={() => setSelectedTestimonial(testimonial)}
-              className="bg-section-card border border-section-border rounded-xl p-6 cursor-pointer hover:border-primary/50 hover:scale-105 transition-all duration-300 shadow-sm"
+              className="luxe-section-card rounded-xl p-6 cursor-pointer hover:border-primary/45 hover:scale-[1.03]"
             >
               <img
                 src={testimonial.image}
@@ -73,7 +73,7 @@ export const Testimonials = () => {
         {/* Modal */}
         {selectedTestimonial && (
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/65 backdrop-blur-sm"
             onClick={() => setSelectedTestimonial(null)}
           >
             <div
