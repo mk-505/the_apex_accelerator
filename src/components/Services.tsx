@@ -4,13 +4,13 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 const services = [
   {
     icon: FileText,
-    title: 'University Applications Feedback',
+    title: 'Application Feedback',
     description: 'Detailed reviews and strategic improvements for your applications',
   },
   {
     icon: Users,
     title: 'Mock Interviews',
-    description: 'Practice sessions to prepare you for university interviews',
+    description: 'Practice sessions to prepare you for admissions interviews',
   },
   {
     icon: Award,
@@ -109,7 +109,7 @@ export const Services = () => {
             </div>
             <h3 className="text-2xl font-bold text-section-foreground mb-3">Money Back <span className="text-primary">Guarantee</span></h3>
             <p className="text-section-muted-foreground text-lg">
-              If you don't get accepted to one of your <span className="text-primary font-semibold">top 3 universities</span>, we'll give you a full refund.
+              If you don't get accepted to one of your <span className="text-primary font-semibold">top 3 programs</span>, we'll give you a full refund.
               That's how confident we are in our program.
             </p>
           </div>

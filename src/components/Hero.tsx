@@ -29,7 +29,7 @@ export const Hero = () => {
       <div className="absolute inset-0">
         <img
           src={heroBg}
-          alt="University campus"
+          alt="Students collaborating"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-background/80" />
@@ -54,7 +54,7 @@ export const Hero = () => {
         </h1>
 
         <p className="mx-auto mt-8 max-w-3xl text-base md:text-lg text-foreground/80">
-          A high-touch mentorship experience for students targeting competitive Canadian universities,
+          A high-touch mentorship experience for students targeting competitive programs,
           scholarships, and standout personal narratives.
         </p>
 

@@ -8,7 +8,7 @@ import {
 const faqs = [
   {
     question: 'Who is The Apex Accelerator for?',
-    answer: 'We work with ambitious high school students who are targeting top universities in Canada. Whether you\'re aiming for engineering, business, medicine, or any other competitive program, we can help you stand out.',
+    answer: 'We work with ambitious high school students targeting competitive programs. Whether you\'re aiming for engineering, business, medicine, or another selective path, we can help you stand out.',
   },
   {
     question: 'When should I start working with you?',
@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     question: 'How does the money-back guarantee work?',
-    answer: 'If you complete our program and don\'t get accepted to any of your top 3 universities, we\'ll refund your full program fee. We\'re that confident in our approach and your potential.',
+    answer: 'If you complete our program and don\'t get accepted to any of your top 3 programs, we\'ll refund your full program fee. We\'re that confident in our approach and your potential.',
   },
   {
     question: 'How much time commitment is required?',

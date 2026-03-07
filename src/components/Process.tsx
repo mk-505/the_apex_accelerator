@@ -19,7 +19,7 @@ const steps = [
   {
     icon: Rocket,
     title: 'Start the Program',
-    description: 'Begin your journey to your dream university with our full support',
+    description: 'Begin your journey to your dream program with our full support',
   },
 ];
 

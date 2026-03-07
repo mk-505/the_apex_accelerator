@@ -4,34 +4,34 @@ import { X, Play, Quote, ArrowUpRight } from 'lucide-react';
 const testimonials = [
   {
     name: 'Sarah M.',
-    university: 'UofT Engineering',
+    outcome: 'Top Engineering Program',
     shortDesc: 'Schulich Scholarship recipient',
     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face',
-    description: 'The Apex Accelerator completely transformed my approach to university applications. Their mentorship helped me see my achievements in a new light and present them compellingly. I not only got into my dream program but also received the Schulich Leadership Scholarship!',
+    description: 'The Apex Accelerator completely transformed my approach to applications. Their mentorship helped me see my achievements in a new light and present them compellingly. I got into my dream program and received the Schulich Leadership Scholarship.',
     hasVideo: true,
   },
   {
     name: 'Michael T.',
-    university: 'McGill Medicine',
-    shortDesc: 'First-gen university student',
+    outcome: 'Competitive Health Sciences Program',
+    shortDesc: 'First-gen applicant',
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face',
-    description: 'As a first-generation university student, I had no idea where to start. Manroop and Shaun broke down every step and made the process feel achievable. Their guidance on extracurriculars and personal statements was invaluable.',
+    description: 'As a first-generation applicant, I had no idea where to start. Manroop and Shaun broke down every step and made the process feel achievable. Their guidance on extracurriculars and personal statements was invaluable.',
     hasVideo: false,
   },
   {
     name: 'Emily C.',
-    university: 'Waterloo CS',
-    shortDesc: 'Coop program accepted',
+    outcome: 'Top Computer Science Program',
+    shortDesc: 'Co-op track accepted',
     image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face',
-    description: 'I was struggling to stand out among thousands of applicants. The team helped me develop unique projects and frame my story in a way that got me noticed. Now I\'m in the CS co-op program at Waterloo!',
+    description: 'I was struggling to stand out among thousands of applicants. The team helped me develop unique projects and frame my story in a way that got me noticed. I earned a spot in a competitive CS co-op track.',
     hasVideo: true,
   },
   {
     name: 'David K.',
-    university: 'Queen\'s Commerce',
+    outcome: 'Top Business Program',
     shortDesc: 'From waitlist to accepted',
     image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face',
-    description: 'I was initially waitlisted at my dream school. With Apex\'s help on my letter of continued interest, I turned that waitlist into an acceptance. Their support during the stressful waiting period was incredible.',
+    description: 'I was initially waitlisted at my dream program. With Apex\'s help on my letter of continued interest, I turned that waitlist into an acceptance. Their support during the stressful waiting period was incredible.',
     hasVideo: false,
   },
 ];
@@ -71,7 +71,7 @@ export const Testimonials = () => {
                 className="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-2 border-primary/30 group-hover:border-primary/70 transition-colors duration-300"
               />
               <h3 className="font-bold text-section-foreground text-center">{testimonial.name}</h3>
-              <p className="text-primary text-sm text-center mb-2">{testimonial.university}</p>
+              <p className="text-primary text-sm text-center mb-2">{testimonial.outcome}</p>
               <p className="text-section-muted-foreground text-sm text-center">{testimonial.shortDesc}</p>
             </div>
           ))}
@@ -124,7 +124,7 @@ export const Testimonials = () => {
                     />
                     <div>
                       <h3 className="text-xl font-bold text-section-foreground">{selectedTestimonial.name}</h3>
-                      <p className="text-primary">{selectedTestimonial.university}</p>
+                      <p className="text-primary">{selectedTestimonial.outcome}</p>
                     </div>
                   </div>
                   <p className="text-section-muted-foreground leading-relaxed">

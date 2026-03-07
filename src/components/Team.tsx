@@ -4,12 +4,12 @@ const founders = [
   {
     name: 'Manroop',
     role: 'Co-Founder',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face',
+    image: 'src/assets/manroop.png',
     achievements: [
-      'Engineering Science at University of Toronto',
-      'Accepted to every university he applied to',
-      'Schulich Leadership Scholarship offers from UofT, McMaster & Western',
-      'Chose UofT for his undergraduate studies',
+      'Accepted to every program he applied to',
+      'Recipient of multiple major scholarship offers',
+      'Built a standout profile across academics and leadership',
+      'Chose the best-fit path for his goals',
     ],
     icon: GraduationCap,
   },
@@ -18,10 +18,10 @@ const founders = [
     role: 'Co-Founder',
     image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face',
     achievements: [
-      'Engineering Science at University of Toronto',
+      'Competitive STEM applicant with top-tier outcomes',
       'Accepted to all programs he applied to',
       'Prestigious scholarship recipient with multiple offers',
-      'Accepted to top Canadian programs across engineering and science',
+      'Earned offers across highly competitive STEM programs',
     ],
     icon: GraduationCap,
   },
@@ -98,7 +98,7 @@ export const Team = () => {
           <div className="luxe-section-card inline-block p-8 max-w-3xl">
             <h3 className="text-xl font-bold text-section-foreground mb-3">Plus Our <span className="text-primary">Extended Team</span></h3>
             <p className="text-section-muted-foreground max-w-xl">
-              A network of mentors from top universities across Canada,
+              A network of mentors from top programs across Canada,
               ready to guide you on your unique path to success.
             </p>
           </div>

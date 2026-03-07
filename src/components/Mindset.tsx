@@ -15,7 +15,7 @@ export const Mindset = () => {
           </h2>
 
           <p className="text-lg md:text-xl text-section-muted-foreground leading-relaxed mb-12 animate-slide-up [animation-delay:240ms]">
-            We care about more than just university applications. We want you to live the life that you want -
+            We care about more than just applications. We want you to live the life that you want -
             consistently achieving your <span className="text-primary font-semibold">goals</span>, with the <span className="text-primary font-semibold">mindset</span> you need to accomplish all of this.
           </p>
 

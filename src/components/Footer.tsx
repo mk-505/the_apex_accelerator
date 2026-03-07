@@ -19,7 +19,7 @@ export const Footer = () => {
               <img src={logo} alt="Apex Accelerator" className="h-8 w-auto" />
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Private mentorship for ambitious students applying to top university programs.
+              Private mentorship for ambitious students applying to top programs.
             </p>
           </div>
 
