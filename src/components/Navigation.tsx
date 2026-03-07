@@ -50,7 +50,7 @@ export const Navigation = () => {
             </a>
           ))}
           <a
-            href="https://bit.ly/apply-apex-accelerator"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSczz8PzORwAul6X0PefKXgbzV1Y0wUd-9vKRUOLYZlNavSpBQ/viewform"
             target="_blank"
             rel="noreferrer"
             className="btn-luxe-primary text-[0.68rem] px-5 py-2"
@@ -89,7 +89,7 @@ export const Navigation = () => {
               </a>
             ))}
             <a
-              href="https://bit.ly/apply-apex-accelerator"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSczz8PzORwAul6X0PefKXgbzV1Y0wUd-9vKRUOLYZlNavSpBQ/viewform"
               target="_blank"
               rel="noreferrer"
               onClick={() => setMobileOpen(false)}

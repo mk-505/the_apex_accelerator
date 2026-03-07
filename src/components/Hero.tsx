@@ -60,7 +60,7 @@ export const Hero = () => {
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
-            href="https://bit.ly/apply-apex-accelerator"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSczz8PzORwAul6X0PefKXgbzV1Y0wUd-9vKRUOLYZlNavSpBQ/viewform"
             target="_blank"
             rel="noreferrer"
             className="btn-luxe-primary"
