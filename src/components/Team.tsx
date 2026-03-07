@@ -9,7 +9,7 @@ const founders = [
     image: '/manroop.png',
     intro: 'UofT Engineering Science',
     highlights: [
-      'Schulich Leader at multiple schools ($120K each)',
+      'Schulich Leader offer at multiple schools ($120K each)',
       'Recieved Principals Award of Academic Achievement',
       'AI research in Human Computer Interactions (HCI)',
       'Fun Fact: Manroop partnered with a mobile health clinic to implement digital patient records in Ghana at 16 years old',
