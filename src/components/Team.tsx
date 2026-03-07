@@ -6,7 +6,7 @@ const founders = [
   {
     name: 'Manroop',
     role: 'Co-Founder',
-    image: 'src/assets/manroop.png',
+    image: '/manroop.png',
     intro: 'UofT Engineering Science',
     highlights: [
       'Schulich Leader at multiple schools ($120K each)',
@@ -21,7 +21,7 @@ const founders = [
   {
     name: 'Shaun',
     role: 'Co-Founder',
-    image: 'src/assets/shaun.png',
+    image: '/shaun.png',
     intro: 'UofT Engineering Science',
     highlights: [
       'Accepted across STEM programs with multiple major scholarships',
