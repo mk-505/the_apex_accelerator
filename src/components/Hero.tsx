@@ -54,8 +54,8 @@ export const Hero = () => {
         </h1>
 
         <p className="mx-auto mt-8 max-w-3xl text-base md:text-lg text-foreground/80">
-          A high-touch mentorship experience for students targeting competitive programs,
-          scholarships, and standout personal narratives.
+          A selective mentorship accelerator where ambitious students develop direction, build meaningful projects, and position themselves for top universities and future careers.
+
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -70,15 +70,15 @@ export const Hero = () => {
         <div className="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
           <div className="luxe-panel px-5 py-4 text-left">
             <p className="text-primary text-xs uppercase tracking-[0.14em]">Mentorship</p>
-            <p className="text-foreground text-lg font-semibold">1-on-1, highly tailored support</p>
+            <p className="text-foreground text-lg font-semibold">1-on-1 mentorship and small cohort guidance</p>
           </div>
           <div className="luxe-panel px-5 py-4 text-left">
-            <p className="text-primary text-xs uppercase tracking-[0.14em]">Positioning</p>
-            <p className="text-foreground text-lg font-semibold">Application strategy that stands out</p>
+            <p className="text-primary text-xs uppercase tracking-[0.14em]">Projects & Personal Brand</p>
+            <p className="text-foreground text-lg font-semibold">Build projects and develop a personal brand</p>
           </div>
           <div className="luxe-panel px-5 py-4 text-left">
-            <p className="text-primary text-xs uppercase tracking-[0.14em]">Guarantee</p>
-            <p className="text-foreground text-lg font-semibold">Top-3 acceptance or full refund</p>
+            <p className="text-primary text-xs uppercase tracking-[0.14em]">University & Career Positioning</p>
+            <p className="text-foreground text-lg font-semibold">Strategic guidance for universities and beyond</p>
           </div>
         </div>
       </div>
