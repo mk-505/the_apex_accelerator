@@ -59,7 +59,12 @@ export const Hero = () => {
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="#apply" className="btn-luxe-primary">
+          <a
+            href="https://bit.ly/apply-apex-accelerator"
+            target="_blank"
+            rel="noreferrer"
+            className="btn-luxe-primary"
+          >
             Apply For A Spot
           </a>
           <a href="#services" className="btn-luxe-ghost">

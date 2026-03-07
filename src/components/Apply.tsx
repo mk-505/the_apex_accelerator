@@ -20,7 +20,9 @@ export const Apply = () => {
           </p>
 
           <a
-            href="#contact"
+            href="https://forms.gle/BM4Hhmb8ohgMiR7AA"
+            target="_blank"
+            rel="noreferrer"
             className="btn-luxe-primary gap-2 px-8 py-4 text-sm animate-pulse-glow"
           >
             Apply Now

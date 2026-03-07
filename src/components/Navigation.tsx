@@ -50,7 +50,9 @@ export const Navigation = () => {
             </a>
           ))}
           <a
-            href="#apply"
+            href="https://bit.ly/apply-apex-accelerator"
+            target="_blank"
+            rel="noreferrer"
             className="btn-luxe-primary text-[0.68rem] px-5 py-2"
           >
             Apply Now
@@ -87,7 +89,9 @@ export const Navigation = () => {
               </a>
             ))}
             <a
-              href="#apply"
+              href="https://bit.ly/apply-apex-accelerator"
+              target="_blank"
+              rel="noreferrer"
               onClick={() => setMobileOpen(false)}
               className="btn-luxe-primary text-[0.68rem]"
             >

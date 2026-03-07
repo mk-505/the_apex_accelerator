@@ -52,7 +52,9 @@ export const Footer = () => {
             </a>
             <div className="mt-5">
               <a
-                href="#apply"
+                href="https://bit.ly/apply-apex-accelerator"
+                target="_blank"
+                rel="noreferrer"
                 className="btn-luxe-primary text-xs px-5 py-2.5 inline-flex"
               >
                 Apply Now

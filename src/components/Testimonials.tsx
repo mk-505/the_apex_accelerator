@@ -14,7 +14,7 @@ const testimonials = [
     outcome: 'BBA Student',
     shortDesc: 'Schulich School of Business',
     image: 'src/assets/poojan.jpeg',
-    description: 'Shaun and Manroop were incredibly helpful throughout the university application process. Their guidance made everything much clearer and helped me feel more confident. Their advice on improving my application played a key role in helping me land an offer from the Schulich School of Business, and their networking advice also helped me secure an internship at a Big 4 firm. I highly recommend them to anyone going through the university admissions process or looking for guidance on their future career and overall direction.',
+    description: 'Shaun and Manroop were incredibly helpful throughout the university application process. Their guidance made everything much clearer and helped me feel more confident. Their advice on improving my application played a key role in helping me land an offer from the Schulich School of Business, and their networking advice also helped me secure an internship at a major accounting firm. I highly recommend them to anyone going through the university admissions process or looking for guidance on their future career and overall direction.',
   },
   {
     name: 'Rhythm P.',
