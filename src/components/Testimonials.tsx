@@ -3,32 +3,25 @@ import { X, ArrowUpRight } from 'lucide-react';
 
 const testimonials = [
   {
-    name: 'Sarah M.',
-    outcome: 'Top Engineering Program',
-    shortDesc: 'Schulich Scholarship recipient',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face',
-    description: 'The Apex Accelerator completely transformed my approach to applications. Their mentorship helped me see my achievements in a new light and present them compellingly. I got into my dream program and received the Schulich Leadership Scholarship.',
+    name: 'Atish K.',
+    outcome: 'Computer Engineering Student',
+    shortDesc: 'Toronto Metropolitan University',
+    image: 'src/assets/atish.png',
+    description: 'Having known the founders since high school and seen their journey through both setbacks and successes, I can say their mentorship is grounded in real experience. As someone now involved in physics research and AI, I’ve seen how the mindset and guidance they promote can help students develop strong direction and confidence.',
   },
   {
-    name: 'Michael T.',
-    outcome: 'Competitive Health Sciences Program',
-    shortDesc: 'First-gen applicant',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face',
-    description: 'As a first-generation applicant, I had no idea where to start. Manroop and Shaun broke down every step and made the process feel achievable. Their guidance on extracurriculars and personal statements was invaluable.',
+    name: 'Poojan S.',
+    outcome: 'BBA Student',
+    shortDesc: 'Schulich School of Business',
+    image: 'src/assets/poojan.jpeg',
+    description: 'Shaun and Manroop were incredibly helpful throughout the university application process. Their guidance made everything much clearer and helped me feel more confident. Their advice on improving my application played a key role in helping me land an offer from the Schulich School of Business, and their networking advice also helped me secure an internship at a Big 4 firm. I highly recommend them to anyone going through the university admissions process or looking for guidance on their future career and overall direction.',
   },
   {
-    name: 'Emily C.',
-    outcome: 'Top Computer Science Program',
-    shortDesc: 'Co-op track accepted',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face',
-    description: 'I was struggling to stand out among thousands of applicants. The team helped me develop unique projects and frame my story in a way that got me noticed. I earned a spot in a competitive CS co-op track.',
-  },
-  {
-    name: 'David K.',
-    outcome: 'Top Business Program',
-    shortDesc: 'From waitlist to accepted',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face',
-    description: 'I was initially waitlisted at my dream program. With Apex\'s help on my letter of continued interest, I turned that waitlist into an acceptance. Their support during the stressful waiting period was incredible.',
+    name: 'Rhythm P.',
+    outcome: 'Mechatronics Engineering',
+    shortDesc: 'University of Waterloo',
+    image: 'src/assets/rhythm.png',
+    description: 'Shaun and Manroop were really helpful in shaping how I presented my experiences for my university applications. I had worked on machine learning research, software internships, startup growth, and social media, and they helped me bring everything together into a clear story that reflected my interests and personality. Their guidance helped refine my direction and made my applications much more cohesive. I would definitely recommend them to anyone applying to university.',
   },
 ];
 
@@ -47,7 +40,7 @@ export const Testimonials = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <div
               key={testimonial.name}

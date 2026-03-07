@@ -20,7 +20,7 @@ const founders = [
   {
     name: 'Shaun',
     role: 'Co-Founder',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face',
+    image: 'src/assets/shaun.png',
     intro: 'UofT Engineering Science',
     highlights: [
       'Accepted across STEM programs with multiple scholarships (grade average: 99)',
