@@ -10,7 +10,7 @@ const founders = [
     intro: 'UofT Engineering Science',
     highlights: [
       'Schulich Leader at multiple schools ($120K each)',
-      'Highest Average at his High School (gpa: 98%)',
+      'Top 6 Average: 98.5%',
       'AI research in Human Computer Interactions (HCI)',
       'Fun Fact: Manroop partnered with a mobile health clinic to implement digital patient records in Ghana at 16 years old',
       'Schools ECs: DECA President, Robotics Team Lead, Hack Club Chapter Co-Founder',
@@ -25,7 +25,7 @@ const founders = [
     intro: 'UofT Engineering Science',
     highlights: [
       'Accepted across STEM programs with multiple major scholarships',
-      'Highest Average at his High School (gpa: 98.5%)',
+      'Recieved Principals Award of Academic Achievement',
       'AI research in Diffusion Models and LLMs at Cornell and UofT',
       'Fun Fact: Shaun has been building businesses and learning how to turn ideas into revenue since he was young',
       'School ECs: President and Founder of Math Club, Debate Club Executive, Various Fundraisers',
