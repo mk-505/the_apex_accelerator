@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { X, Play, Quote, ArrowUpRight } from 'lucide-react';
+import { X, ArrowUpRight } from 'lucide-react';
 
 const testimonials = [
   {
@@ -8,7 +8,6 @@ const testimonials = [
     shortDesc: 'Schulich Scholarship recipient',
     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face',
     description: 'The Apex Accelerator completely transformed my approach to applications. Their mentorship helped me see my achievements in a new light and present them compellingly. I got into my dream program and received the Schulich Leadership Scholarship.',
-    hasVideo: true,
   },
   {
     name: 'Michael T.',
@@ -16,7 +15,6 @@ const testimonials = [
     shortDesc: 'First-gen applicant',
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face',
     description: 'As a first-generation applicant, I had no idea where to start. Manroop and Shaun broke down every step and made the process feel achievable. Their guidance on extracurriculars and personal statements was invaluable.',
-    hasVideo: false,
   },
   {
     name: 'Emily C.',
@@ -24,7 +22,6 @@ const testimonials = [
     shortDesc: 'Co-op track accepted',
     image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face',
     description: 'I was struggling to stand out among thousands of applicants. The team helped me develop unique projects and frame my story in a way that got me noticed. I earned a spot in a competitive CS co-op track.',
-    hasVideo: true,
   },
   {
     name: 'David K.',
@@ -32,7 +29,6 @@ const testimonials = [
     shortDesc: 'From waitlist to accepted',
     image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face',
     description: 'I was initially waitlisted at my dream program. With Apex\'s help on my letter of continued interest, I turned that waitlist into an acceptance. Their support during the stressful waiting period was incredible.',
-    hasVideo: false,
   },
 ];
 
@@ -96,25 +92,7 @@ export const Testimonials = () => {
                 </button>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-8 p-6 pt-0">
-                {/* Video Side */}
-                <div className="aspect-video bg-section-muted rounded-xl flex items-center justify-center">
-                  {selectedTestimonial.hasVideo ? (
-                    <div className="text-center">
-                      <div className="w-16 h-16 rounded-full bg-primary/90 flex items-center justify-center mx-auto mb-3 cursor-pointer hover:bg-primary transition-colors">
-                        <Play className="w-6 h-6 text-primary-foreground ml-1" />
-                      </div>
-                      <p className="text-section-muted-foreground text-sm">Play video testimonial</p>
-                    </div>
-                  ) : (
-                    <div className="text-center p-6">
-                      <Quote className="w-12 h-12 text-primary/50 mx-auto mb-4" />
-                      <p className="text-section-muted-foreground text-sm">Written testimonial</p>
-                    </div>
-                  )}
-                </div>
-
-                {/* Text Side */}
+              <div className="p-6 pt-0">
                 <div className="flex flex-col justify-center">
                   <div className="flex items-center gap-4 mb-6">
                     <img
