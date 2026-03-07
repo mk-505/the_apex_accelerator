@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { X, ArrowUpRight } from 'lucide-react';
+import { X, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const testimonials = [
   {
@@ -26,7 +26,10 @@ const testimonials = [
 ];
 
 export const Testimonials = () => {
-  const [selectedTestimonial, setSelectedTestimonial] = useState<typeof testimonials[0] | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const selectedTestimonial = selectedIndex !== null ? testimonials[selectedIndex] : null;
+  const canGoPrev = selectedIndex !== null && selectedIndex > 0;
+  const canGoNext = selectedIndex !== null && selectedIndex < testimonials.length - 1;
 
   return (
     <section id="testimonials" className="py-16 bg-section" data-reveal="zoom">
@@ -44,7 +47,7 @@ export const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={testimonial.name}
-              onClick={() => setSelectedTestimonial(testimonial)}
+              onClick={() => setSelectedIndex(index)}
               className="luxe-section-card rounded-xl p-6 cursor-pointer group hover:border-primary/45 hover:scale-[1.03] transition-all duration-300"
               data-reveal="pop"
               style={{ ['--reveal-delay' as string]: `${index * 110 + 120}ms` }}
@@ -70,15 +73,33 @@ export const Testimonials = () => {
         {selectedTestimonial && (
           <div
             className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/65 backdrop-blur-sm"
-            onClick={() => setSelectedTestimonial(null)}
+            onClick={() => setSelectedIndex(null)}
           >
             <div
               className="bg-section-card border border-section-border rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-auto shadow-lg"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex justify-end p-4">
+              <div className="flex items-center justify-between p-4">
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => canGoPrev && setSelectedIndex((prev) => (prev !== null ? prev - 1 : prev))}
+                    disabled={!canGoPrev}
+                    className="p-2 rounded-lg border border-section-border transition-colors enabled:hover:bg-section-muted enabled:hover:border-primary/35 disabled:opacity-35 disabled:cursor-not-allowed"
+                    aria-label="Previous testimonial"
+                  >
+                    <ChevronLeft className="w-5 h-5 text-section-muted-foreground" />
+                  </button>
+                  <button
+                    onClick={() => canGoNext && setSelectedIndex((prev) => (prev !== null ? prev + 1 : prev))}
+                    disabled={!canGoNext}
+                    className="p-2 rounded-lg border border-section-border transition-colors enabled:hover:bg-section-muted enabled:hover:border-primary/35 disabled:opacity-35 disabled:cursor-not-allowed"
+                    aria-label="Next testimonial"
+                  >
+                    <ChevronRight className="w-5 h-5 text-section-muted-foreground" />
+                  </button>
+                </div>
                 <button
-                  onClick={() => setSelectedTestimonial(null)}
+                  onClick={() => setSelectedIndex(null)}
                   className="p-2 hover:bg-section-muted rounded-lg transition-colors"
                 >
                   <X className="w-6 h-6 text-section-muted-foreground" />
@@ -95,12 +116,24 @@ export const Testimonials = () => {
                     />
                     <div>
                       <h3 className="text-xl font-bold text-section-foreground">{selectedTestimonial.name}</h3>
-                      <p className="text-primary">{selectedTestimonial.outcome}</p>
+                      <p className="flex flex-wrap items-center gap-2">
+                        <span className="text-primary">{selectedTestimonial.outcome}</span>
+                        <span className="text-section-muted-foreground/60" aria-hidden="true">|</span>
+                        <span className="text-section-muted-foreground text-sm">{selectedTestimonial.shortDesc}</span>
+                      </p>
                     </div>
                   </div>
-                  <p className="text-section-muted-foreground leading-relaxed">
-                    {selectedTestimonial.description}
-                  </p>
+                  <blockquote className="relative rounded-xl border border-primary/25 bg-primary/5 px-8 py-7">
+                    <span className="absolute left-4 top-2 text-4xl leading-none text-primary/45" aria-hidden="true">
+                      "
+                    </span>
+                    <p className="text-section-muted-foreground leading-relaxed italic">
+                      {selectedTestimonial.description}
+                    </p>
+                    <span className="absolute bottom-1 right-4 text-4xl leading-none text-primary/45" aria-hidden="true">
+                      "
+                    </span>
+                  </blockquote>
                 </div>
               </div>
             </div>

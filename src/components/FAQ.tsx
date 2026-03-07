@@ -19,8 +19,8 @@ const faqs = [
     answer: 'Most admissions consultants focus only on applications during Grade 12. Apex focuses on the development that happens before the application. Students explore interests, build projects, develop leadership experiences, and grow their personal brand so that by the time applications begin, they already have a strong and authentic story to tell.',
   },
   {
-    question: 'What does the program cost?',
-    answer: 'Our pricing varies based on the level of support you need and how long we\'ll be working together. We offer different packages from application review to comprehensive mentorship. Contact us for a personalized quote.',
+    question: 'How much does the program cost?',
+    answer: 'The Apex Accelerator runs over two academic years and is structured so families only pay during the school year while students are actively participating.\n\nIn Year 1 (Grade 10 or 11), the program runs from September to June. Students begin with a $1,000 deposit, followed by monthly payments of $438 for 10 months during the school year.\n\nIn Year 2 (Grade 12), mentorship continues as students begin preparing their university applications. Payments continue at $438 per month for 6 months (September to February).\n\nThis structure allows students to receive long-term mentorship and guidance throughout the most important stages of their high school journey while spreading the investment across the program.',
   },
   {
     question: 'What does the time commitment look like?',
