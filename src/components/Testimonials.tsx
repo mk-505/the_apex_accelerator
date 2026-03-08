@@ -39,7 +39,7 @@ export const Testimonials = () => {
             Don't just take <span className="text-primary">our word</span> for it
           </h2>
           <p className="text-section-muted-foreground text-base max-w-2xl mx-auto" data-reveal="up" style={{ ['--reveal-delay' as string]: '100ms' }}>
-            Hear from students who've transformed their futures with The <span className="text-primary font-semibold">Apex</span> Accelerator
+            Hear from students who've transformed their futures with us! 
           </p>
         </div>
 
