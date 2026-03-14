@@ -7,6 +7,7 @@ const testimonials = [
     outcome: 'Computer Engineering Student',
     shortDesc: 'Toronto Metropolitan University',
     image: '/atish.png',
+    linkedinUrl: 'https://www.linkedin.com/in/atishk6ix/',
     description: 'Having known the founders since high school and seen their journey through both setbacks and successes, I can say their mentorship is grounded in real experience. As someone now involved in physics research and AI, I’ve seen how the mindset and guidance they promote can help students develop strong direction and confidence.',
   },
   {
@@ -14,6 +15,7 @@ const testimonials = [
     outcome: 'BBA Student',
     shortDesc: 'Schulich School of Business',
     image: '/poojan.jpeg',
+    linkedinUrl: 'https://www.linkedin.com/in/shahpoojan1/',
     description: 'Shaun and Manroop were incredibly helpful throughout the university application process. Their guidance made everything much clearer and helped me feel more confident. Their advice on improving my application played a key role in helping me land an offer from the Schulich School of Business, and their networking advice also helped me secure an internship at a major accounting firm. I highly recommend them to anyone going through the university admissions process or looking for guidance on their future career and overall direction.',
   },
   {
@@ -21,6 +23,7 @@ const testimonials = [
     outcome: 'Mechatronics Engineering',
     shortDesc: 'University of Waterloo',
     image: '/rhythm.png',
+    linkedinUrl: 'https://www.linkedin.com/in/rhythm-panchal-b3a008288/',
     description: 'Shaun and Manroop were really helpful in shaping how I presented my experiences for my university applications. I had worked on machine learning research, software internships, startup growth, and social media, and they helped me bring everything together into a clear story that reflected my interests and personality. Their guidance helped refine my direction and made my applications much more cohesive. I would definitely recommend them to anyone applying to university.',
   },
 ];
@@ -115,7 +118,15 @@ export const Testimonials = () => {
                       className="w-16 h-16 rounded-full object-cover border-2 border-primary/30"
                     />
                     <div>
-                      <h3 className="text-xl font-bold text-section-foreground">{selectedTestimonial.name}</h3>
+                      <a
+                        href={selectedTestimonial.linkedinUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 text-xl font-bold text-section-foreground transition-colors hover:text-primary"
+                      >
+                        {selectedTestimonial.name}
+                        <ArrowUpRight className="h-4 w-4" />
+                      </a>
                       <p className="flex flex-wrap items-center gap-2">
                         <span className="text-primary">{selectedTestimonial.outcome}</span>
                         <span className="text-section-muted-foreground/60" aria-hidden="true">|</span>
@@ -130,6 +141,15 @@ export const Testimonials = () => {
                     <p className="text-section-muted-foreground leading-relaxed italic">
                       {selectedTestimonial.description}
                     </p>
+                    <a
+                      href={selectedTestimonial.linkedinUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary transition-opacity hover:opacity-80"
+                    >
+                      View LinkedIn
+                      <ArrowUpRight className="h-4 w-4" />
+                    </a>
                     <span className="absolute bottom-1 right-4 text-4xl leading-none text-primary/45" aria-hidden="true">
                       "
                     </span>

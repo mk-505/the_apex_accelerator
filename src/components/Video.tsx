@@ -1,36 +1,15 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { Play } from 'lucide-react';
 
-const videoSrc = 'https://xer99jdtgcnsca6p.public.blob.vercel-storage.com/apex_intro.mp4';
+const youtubeVideoId = 'cXcF-2xcSL0';
+const youtubeEmbedSrc = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+const youtubeThumbnailSrc = `https://i.ytimg.com/vi/${youtubeVideoId}/maxresdefault.jpg`;
 
 export const Video = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
   const [hasStarted, setHasStarted] = useState(false);
 
-  const handleLoadedMetadata = () => {
-    const video = videoRef.current;
-
-    if (!video || hasStarted) {
-      return;
-    }
-
-    try {
-      video.currentTime = 2;
-    } catch {
-      // Some browsers block seeking until enough data is buffered.
-    }
-  };
-
-  const handlePlay = async () => {
-    const video = videoRef.current;
-
-    if (!video) {
-      return;
-    }
-
-    video.currentTime = 0;
+  const handlePlay = () => {
     setHasStarted(true);
-    await video.play();
   };
 
   return (
@@ -44,11 +23,31 @@ export const Video = () => {
           </div>
 
           <div className="relative aspect-video luxe-section-card overflow-hidden animate-slide-up [animation-delay:120ms]">
+            {hasStarted ? (
+              <iframe
+                className="h-full w-full"
+                src={youtubeEmbedSrc}
+                title="Apex Accelerator introduction video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            ) : (
+              <>
+                <img
+                  src={youtubeThumbnailSrc}
+                  alt="Apex Accelerator introduction video thumbnail"
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-black/25" />
+              </>
+            )}
+
             {!hasStarted && (
               <button
                 type="button"
                 onClick={handlePlay}
-                className="absolute inset-0 z-10 flex items-center justify-center bg-gradient-to-br from-primary/20 via-transparent to-black/20 transition-opacity hover:bg-primary/10"
+                className="absolute inset-0 z-10 flex items-center justify-center transition-opacity hover:bg-primary/10"
                 aria-label="Play introduction video"
               >
                 <span className="flex h-24 w-24 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-[0_18px_44px_hsl(var(--primary)/0.45)] transition-transform duration-300 hover:scale-105">
@@ -56,18 +55,6 @@ export const Video = () => {
                 </span>
               </button>
             )}
-            <video
-              ref={videoRef}
-              className="h-full w-full object-cover"
-              controls={hasStarted}
-              playsInline
-              preload="metadata"
-              onLoadedMetadata={handleLoadedMetadata}
-              onPlay={() => setHasStarted(true)}
-            >
-              <source src={`${videoSrc}#t=2`} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
           </div>
         </div>
       </div>

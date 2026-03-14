@@ -40,7 +40,7 @@ const faqs = [
   },
   {
     question: 'How selective is the program?',
-    answer: 'Students are admitted through a written application and interview process. This allows us to build cohorts of students who are motivated, curious, and excited to challenge themselves alongside like-minded peers.',
+    answer: 'Students are admitted through a written application and interview process. We keep the program intentionally selective and only accept a limited number of students each cycle so we can provide close mentorship and personalized support. This allows us to build cohorts of students who are motivated, curious, and excited to challenge themselves alongside like-minded peers.',
   },
   {
     question: 'Can parents be involved in the process?',
