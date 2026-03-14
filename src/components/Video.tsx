@@ -1,6 +1,38 @@
+import { useRef, useState } from 'react';
 import { Play } from 'lucide-react';
 
+const videoSrc = 'https://xer99jdtgcnsca6p.public.blob.vercel-storage.com/apex_intro.mp4';
+
 export const Video = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [hasStarted, setHasStarted] = useState(false);
+
+  const handleLoadedMetadata = () => {
+    const video = videoRef.current;
+
+    if (!video || hasStarted) {
+      return;
+    }
+
+    try {
+      video.currentTime = 2;
+    } catch {
+      // Some browsers block seeking until enough data is buffered.
+    }
+  };
+
+  const handlePlay = async () => {
+    const video = videoRef.current;
+
+    if (!video) {
+      return;
+    }
+
+    video.currentTime = 0;
+    setHasStarted(true);
+    await video.play();
+  };
+
   return (
     <section className="py-16 bg-section-muted">
       <div className="container mx-auto px-6">
@@ -11,16 +43,31 @@ export const Video = () => {
             </h2>
           </div>
 
-          {/* Video Embed Placeholder */}
           <div className="relative aspect-video luxe-section-card overflow-hidden animate-slide-up [animation-delay:120ms]">
-            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/30 via-primary/10 to-transparent">
-              <div className="w-20 h-20 rounded-full bg-primary/90 flex items-center justify-center cursor-pointer hover:bg-primary transition-colors animate-pulse-glow">
-                <Play className="w-8 h-8 text-primary-foreground ml-1" />
-              </div>
-            </div>
-            <div className="absolute bottom-4 left-4 right-4 text-center">
-              <p className="text-section-muted-foreground text-sm">Video coming soon</p>
-            </div>
+            {!hasStarted && (
+              <button
+                type="button"
+                onClick={handlePlay}
+                className="absolute inset-0 z-10 flex items-center justify-center bg-gradient-to-br from-primary/20 via-transparent to-black/20 transition-opacity hover:bg-primary/10"
+                aria-label="Play introduction video"
+              >
+                <span className="flex h-24 w-24 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-[0_18px_44px_hsl(var(--primary)/0.45)] transition-transform duration-300 hover:scale-105">
+                  <Play className="ml-1 h-10 w-10 fill-current" />
+                </span>
+              </button>
+            )}
+            <video
+              ref={videoRef}
+              className="h-full w-full object-cover"
+              controls={hasStarted}
+              playsInline
+              preload="metadata"
+              onLoadedMetadata={handleLoadedMetadata}
+              onPlay={() => setHasStarted(true)}
+            >
+              <source src={`${videoSrc}#t=2`} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </div>
