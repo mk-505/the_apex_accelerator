@@ -3,12 +3,12 @@ import { X, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const testimonials = [
   {
-    name: 'Atish K.',
-    outcome: 'Computer Engineering Student',
-    shortDesc: 'Toronto Metropolitan University',
-    image: '/atish.png',
-    linkedinUrl: 'https://www.linkedin.com/in/atishk6ix/',
-    description: 'Having known the founders since high school and seen their journey through both setbacks and successes, I can say their mentorship is grounded in real experience. As someone now involved in physics research and AI, I’ve seen how the mindset and guidance they promote can help students develop strong direction and confidence.',
+    name: 'Student Testimonial',
+    outcome: 'Coming Soon',
+    shortDesc: 'Profile to be announced',
+    image: '/placeholder.svg',
+    linkedinUrl: '',
+    description: 'Testimonial coming soon.',
   },
   {
     name: 'Poojan S.',
@@ -118,15 +118,19 @@ export const Testimonials = () => {
                       className="w-16 h-16 rounded-full object-cover border-2 border-primary/30"
                     />
                     <div>
-                      <a
-                        href={selectedTestimonial.linkedinUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-2 text-xl font-bold text-section-foreground transition-colors hover:text-primary"
-                      >
-                        {selectedTestimonial.name}
-                        <ArrowUpRight className="h-4 w-4" />
-                      </a>
+                      {selectedTestimonial.linkedinUrl ? (
+                        <a
+                          href={selectedTestimonial.linkedinUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2 text-xl font-bold text-section-foreground transition-colors hover:text-primary"
+                        >
+                          {selectedTestimonial.name}
+                          <ArrowUpRight className="h-4 w-4" />
+                        </a>
+                      ) : (
+                        <h3 className="text-xl font-bold text-section-foreground">{selectedTestimonial.name}</h3>
+                      )}
                       <p className="flex flex-wrap items-center gap-2">
                         <span className="text-primary">{selectedTestimonial.outcome}</span>
                         <span className="text-section-muted-foreground/60" aria-hidden="true">|</span>
@@ -141,15 +145,17 @@ export const Testimonials = () => {
                     <p className="text-section-muted-foreground leading-relaxed italic">
                       {selectedTestimonial.description}
                     </p>
-                    <a
-                      href={selectedTestimonial.linkedinUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary transition-opacity hover:opacity-80"
-                    >
-                      View LinkedIn
-                      <ArrowUpRight className="h-4 w-4" />
-                    </a>
+                    {selectedTestimonial.linkedinUrl && (
+                      <a
+                        href={selectedTestimonial.linkedinUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary transition-opacity hover:opacity-80"
+                      >
+                        View LinkedIn
+                        <ArrowUpRight className="h-4 w-4" />
+                      </a>
+                    )}
                     <span className="absolute bottom-1 right-4 text-4xl leading-none text-primary/45" aria-hidden="true">
                       "
                     </span>
