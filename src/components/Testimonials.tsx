@@ -3,14 +3,6 @@ import { X, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const testimonials = [
   {
-    name: 'Student Testimonial',
-    outcome: 'Coming Soon',
-    shortDesc: 'Profile to be announced',
-    image: '/placeholder.svg',
-    linkedinUrl: '',
-    description: 'Testimonial coming soon.',
-  },
-  {
     name: 'Poojan S.',
     outcome: 'BBA Student',
     shortDesc: 'Schulich School of Business',
@@ -26,6 +18,14 @@ const testimonials = [
     linkedinUrl: 'https://www.linkedin.com/in/rhythm-panchal-b3a008288/',
     description: 'Shaun and Manroop were really helpful in shaping how I presented my experiences for my university applications. I had worked on machine learning research, software internships, startup growth, and social media, and they helped me bring everything together into a clear story that reflected my interests and personality. Their guidance helped refine my direction and made my applications much more cohesive. I would definitely recommend them to anyone applying to university.',
   },
+  {
+    name: 'Student Testimonial',
+    outcome: 'Coming Soon',
+    shortDesc: 'Profile to be announced',
+    image: '/placeholder.svg',
+    linkedinUrl: '',
+    description: 'Testimonial coming soon.',
+  }
 ];
 
 export const Testimonials = () => {
@@ -42,7 +42,7 @@ export const Testimonials = () => {
             Don't just take <span className="text-primary">our word</span> for it
           </h2>
           <p className="text-section-muted-foreground text-base max-w-2xl mx-auto" data-reveal="up" style={{ ['--reveal-delay' as string]: '100ms' }}>
-            Hear from students who've transformed their futures with us! 
+            Hear from students who've transformed their futures with us!
           </p>
         </div>
 
