@@ -19,12 +19,12 @@ const testimonials = [
     description: 'Shaun and Manroop were really helpful in shaping how I presented my experiences for my university applications. I had worked on machine learning research, software internships, startup growth, and social media, and they helped me bring everything together into a clear story that reflected my interests and personality. Their guidance helped refine my direction and made my applications much more cohesive. I would definitely recommend them to anyone applying to university.',
   },
   {
-    name: 'Student Testimonial',
-    outcome: 'Coming Soon',
-    shortDesc: 'Profile to be announced',
-    image: '/placeholder.svg',
-    linkedinUrl: '',
-    description: 'Testimonial coming soon.',
+    name: 'Sahil S.',
+    outcome: 'Engineering',
+    shortDesc: 'McMaster University',
+    image: '/sahil.png',
+    linkedinUrl: 'https://www.linkedin.com/in/sahil-sachdeva-39bb11311/',
+    description: 'Working with Shaun and Manroop was extremely helpful during my university application process. They helped me understand how to present my experiences clearly and structure my applications in a way that highlighted my strengths. Their guidance made the process much less stressful and gave me more confidence in my direction. I would definitely recommend them to any student navigating university applications or thinking about their future career path.',
   }
 ];
 
