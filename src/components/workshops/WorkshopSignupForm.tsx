@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/lib/supabase";
 import { cn } from "@/lib/utils";
-import { interestAreas, workshops, type InterestArea } from "@/lib/workshops";
+import { workshops } from "@/lib/workshops";
 
 type WorkshopSignupFormProps = {
   selectedWorkshopId: string;
@@ -14,23 +14,19 @@ type WorkshopSignupFormProps = {
 };
 
 type WorkshopRegistrationValues = {
-  areaOfInterest: InterestArea | "";
   email: string;
-  firstName: string;
-  goal: string;
+  fullName: string;
   grade: string;
-  lastName: string;
-  school: string;
+  heardFrom: string;
+  registrantType: string;
 };
 
 const initialValues: WorkshopRegistrationValues = {
-  areaOfInterest: "",
   email: "",
-  firstName: "",
-  goal: "",
+  fullName: "",
   grade: "",
-  lastName: "",
-  school: "",
+  heardFrom: "",
+  registrantType: "",
 };
 
 type RegistrationField = keyof WorkshopRegistrationValues;
@@ -39,14 +35,16 @@ const validateField = (field: RegistrationField, values: WorkshopRegistrationVal
   const value = values[field].trim();
 
   switch (field) {
-    case "firstName":
-    case "lastName":
-    case "school":
+    case "fullName":
       return value.length >= 2 ? "" : "Please complete this field.";
     case "email":
       return /\S+@\S+\.\S+/.test(value) ? "" : "Please enter a valid email address.";
     case "grade":
-      return value ? "" : "Please tell us your grade.";
+      return values.registrantType === "Student" && !value ? "Please tell us your grade." : "";
+    case "heardFrom":
+      return value ? "" : "Please tell us how you heard about us.";
+    case "registrantType":
+      return value ? "" : "Please choose Student or Parent.";
     default:
       return "";
   }
@@ -95,13 +93,11 @@ export const WorkshopSignupForm = ({
       const { error } = await supabase.from("workshop_registrations").insert({
         workshop_id: selectedWorkshop.id,
         workshop_title: selectedWorkshop.title,
-        first_name: values.firstName,
-        last_name: values.lastName,
+        full_name: values.fullName,
         email: values.email,
-        grade: values.grade,
-        school: values.school,
-        area_of_interest: values.areaOfInterest || null,
-        high_school_goal: values.goal.trim() || null,
+        registrant_type: values.registrantType,
+        grade: values.registrantType === "Student" ? values.grade : null,
+        heard_from: values.heardFrom,
       });
 
       if (error) {
@@ -172,72 +168,89 @@ export const WorkshopSignupForm = ({
 
       <div className="grid gap-4 md:grid-cols-2">
         <Field
-          error={errors.firstName}
-          id="firstName"
-          label="First Name"
-          onChange={(value) => setFieldValue("firstName", value)}
-          value={values.firstName}
-        />
-        <Field
-          error={errors.lastName}
-          id="lastName"
-          label="Last Name"
-          onChange={(value) => setFieldValue("lastName", value)}
-          value={values.lastName}
+          className="md:col-span-2"
+          error={errors.fullName}
+          id="fullName"
+          label="Full Name"
+          onChange={(value) => setFieldValue("fullName", value)}
+          value={values.fullName}
         />
         <Field
           error={errors.email}
           id="email"
-          label="Email"
+          label="Email Address"
           onChange={(value) => setFieldValue("email", value)}
           type="email"
           value={values.email}
         />
-        <Field
-          error={errors.grade}
-          id="grade"
-          label="Grade"
-          onChange={(value) => setFieldValue("grade", value)}
-          placeholder="Grade 9 or Grade 10"
-          value={values.grade}
-        />
-        <Field
-          className="md:col-span-2"
-          error={errors.school}
-          id="school"
-          label="School"
-          onChange={(value) => setFieldValue("school", value)}
-          value={values.school}
-        />
-      </div>
-
-      <div className="grid gap-4 md:grid-cols-2">
         <div className="space-y-2">
-          <Label htmlFor="areaOfInterest" className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
-            Area of Interest
+          <Label htmlFor="registrantType" className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+            Student or Parent
           </Label>
           <select
-            id="areaOfInterest"
-            value={values.areaOfInterest}
-            onChange={(event) => setFieldValue("areaOfInterest", event.target.value as InterestArea | "")}
+            id="registrantType"
+            value={values.registrantType}
+            onChange={(event) => {
+              const nextType = event.target.value;
+              setFieldValue("registrantType", nextType);
+              if (nextType !== "Student") {
+                setFieldValue("grade", "");
+              }
+            }}
             className="h-14 w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 text-sm text-foreground outline-none transition focus:border-primary/45 focus:ring-2 focus:ring-primary/45"
           >
-            <option value="">Select an area</option>
-            {interestAreas.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
+            <option value="">Select one</option>
+            <option value="Student">Student</option>
+            <option value="Parent">Parent</option>
           </select>
+          {errors.registrantType ? <p className="text-sm text-primary">{errors.registrantType}</p> : null}
         </div>
 
-        <Field
-          id="goal"
-          label="One thing you'd like to achieve in high school"
-          onChange={(value) => setFieldValue("goal", value)}
-          placeholder="Optional"
-          value={values.goal}
-        />
+        {values.registrantType === "Student" ? (
+          <div className="space-y-2">
+            <Label htmlFor="grade" className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+              What grade are you in
+            </Label>
+            <select
+              id="grade"
+              value={values.grade}
+              onChange={(event) => setFieldValue("grade", event.target.value)}
+              className="h-14 w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 text-sm text-foreground outline-none transition focus:border-primary/45 focus:ring-2 focus:ring-primary/45"
+            >
+              <option value="">Select your grade</option>
+              <option value="Grade 9">Grade 9</option>
+              <option value="Grade 10">Grade 10</option>
+              <option value="Grade 11">Grade 11</option>
+              <option value="Grade 12">Grade 12</option>
+            </select>
+            {errors.grade ? <p className="text-sm text-primary">{errors.grade}</p> : null}
+          </div>
+        ) : (
+          <div className="rounded-[1.6rem] border border-white/10 bg-white/[0.03] p-4 text-sm leading-7 text-muted-foreground">
+            Grade will only be asked when a student is registering directly.
+          </div>
+        )}
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="heardFrom" className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+          How did you hear about us?
+        </Label>
+        <select
+          id="heardFrom"
+          value={values.heardFrom}
+          onChange={(event) => setFieldValue("heardFrom", event.target.value)}
+          className="h-14 w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 text-sm text-foreground outline-none transition focus:border-primary/45 focus:ring-2 focus:ring-primary/45"
+        >
+          <option value="">Select one</option>
+          <option value="TikTok">TikTok</option>
+          <option value="Instagram">Instagram</option>
+          <option value="School">School</option>
+          <option value="Email">Email</option>
+          <option value="Community platforms">Community platforms</option>
+          <option value="Other">Other</option>
+        </select>
+        {errors.heardFrom ? <p className="text-sm text-primary">{errors.heardFrom}</p> : null}
       </div>
 
       {formError ? (
