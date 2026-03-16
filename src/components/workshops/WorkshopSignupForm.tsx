@@ -1,9 +1,10 @@
 import { useMemo, useState, type FormEvent } from "react";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Play } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/lib/supabase";
 import { cn } from "@/lib/utils";
 import { workshops } from "@/lib/workshops";
@@ -19,6 +20,8 @@ type WorkshopRegistrationValues = {
   grade: string;
   heardFrom: string;
   registrantType: string;
+  school: string;
+  studentGoal: string;
 };
 
 const initialValues: WorkshopRegistrationValues = {
@@ -27,7 +30,13 @@ const initialValues: WorkshopRegistrationValues = {
   grade: "",
   heardFrom: "",
   registrantType: "",
+  school: "",
+  studentGoal: "",
 };
+
+const youtubeVideoId = "cXcF-2xcSL0";
+const youtubeEmbedSrc = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+const youtubeThumbnailSrc = `https://i.ytimg.com/vi/${youtubeVideoId}/maxresdefault.jpg`;
 
 type RegistrationField = keyof WorkshopRegistrationValues;
 
@@ -41,6 +50,8 @@ const validateField = (field: RegistrationField, values: WorkshopRegistrationVal
       return /\S+@\S+\.\S+/.test(value) ? "" : "Please enter a valid email address.";
     case "grade":
       return values.registrantType === "Student" && !value ? "Please tell us your grade." : "";
+    case "school":
+      return values.registrantType === "Student" && value.length < 2 ? "Please tell us your high school." : "";
     case "heardFrom":
       return value ? "" : "Please tell us how you heard about us.";
     case "registrantType":
@@ -56,6 +67,7 @@ export const WorkshopSignupForm = ({
 }: WorkshopSignupFormProps) => {
   const [errors, setErrors] = useState<Partial<Record<RegistrationField, string>>>({});
   const [formError, setFormError] = useState("");
+  const [hasStartedVideo, setHasStartedVideo] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [values, setValues] = useState<WorkshopRegistrationValues>(initialValues);
@@ -97,7 +109,9 @@ export const WorkshopSignupForm = ({
         email: values.email,
         registrant_type: values.registrantType,
         grade: values.registrantType === "Student" ? values.grade : null,
+        school: values.registrantType === "Student" ? values.school.trim() : null,
         heard_from: values.heardFrom,
+        student_goal: values.registrantType === "Student" ? values.studentGoal.trim() || null : null,
       });
 
       if (error) {
@@ -122,13 +136,53 @@ export const WorkshopSignupForm = ({
         <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-primary/25 bg-primary/15 text-primary">
           <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
         </div>
-        <h3 className="mt-6 text-3xl font-semibold text-foreground">You're registered!</h3>
+        <h3 className="mt-6 text-3xl font-semibold text-foreground">Thank you. We have received your application.</h3>
         <p className="mt-3 max-w-2xl text-base leading-7 text-foreground/75">
-          We’ll send workshop details to your email.
+          You will receive an email with details on how to join the event closer to the date.
         </p>
+        <div className="mt-8">
+          <p className="text-xs uppercase tracking-[0.22em] text-primary">Learn More About Apex</p>
+          <p className="mt-3 max-w-2xl text-sm leading-7 text-foreground/75">
+            If you'd like to learn more in the meantime, watch this short video about Apex.
+          </p>
+          <div className="relative mt-5 aspect-video overflow-hidden rounded-[1.6rem] border border-primary/18 bg-black/30">
+            {hasStartedVideo ? (
+              <iframe
+                className="h-full w-full"
+                src={youtubeEmbedSrc}
+                title="Apex Accelerator introduction video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            ) : (
+              <>
+                <img
+                  src={youtubeThumbnailSrc}
+                  alt="Apex Accelerator introduction video thumbnail"
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-black/25" />
+                <button
+                  type="button"
+                  onClick={() => setHasStartedVideo(true)}
+                  className="absolute inset-0 z-10 flex items-center justify-center transition-opacity hover:bg-primary/10"
+                  aria-label="Play Apex introduction video"
+                >
+                  <span className="flex h-20 w-20 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-[0_18px_44px_hsl(var(--primary)/0.45)] transition-transform duration-300 hover:scale-105">
+                    <Play className="ml-1 h-8 w-8 fill-current" />
+                  </span>
+                </button>
+              </>
+            )}
+          </div>
+        </div>
         <Button
           type="button"
-          onClick={() => setIsSubmitted(false)}
+          onClick={() => {
+            setHasStartedVideo(false);
+            setIsSubmitted(false);
+          }}
           className="mt-6 rounded-full bg-primary px-6 py-6 text-sm font-semibold uppercase tracking-[0.12em] text-primary-foreground hover:bg-primary/90"
         >
           Register another student
@@ -195,6 +249,8 @@ export const WorkshopSignupForm = ({
               setFieldValue("registrantType", nextType);
               if (nextType !== "Student") {
                 setFieldValue("grade", "");
+                setFieldValue("school", "");
+                setFieldValue("studentGoal", "");
               }
             }}
             className="h-14 w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 text-sm text-foreground outline-none transition focus:border-primary/45 focus:ring-2 focus:ring-primary/45"
@@ -248,6 +304,30 @@ export const WorkshopSignupForm = ({
         </select>
         {errors.heardFrom ? <p className="text-sm text-primary">{errors.heardFrom}</p> : null}
       </div>
+
+      {values.registrantType === "Student" ? (
+        <div className="grid gap-4">
+          <Field
+            error={errors.school}
+            id="school"
+            label="What high school are you from?"
+            onChange={(value) => setFieldValue("school", value)}
+            value={values.school}
+          />
+          <div className="space-y-2">
+            <Label htmlFor="studentGoal" className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+              What is one thing you would love to build or achieve during high school?
+            </Label>
+            <Textarea
+              id="studentGoal"
+              value={values.studentGoal}
+              onChange={(event) => setFieldValue("studentGoal", event.target.value)}
+              className="min-h-[120px] rounded-2xl border-white/10 bg-white/[0.04] px-4 py-4 text-sm text-foreground placeholder:text-muted-foreground focus-visible:ring-primary/45"
+              placeholder="Optional"
+            />
+          </div>
+        </div>
+      ) : null}
 
       {formError ? (
         <p className="rounded-2xl border border-primary/20 bg-primary/8 px-4 py-3 text-sm text-primary">{formError}</p>
