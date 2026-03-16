@@ -1,6 +1,8 @@
+import { useLocation } from 'react-router-dom';
 import logo from '@/assets/apex-logo.png';
 
 export const Footer = () => {
+  const location = useLocation();
   const quickLinks = [
     { label: 'Team', href: '#team' },
     { label: 'Services', href: '#services' },
@@ -9,6 +11,7 @@ export const Footer = () => {
     { label: 'FAQ', href: '#faq' },
     { label: 'Contact', href: '#contact' },
   ];
+  const resolveHref = (href: string) => (location.pathname === '/' ? href : `/${href}`);
 
   return (
     <footer className="border-t border-primary/15 bg-background/95" data-reveal="up">
@@ -31,7 +34,7 @@ export const Footer = () => {
               {quickLinks.map((link) => (
                 <a
                   key={link.label}
-                  href={link.href}
+                  href={resolveHref(link.href)}
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {link.label}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import logo from '@/assets/apex-logo.png';
 
 const navItems = [
@@ -12,8 +13,10 @@ const navItems = [
 ];
 
 export const Navigation = () => {
+  const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const resolveHref = (href: string) => (location.pathname === '/' ? href : `/${href}`);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,12 +46,18 @@ export const Navigation = () => {
           {navItems.map((item) => (
             <a
               key={item.label}
-              href={item.href}
+              href={resolveHref(item.href)}
               className="text-xs font-semibold uppercase tracking-[0.09em] text-muted-foreground hover:text-primary transition-colors"
             >
               {item.label}
             </a>
           ))}
+          <a
+            href="/workshops"
+            className="rounded-full border border-primary/25 bg-primary/10 px-4 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.1em] text-primary transition-colors hover:bg-primary/15"
+          >
+            Free Workshop
+          </a>
           <a
             href="/application"
             target="_blank"
@@ -81,13 +90,20 @@ export const Navigation = () => {
             {navItems.map((item) => (
               <a
                 key={item.label}
-                href={item.href}
+                href={resolveHref(item.href)}
                 onClick={() => setMobileOpen(false)}
                 className="text-xs font-semibold uppercase tracking-[0.1em] text-muted-foreground hover:text-primary transition-colors"
               >
                 {item.label}
               </a>
             ))}
+            <a
+              href="/workshops"
+              onClick={() => setMobileOpen(false)}
+              className="text-xs font-semibold uppercase tracking-[0.1em] text-primary transition-colors hover:text-primary/80"
+            >
+              Free Workshop
+            </a>
             <a
               href="/application"
               target="_blank"
