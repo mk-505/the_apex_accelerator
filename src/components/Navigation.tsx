@@ -50,9 +50,9 @@ export const Navigation = () => {
             </a>
           ))}
           <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSczz8PzORwAul6X0PefKXgbzV1Y0wUd-9vKRUOLYZlNavSpBQ/viewform"
+            href="/application"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="btn-luxe-primary text-[0.68rem] px-5 py-2"
           >
             Apply Now
@@ -89,9 +89,9 @@ export const Navigation = () => {
               </a>
             ))}
             <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSczz8PzORwAul6X0PefKXgbzV1Y0wUd-9vKRUOLYZlNavSpBQ/viewform"
+              href="/application"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               onClick={() => setMobileOpen(false)}
               className="btn-luxe-primary text-[0.68rem]"
             >

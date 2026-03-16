@@ -60,9 +60,9 @@ export const Hero = () => {
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSczz8PzORwAul6X0PefKXgbzV1Y0wUd-9vKRUOLYZlNavSpBQ/viewform"
+            href="/application"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="btn-luxe-primary"
           >
             Apply For A Spot

@@ -52,9 +52,9 @@ export const Footer = () => {
             </a>
             <div className="mt-5">
               <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSczz8PzORwAul6X0PefKXgbzV1Y0wUd-9vKRUOLYZlNavSpBQ/viewform"
+                href="/application"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="btn-luxe-primary text-xs px-5 py-2.5 inline-flex"
               >
                 Apply Now

@@ -88,9 +88,9 @@ export const Apply = () => {
           </div>
 
           <a
-            href="https://forms.gle/BM4Hhmb8ohgMiR7AA"
+            href="/application"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="btn-luxe-primary gap-2 px-8 py-4 text-sm animate-pulse-glow"
           >
             Apply Now
