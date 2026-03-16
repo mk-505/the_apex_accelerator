@@ -225,11 +225,7 @@ export const WorkshopSignupForm = ({
             </select>
             {errors.grade ? <p className="text-sm text-primary">{errors.grade}</p> : null}
           </div>
-        ) : (
-          <div className="rounded-[1.6rem] border border-white/10 bg-white/[0.03] p-4 text-sm leading-7 text-muted-foreground">
-            Grade will only be asked when a student is registering directly.
-          </div>
-        )}
+        ) : null}
       </div>
 
       <div className="space-y-2">
