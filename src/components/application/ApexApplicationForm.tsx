@@ -25,6 +25,7 @@ type FormValues = {
   parentName: string;
   parentPhone: string;
   phone: string;
+  referralCode: string;
   whyApex: string;
   avoidLife: string;
 };
@@ -73,6 +74,7 @@ const initialValues: FormValues = {
   parentName: "",
   parentPhone: "",
   phone: "",
+  referralCode: "",
   whyApex: "",
   avoidLife: "",
 };
@@ -217,6 +219,16 @@ const steps: StepDefinition[] = [
     placeholder: "(555) 987-6543",
   },
   {
+    id: "referral-code",
+    kind: "question",
+    field: "referralCode",
+    question: "If you were inspired by someone to apply, please put their referral code here.",
+    input: "text",
+    required: false,
+    section: "Parent Information",
+    placeholder: "Optional referral code",
+  },
+  {
     id: "open-ended-intro",
     kind: "statement",
     eyebrow: "Section 3",
@@ -296,11 +308,12 @@ const reviewSections: Array<{
       title: "Parent Information",
       jumpTo: "parent-info-intro",
       fields: [
-        { label: "Parent's Name", field: "parentName" },
-        { label: "Parent's Email", field: "parentEmail" },
-        { label: "Parent's Phone Number", field: "parentPhone" },
-      ],
-    },
+      { label: "Parent's Name", field: "parentName" },
+      { label: "Parent's Email", field: "parentEmail" },
+      { label: "Parent's Phone Number", field: "parentPhone" },
+      { label: "Referral Code", field: "referralCode" },
+    ],
+  },
     {
       title: "Open-Ended Questions",
       jumpTo: "open-ended-intro",
@@ -585,6 +598,7 @@ export const ApexApplicationForm = () => {
         parentName: values.parentName,
         parentEmail: values.parentEmail,
         parentPhone: values.parentPhone,
+        referralCode: values.referralCode,
         lifeToAvoid: values.avoidLife,
         motivation: values.motivation,
         whyApex: values.whyApex,
@@ -601,6 +615,7 @@ export const ApexApplicationForm = () => {
         parent_name: payload.parentName,
         parent_email: payload.parentEmail,
         parent_phone: payload.parentPhone,
+        referral_code: payload.referralCode.trim() || null,
         life_to_avoid: payload.lifeToAvoid,
         motivation: payload.motivation,
         why_apex: payload.whyApex,
@@ -615,7 +630,7 @@ export const ApexApplicationForm = () => {
     } catch (error) {
       console.error("Failed to submit Apex application", error);
       setSubmitError(
-        "We couldn't submit your application yet. Confirm your Supabase table and insert policy are set up, then try again.",
+        "We couldn't submit your application yet. Please send an email to contact@apexaccelerator.ca and let us know there's an issue.",
       );
     } finally {
       setIsSubmitting(false);
