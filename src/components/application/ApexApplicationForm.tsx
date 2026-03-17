@@ -101,6 +101,16 @@ const steps: StepDefinition[] = [
     ],
   },
   {
+    id: "referral-code",
+    kind: "question",
+    field: "referralCode",
+    question: "If you were inspired by someone to apply, please put their referral code here.",
+    input: "text",
+    required: false,
+    section: "Personal Information",
+    placeholder: "Optional referral code",
+  },
+  {
     id: "personal-info-intro",
     kind: "statement",
     eyebrow: "Section 1",
@@ -217,16 +227,6 @@ const steps: StepDefinition[] = [
     required: true,
     section: "Parent Information",
     placeholder: "(555) 987-6543",
-  },
-  {
-    id: "referral-code",
-    kind: "question",
-    field: "referralCode",
-    question: "If you were inspired by someone to apply, please put their referral code here.",
-    input: "text",
-    required: false,
-    section: "Parent Information",
-    placeholder: "Optional referral code",
   },
   {
     id: "open-ended-intro",
