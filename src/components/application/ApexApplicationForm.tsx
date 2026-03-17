@@ -34,13 +34,17 @@ type FieldKey = keyof FormValues;
 
 type StepDefinition =
   | {
-    id: string;
-    kind: "statement";
-    title: string;
-    body: string[];
-    eyebrow?: string;
-    kicker?: string;
-  }
+      id: string;
+      kind: "statement";
+      title: string;
+      body: string[];
+      eyebrow?: string;
+      kicker?: string;
+      field?: FieldKey;
+      helper?: string;
+      input?: "text";
+      placeholder?: string;
+    }
   | {
     id: string;
     kind: "question";
@@ -99,15 +103,9 @@ const steps: StepDefinition[] = [
       "There are no trick questions, no ideal answers, and no expectations of polish. We’re simply trying to understand who you are, how you think, and what you’re willing to work toward.",
       "Take your time. Answer genuinely.",
     ],
-  },
-  {
-    id: "referral-code",
-    kind: "question",
     field: "referralCode",
-    question: "If you were inspired by someone to apply, please put their referral code here.",
+    helper: "If you were inspired by someone to apply, please put their referral code here.",
     input: "text",
-    required: false,
-    section: "Personal Information",
     placeholder: "Optional referral code",
   },
   {
@@ -724,6 +722,26 @@ export const ApexApplicationForm = () => {
               <p className="text-sm uppercase tracking-[0.28em] text-stone-500">{current.kicker}</p>
             ) : null}
           </div>
+
+          {current.field ? (
+            <div className="max-w-3xl space-y-3">
+              {current.helper ? (
+                <Label htmlFor={current.id} className="text-xs uppercase tracking-[0.18em] text-stone-500">
+                  {current.helper}
+                </Label>
+              ) : null}
+              <Input
+                id={current.id}
+                type="text"
+                value={String(values[current.field] ?? "")}
+                onChange={(event) =>
+                  setFieldValue(current.field as keyof FormValues, event.target.value as FormValues[keyof FormValues])
+                }
+                placeholder={current.placeholder}
+                className="h-16 rounded-[1.35rem] border-white/10 bg-white/[0.04] px-5 text-lg text-stone-100 placeholder:text-stone-500 focus-visible:ring-[#d3b371]/70 focus-visible:ring-offset-[#050505]"
+              />
+            </div>
+          ) : null}
 
           <div className="flex flex-wrap items-center gap-3">
             {currentStep > 0 ? (
