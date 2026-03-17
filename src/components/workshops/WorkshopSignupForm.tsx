@@ -4,6 +4,13 @@ import { CheckCircle2, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/lib/supabase";
 import { cn } from "@/lib/utils";
@@ -136,7 +143,7 @@ export const WorkshopSignupForm = ({
         <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-primary/25 bg-primary/15 text-primary">
           <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
         </div>
-        <h3 className="mt-6 text-3xl font-semibold text-foreground">Thank you. We have received your application.</h3>
+        <h3 className="mt-6 text-3xl font-semibold text-foreground">Thank you. We have received your registration.</h3>
         <p className="mt-3 max-w-2xl text-base leading-7 text-foreground/75">
           You will receive an email with details on how to join the event closer to the date.
         </p>
@@ -185,7 +192,7 @@ export const WorkshopSignupForm = ({
           }}
           className="mt-6 rounded-full bg-primary px-6 py-6 text-sm font-semibold uppercase tracking-[0.12em] text-primary-foreground hover:bg-primary/90"
         >
-          Register another student
+          Register for Another Workshop
         </Button>
       </div>
     );
@@ -206,18 +213,25 @@ export const WorkshopSignupForm = ({
         <Label htmlFor="selected-workshop" className="text-xs uppercase tracking-[0.24em] text-primary/80">
           Selected Workshop
         </Label>
-        <select
-          id="selected-workshop"
-          value={selectedWorkshop.id}
-          onChange={(event) => onWorkshopChange(event.target.value)}
-          className="mt-3 h-14 w-full rounded-2xl border border-white/10 bg-background/70 px-4 text-sm text-foreground outline-none transition focus:border-primary/40 focus:ring-2 focus:ring-primary/40"
-        >
-          {workshops.map((workshop) => (
-            <option key={workshop.id} value={workshop.id}>
-              {workshop.title}
-            </option>
-          ))}
-        </select>
+        <Select value={selectedWorkshop.id} onValueChange={onWorkshopChange}>
+          <SelectTrigger
+            id="selected-workshop"
+            className="mt-3 h-14 rounded-2xl border-white/10 bg-background/70 px-4 text-sm text-foreground focus:ring-primary/40 focus:ring-offset-0"
+          >
+            <SelectValue placeholder="Select a workshop" />
+          </SelectTrigger>
+          <SelectContent className="rounded-2xl border-white/10 bg-[#17120d] text-foreground">
+            {workshops.map((workshop) => (
+              <SelectItem
+                key={workshop.id}
+                value={workshop.id}
+                className="rounded-xl py-3 text-sm text-foreground focus:bg-primary/15 focus:text-foreground"
+              >
+                {workshop.title}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
@@ -241,11 +255,9 @@ export const WorkshopSignupForm = ({
           <Label htmlFor="registrantType" className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
             Student or Parent
           </Label>
-          <select
-            id="registrantType"
+          <Select
             value={values.registrantType}
-            onChange={(event) => {
-              const nextType = event.target.value;
+            onValueChange={(nextType) => {
               setFieldValue("registrantType", nextType);
               if (nextType !== "Student") {
                 setFieldValue("grade", "");
@@ -253,12 +265,22 @@ export const WorkshopSignupForm = ({
                 setFieldValue("studentGoal", "");
               }
             }}
-            className="h-14 w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 text-sm text-foreground outline-none transition focus:border-primary/45 focus:ring-2 focus:ring-primary/45"
           >
-            <option value="">Select one</option>
-            <option value="Student">Student</option>
-            <option value="Parent">Parent</option>
-          </select>
+            <SelectTrigger
+              id="registrantType"
+              className="h-14 rounded-2xl border-white/10 bg-white/[0.04] px-4 text-sm text-foreground focus:ring-primary/45 focus:ring-offset-0"
+            >
+              <SelectValue placeholder="Select one" />
+            </SelectTrigger>
+            <SelectContent className="rounded-2xl border-white/10 bg-[#17120d] text-foreground">
+              <SelectItem value="Student" className="rounded-xl py-3 text-sm text-foreground focus:bg-primary/15 focus:text-foreground">
+                Student
+              </SelectItem>
+              <SelectItem value="Parent" className="rounded-xl py-3 text-sm text-foreground focus:bg-primary/15 focus:text-foreground">
+                Parent
+              </SelectItem>
+            </SelectContent>
+          </Select>
           {errors.registrantType ? <p className="text-sm text-primary">{errors.registrantType}</p> : null}
         </div>
 
@@ -267,18 +289,28 @@ export const WorkshopSignupForm = ({
             <Label htmlFor="grade" className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
               What grade are you in
             </Label>
-            <select
-              id="grade"
-              value={values.grade}
-              onChange={(event) => setFieldValue("grade", event.target.value)}
-              className="h-14 w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 text-sm text-foreground outline-none transition focus:border-primary/45 focus:ring-2 focus:ring-primary/45"
-            >
-              <option value="">Select your grade</option>
-              <option value="Grade 9">Grade 9</option>
-              <option value="Grade 10">Grade 10</option>
-              <option value="Grade 11">Grade 11</option>
-              <option value="Grade 12">Grade 12</option>
-            </select>
+            <Select value={values.grade} onValueChange={(value) => setFieldValue("grade", value)}>
+              <SelectTrigger
+                id="grade"
+                className="h-14 rounded-2xl border-white/10 bg-white/[0.04] px-4 text-sm text-foreground focus:ring-primary/45 focus:ring-offset-0"
+              >
+                <SelectValue placeholder="Select your grade" />
+              </SelectTrigger>
+              <SelectContent className="rounded-2xl border-white/10 bg-[#17120d] text-foreground">
+                <SelectItem value="Grade 9" className="rounded-xl py-3 text-sm text-foreground focus:bg-primary/15 focus:text-foreground">
+                  Grade 9
+                </SelectItem>
+                <SelectItem value="Grade 10" className="rounded-xl py-3 text-sm text-foreground focus:bg-primary/15 focus:text-foreground">
+                  Grade 10
+                </SelectItem>
+                <SelectItem value="Grade 11" className="rounded-xl py-3 text-sm text-foreground focus:bg-primary/15 focus:text-foreground">
+                  Grade 11
+                </SelectItem>
+                <SelectItem value="Grade 12" className="rounded-xl py-3 text-sm text-foreground focus:bg-primary/15 focus:text-foreground">
+                  Grade 12
+                </SelectItem>
+              </SelectContent>
+            </Select>
             {errors.grade ? <p className="text-sm text-primary">{errors.grade}</p> : null}
           </div>
         ) : null}
@@ -288,20 +320,37 @@ export const WorkshopSignupForm = ({
         <Label htmlFor="heardFrom" className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
           How did you hear about us?
         </Label>
-        <select
-          id="heardFrom"
-          value={values.heardFrom}
-          onChange={(event) => setFieldValue("heardFrom", event.target.value)}
-          className="h-14 w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 text-sm text-foreground outline-none transition focus:border-primary/45 focus:ring-2 focus:ring-primary/45"
-        >
-          <option value="">Select one</option>
-          <option value="TikTok">TikTok</option>
-          <option value="Instagram">Instagram</option>
-          <option value="School">School</option>
-          <option value="Email">Email</option>
-          <option value="Community platforms">Community platforms</option>
-          <option value="Other">Other</option>
-        </select>
+        <Select value={values.heardFrom} onValueChange={(value) => setFieldValue("heardFrom", value)}>
+          <SelectTrigger
+            id="heardFrom"
+            className="h-14 rounded-2xl border-white/10 bg-white/[0.04] px-4 text-sm text-foreground focus:ring-primary/45 focus:ring-offset-0"
+          >
+            <SelectValue placeholder="Select one" />
+          </SelectTrigger>
+          <SelectContent className="rounded-2xl border-white/10 bg-[#17120d] text-foreground">
+            <SelectItem value="TikTok" className="rounded-xl py-3 text-sm text-foreground focus:bg-primary/15 focus:text-foreground">
+              TikTok
+            </SelectItem>
+            <SelectItem value="Instagram" className="rounded-xl py-3 text-sm text-foreground focus:bg-primary/15 focus:text-foreground">
+              Instagram
+            </SelectItem>
+            <SelectItem value="School" className="rounded-xl py-3 text-sm text-foreground focus:bg-primary/15 focus:text-foreground">
+              School
+            </SelectItem>
+            <SelectItem value="Email" className="rounded-xl py-3 text-sm text-foreground focus:bg-primary/15 focus:text-foreground">
+              Email
+            </SelectItem>
+            <SelectItem
+              value="Community platforms"
+              className="rounded-xl py-3 text-sm text-foreground focus:bg-primary/15 focus:text-foreground"
+            >
+              Community platforms
+            </SelectItem>
+            <SelectItem value="Other" className="rounded-xl py-3 text-sm text-foreground focus:bg-primary/15 focus:text-foreground">
+              Other
+            </SelectItem>
+          </SelectContent>
+        </Select>
         {errors.heardFrom ? <p className="text-sm text-primary">{errors.heardFrom}</p> : null}
       </div>
 
