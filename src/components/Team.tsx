@@ -25,7 +25,7 @@ const founders = [
     intro: 'UofT Engineering Science',
     highlights: [
       'Accepted across STEM programs with multiple major scholarships',
-      'Top 6 Avergage: 98.5%',
+      'Top 6 Average: 98.5%',
       'AI research in Diffusion Models and LLMs at Cornell and UofT',
       'Fun Fact: Shaun has been building businesses and learning how to turn ideas into revenue since he was young',
       'School ECs: President and Founder of Math Club, Debate Club Executive, Various Fundraisers',
