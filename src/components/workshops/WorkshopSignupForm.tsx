@@ -26,6 +26,7 @@ type WorkshopRegistrationValues = {
   fullName: string;
   grade: string;
   heardFrom: string;
+  heardFromPage: string;
   registrantType: string;
   school: string;
   studentGoal: string;
@@ -36,6 +37,7 @@ const initialValues: WorkshopRegistrationValues = {
   fullName: "",
   grade: "",
   heardFrom: "",
+  heardFromPage: "",
   registrantType: "",
   school: "",
   studentGoal: "",
@@ -61,6 +63,11 @@ const validateField = (field: RegistrationField, values: WorkshopRegistrationVal
       return values.registrantType === "Student" && value.length < 2 ? "Please tell us your high school." : "";
     case "heardFrom":
       return value ? "" : "Please tell us how you heard about us.";
+    case "heardFromPage": {
+      const shouldAsk = values.heardFrom === "TikTok" || values.heardFrom === "Instagram";
+      if (!shouldAsk) return "";
+      return value.length >= 2 ? "" : "Please tell us whose page it was.";
+    }
     case "registrantType":
       return value ? "" : "Please choose Student or Parent.";
     default:
@@ -118,6 +125,8 @@ export const WorkshopSignupForm = ({
         grade: values.registrantType === "Student" ? values.grade : null,
         school: values.registrantType === "Student" ? values.school.trim() : null,
         heard_from: values.heardFrom,
+        heard_from_page:
+          values.heardFrom === "TikTok" || values.heardFrom === "Instagram" ? values.heardFromPage.trim() : null,
         student_goal: values.registrantType === "Student" ? values.studentGoal.trim() || null : null,
       });
 
@@ -320,7 +329,15 @@ export const WorkshopSignupForm = ({
         <Label htmlFor="heardFrom" className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
           How did you hear about us?
         </Label>
-        <Select value={values.heardFrom} onValueChange={(value) => setFieldValue("heardFrom", value)}>
+        <Select
+          value={values.heardFrom}
+          onValueChange={(value) => {
+            setFieldValue("heardFrom", value);
+            if (value !== "TikTok" && value !== "Instagram") {
+              setFieldValue("heardFromPage", "");
+            }
+          }}
+        >
           <SelectTrigger
             id="heardFrom"
             className="h-14 rounded-2xl border-white/10 bg-white/[0.04] px-4 text-sm text-foreground focus:ring-primary/45 focus:ring-offset-0"
@@ -354,6 +371,17 @@ export const WorkshopSignupForm = ({
         {errors.heardFrom ? <p className="text-sm text-primary">{errors.heardFrom}</p> : null}
       </div>
 
+      {values.heardFrom === "TikTok" || values.heardFrom === "Instagram" ? (
+        <Field
+          error={errors.heardFromPage}
+          id="heardFromPage"
+          label="Whose page was it?"
+          onChange={(value) => setFieldValue("heardFromPage", value)}
+          placeholder={values.heardFrom === "TikTok" ? "@username" : "@username or page name"}
+          value={values.heardFromPage}
+        />
+      ) : null}
+
       {values.registrantType === "Student" ? (
         <div className="grid gap-4">
           <Field
@@ -383,7 +411,7 @@ export const WorkshopSignupForm = ({
       ) : null}
 
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm text-muted-foreground">You're registered! We’ll send workshop details to your email.</p>
+        <p className="text-sm text-muted-foreground"></p>
         <Button
           type="submit"
           disabled={isSubmitting}
