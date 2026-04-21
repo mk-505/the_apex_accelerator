@@ -2,10 +2,6 @@ import { Sparkles } from 'lucide-react';
 
 const applicationRounds = [
   {
-    title: 'Early Applications',
-    deadline: 'May 31 @ 11:59 PM',
-  },
-  {
     title: 'Round 1 Applications',
     deadline: 'June 30 @ 11:59 PM',
   },
@@ -70,7 +66,7 @@ export const Apply = () => {
               </p>
             </div>
 
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 md:grid-cols-2">
               {applicationRounds.map((round) => (
                 <div
                   key={round.title}

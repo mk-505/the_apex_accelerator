@@ -16,7 +16,7 @@ export const workshops: Workshop[] = [
     description:
       "A session on how ambitious students start building standout experiences early through projects, leadership, and initiative.",
     audience: "Grade 9-10 students",
-    date: "Saturday, April 25, 2026",
+    date: "Sunday, May 17, 2026",
     time: "2:30 PM ET",
   },
   {
@@ -26,7 +26,7 @@ export const workshops: Workshop[] = [
     description:
       "A practical workshop on turning your interests into projects, initiatives, and experiences that actually matter.",
     audience: "Grade 9-10 students",
-    date: "Sunday, May 17, 2026",
+    date: "Sunday, June 13, 2026",
     time: "2:30 PM ET",
   },
 ];

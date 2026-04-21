@@ -357,6 +357,9 @@ export const WorkshopSignupForm = ({
             <SelectItem value="Email" className="rounded-xl py-3 text-sm text-foreground focus:bg-primary/15 focus:text-foreground">
               Email
             </SelectItem>
+            <SelectItem value="Flier" className="rounded-xl py-3 text-sm text-foreground focus:bg-primary/15 focus:text-foreground">
+              Flier
+            </SelectItem>
             <SelectItem
               value="Community platforms"
               className="rounded-xl py-3 text-sm text-foreground focus:bg-primary/15 focus:text-foreground"
