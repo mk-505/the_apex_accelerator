@@ -3,11 +3,11 @@ import { Sparkles } from 'lucide-react';
 const applicationRounds = [
   {
     title: 'Round 1 Applications',
-    deadline: 'June 30 @ 11:59 PM',
+    deadline: 'June 30, 2026 @ 11:59 PM',
   },
   {
     title: 'Round 2 Applications',
-    deadline: 'July 23 @ 11:59 PM',
+    deadline: 'August 1, 2026 @ 11:59 PM',
   },
 ];
 
