@@ -54,8 +54,7 @@ export const Hero = () => {
         </h1>
 
         <p className="mx-auto mt-8 max-w-3xl text-base md:text-lg text-foreground/80">
-          A selective mentorship accelerator where ambitious students develop direction, build meaningful projects, and position themselves for top universities and future careers.
-
+          A selective mentorship accelerator for ambitious Grade 9-10 students in Canada — develop direction, build meaningful projects, and position yourself for top universities and future careers.
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -87,6 +86,20 @@ export const Hero = () => {
           </div>
         </div>
       </div>
+
+        {/* SEO content block — visually hidden, semantically rich */}
+        <p className="sr-only">
+          The Apex Accelerator is Canada's premier high school mentorship program for ambitious Grade 9 and Grade 10 students.
+          If you're a top student wondering when to start preparing for university, what universities look for beyond grades,
+          or how to build meaningful extracurriculars and projects in high school — this program was built for you.
+          We help students who have high grades but no clear direction, students looking for more than tutoring,
+          and students who want structured guidance toward competitive Canadian university programs like UofT Engineering Science,
+          Schulich School of Business, University of Waterloo, McMaster, and more.
+          Our founders are Schulich Leaders and UofT Engineering Science graduates who help students develop a personal brand,
+          build real projects, position themselves for scholarships, and prepare compelling university applications — starting in Grade 9 or 10,
+          not Grade 12. Serving students across Ontario and Canada, including Toronto, Mississauga, Brampton, Markham, Richmond Hill,
+          Vaughan, Oakville, Burlington, Hamilton, Ottawa, and beyond.
+        </p>
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">

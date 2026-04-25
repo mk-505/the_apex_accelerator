@@ -24,19 +24,104 @@ const Workshops = () => {
   useScrollReveal();
 
   useEffect(() => {
-    document.title = "Free Workshops | Apex Accelerator";
+    const PAGE_URL = "https://apexaccelerator.ca/workshops";
+    const PAGE_TITLE = "Free High School Workshops for Grade 9-10 Students | Apex Accelerator";
+    const PAGE_DESC =
+      "Join free virtual workshops for ambitious Grade 9-10 students in Canada. Learn what top students do differently, how to build meaningful projects, and how to stand out for top universities.";
 
-    const description =
-      "Join free virtual workshops for ambitious Grade 9-10 students on projects, leadership, and building meaningful experiences early in high school.";
-    let meta = document.querySelector('meta[name="description"]');
+    document.title = PAGE_TITLE;
 
-    if (!meta) {
-      meta = document.createElement("meta");
-      meta.setAttribute("name", "description");
-      document.head.appendChild(meta);
-    }
+    const setMeta = (selector: string, attr: string, value: string) => {
+      let el = document.querySelector(selector) as HTMLMetaElement | null;
+      if (!el) {
+        el = document.createElement("meta");
+        if (selector.startsWith('meta[name')) el.setAttribute("name", attr);
+        else el.setAttribute("property", attr);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", value);
+    };
 
-    meta.setAttribute("content", description);
+    const setLink = (rel: string, href: string) => {
+      let el = document.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement | null;
+      if (!el) {
+        el = document.createElement("link");
+        el.setAttribute("rel", rel);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("href", href);
+    };
+
+    setMeta('meta[name="description"]', "description", PAGE_DESC);
+    setMeta('meta[name="robots"]', "robots", "index, follow, max-snippet:-1, max-image-preview:large");
+    setLink("canonical", PAGE_URL);
+
+    setMeta('meta[property="og:type"]', "og:type", "website");
+    setMeta('meta[property="og:url"]', "og:url", PAGE_URL);
+    setMeta('meta[property="og:title"]', "og:title", PAGE_TITLE);
+    setMeta('meta[property="og:description"]', "og:description", PAGE_DESC);
+    setMeta('meta[property="og:image"]', "og:image", "https://apexaccelerator.ca/the-apex-accelerator-site.png");
+
+    setMeta('meta[name="twitter:card"]', "twitter:card", "summary_large_image");
+    setMeta('meta[name="twitter:title"]', "twitter:title", PAGE_TITLE);
+    setMeta('meta[name="twitter:description"]', "twitter:description", PAGE_DESC);
+
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Free Apex Accelerator Workshops for Grade 9-10 Students",
+      "url": PAGE_URL,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Event",
+            "name": "What Top Students Do Differently in High School",
+            "startDate": "2026-05-17T14:30:00-04:00",
+            "endDate": "2026-05-17T16:00:00-04:00",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+            "location": { "@type": "VirtualLocation", "url": PAGE_URL },
+            "description": "Free workshop for Grade 9-10 students: discover what top students do differently to build meaningful projects and leadership experiences early in high school.",
+            "organizer": { "@type": "Organization", "name": "The Apex Accelerator", "url": "https://apexaccelerator.ca" },
+            "isAccessibleForFree": true,
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CAD", "availability": "https://schema.org/LimitedAvailability", "url": PAGE_URL },
+            "audience": { "@type": "EducationalAudience", "audienceType": "Grade 9-10 high school students" }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Event",
+            "name": "How to Start Meaningful Projects in High School",
+            "startDate": "2026-06-13T14:30:00-04:00",
+            "endDate": "2026-06-13T16:00:00-04:00",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+            "location": { "@type": "VirtualLocation", "url": PAGE_URL },
+            "description": "Free virtual workshop for Grade 9-10 students on how to start and build meaningful projects in high school that matter for university applications.",
+            "organizer": { "@type": "Organization", "name": "The Apex Accelerator", "url": "https://apexaccelerator.ca" },
+            "isAccessibleForFree": true,
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CAD", "availability": "https://schema.org/LimitedAvailability", "url": PAGE_URL },
+            "audience": { "@type": "EducationalAudience", "audienceType": "Grade 9-10 high school students" }
+          }
+        }
+      ]
+    };
+
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.id = "workshops-structured-data";
+    script.textContent = JSON.stringify(structuredData);
+    document.head.appendChild(script);
+
+    return () => {
+      document.querySelector("#workshops-structured-data")?.remove();
+      setLink("canonical", "https://apexaccelerator.ca/");
+      document.title = "The Apex Accelerator | High School Mentorship & University Prep for Grade 9-10 Students";
+    };
   }, []);
 
   const handleRegister = (workshopId: string) => {

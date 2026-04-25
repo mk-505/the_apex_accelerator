@@ -7,6 +7,7 @@ const founders = [
     name: 'Manroop',
     role: 'Co-Founder',
     image: '/manroop.png',
+    imageAlt: 'Manroop Kalsi — Co-Founder of The Apex Accelerator, UofT Engineering Science, Schulich Leader',
     intro: 'UofT Engineering Science',
     highlights: [
       'Schulich Leader offer at multiple schools ($120K each)',
@@ -22,6 +23,7 @@ const founders = [
     name: 'Shaun',
     role: 'Co-Founder',
     image: '/shaun.png',
+    imageAlt: 'Shaun Arulanandam — Co-Founder of The Apex Accelerator, UofT Engineering Science, AI researcher at Cornell and UofT',
     intro: 'UofT Engineering Science',
     highlights: [
       'Accepted across STEM programs with multiple major scholarships',
@@ -56,7 +58,7 @@ export const Team = () => {
                 <div className="relative shrink-0">
                   <img
                     src={founder.image}
-                    alt={founder.name}
+                    alt={founder.imageAlt}
                     className="w-24 h-24 rounded-2xl object-cover border-2 border-primary/25"
                   />
                   <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-primary rounded-full flex items-center justify-center">

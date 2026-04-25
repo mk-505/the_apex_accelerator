@@ -7,6 +7,7 @@ const testimonials = [
     outcome: 'BBA Student',
     shortDesc: 'Schulich School of Business',
     image: '/poojan.jpeg',
+    imageAlt: 'Poojan S. — Apex Accelerator student, now BBA student at Schulich School of Business',
     linkedinUrl: 'https://www.linkedin.com/in/shahpoojan1/',
     description: 'Shaun and Manroop were incredibly helpful throughout the university application process. Their guidance made everything much clearer and helped me feel more confident. Their advice on improving my application played a key role in helping me land an offer from the Schulich School of Business, and their networking advice also helped me secure an internship at a major accounting firm. I highly recommend them to anyone going through the university admissions process or looking for guidance on their future career and overall direction.',
   },
@@ -15,6 +16,7 @@ const testimonials = [
     outcome: 'Mechatronics Engineering',
     shortDesc: 'University of Waterloo',
     image: '/rhythm.png',
+    imageAlt: 'Rhythm P. — Apex Accelerator student, now in Mechatronics Engineering at University of Waterloo',
     linkedinUrl: 'https://www.linkedin.com/in/rhythm-panchal-b3a008288/',
     description: 'Shaun and Manroop were really helpful in shaping how I presented my experiences for my university applications. I had worked on machine learning research, software internships, startup growth, and social media, and they helped me bring everything together into a clear story that reflected my interests and personality. Their guidance helped refine my direction and made my applications much more cohesive. I would definitely recommend them to anyone applying to university.',
   },
@@ -23,6 +25,7 @@ const testimonials = [
     outcome: 'Engineering',
     shortDesc: 'McMaster University',
     image: '/sahil.png',
+    imageAlt: 'Sahil S. — Apex Accelerator student, now in Engineering at McMaster University',
     linkedinUrl: 'https://www.linkedin.com/in/sahil-sachdeva-39bb11311/',
     description: 'Working with Shaun and Manroop was extremely helpful during my university application process. They helped me understand how to present my experiences clearly and structure my applications in a way that highlighted my strengths. Their guidance made the process much less stressful and gave me more confidence in my direction. I would definitely recommend them to any student navigating university applications or thinking about their future career path.',
   }
@@ -62,7 +65,7 @@ export const Testimonials = () => {
               </div>
               <img
                 src={testimonial.image}
-                alt={testimonial.name}
+                alt={testimonial.imageAlt}
                 className="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-2 border-primary/30 group-hover:border-primary/70 transition-colors duration-300"
               />
               <h3 className="font-bold text-section-foreground text-center">{testimonial.name}</h3>
@@ -114,7 +117,7 @@ export const Testimonials = () => {
                   <div className="flex items-center gap-4 mb-6">
                     <img
                       src={selectedTestimonial.image}
-                      alt={selectedTestimonial.name}
+                      alt={selectedTestimonial.imageAlt}
                       className="w-16 h-16 rounded-full object-cover border-2 border-primary/30"
                     />
                     <div>
