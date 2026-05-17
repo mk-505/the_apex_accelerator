@@ -33,7 +33,7 @@ const founders = [
       'School ECs: President and Founder of Math Club, Debate Club Executive, Various Fundraisers',
     ],
     linkedInUrl: 'https://www.linkedin.com/in/shaun-arulanandam-85a43b266/',
-    portfolioUrl: 'https://shaun-ar.ca',
+    portfolioUrl: 'https://spotify-clone-portfolio-shaun6359s-projects.vercel.app/',
   },
 ];
 
