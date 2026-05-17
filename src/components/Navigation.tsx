@@ -53,18 +53,10 @@ export const Navigation = () => {
             </a>
           ))}
           <a
-            href="/workshops"
-            className="rounded-full border border-primary/25 bg-primary/10 px-4 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.1em] text-primary transition-colors hover:bg-primary/15"
-          >
-            Free Workshop
-          </a>
-          <a
-            href="/application"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/discovery-call"
             className="btn-luxe-primary text-[0.68rem] px-5 py-2"
           >
-            Apply Now
+            Book a FREE Call
           </a>
         </div>
 
@@ -98,20 +90,11 @@ export const Navigation = () => {
               </a>
             ))}
             <a
-              href="/workshops"
-              onClick={() => setMobileOpen(false)}
-              className="text-xs font-semibold uppercase tracking-[0.1em] text-primary transition-colors hover:text-primary/80"
-            >
-              Free Workshop
-            </a>
-            <a
-              href="/application"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/discovery-call"
               onClick={() => setMobileOpen(false)}
               className="btn-luxe-primary text-[0.68rem]"
             >
-              Apply Now
+              Book a FREE Call
             </a>
           </div>
         </div>

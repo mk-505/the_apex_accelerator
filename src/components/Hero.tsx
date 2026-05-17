@@ -59,12 +59,10 @@ export const Hero = () => {
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
-            href="/application"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/discovery-call"
             className="btn-luxe-primary"
           >
-            Apply For A Spot
+            Book a Discovery Call
           </a>
           <a href="#services" className="btn-luxe-ghost">
             Explore Program

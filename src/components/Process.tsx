@@ -1,15 +1,10 @@
-import { FileText, Phone, CheckCircle, Rocket } from 'lucide-react';
+import { Phone, CheckCircle, Rocket } from 'lucide-react';
 
 const steps = [
   {
-    icon: FileText,
-    title: 'Written Application',
-    description: 'Tell us about yourself, your goals, and why you want to join',
-  },
-  {
     icon: Phone,
-    title: 'Intro Call',
-    description: 'A casual conversation to understand your needs and see if we\'re a fit',
+    title: 'Discovery Call',
+    description: 'Book a free call so we can understand your goals and see if we\'re a fit',
   },
   {
     icon: CheckCircle,
@@ -30,12 +25,12 @@ export const Process = () => {
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-3xl md:text-5xl font-bold text-section-foreground mb-4">How It <span className="text-primary">Works</span></h2>
           <p className="text-section-muted-foreground text-lg max-w-2xl mx-auto animate-slide-up [animation-delay:100ms]">
-            Our simple 4-step process to get you started
+            Our simple 3-step process to get you started
           </p>
         </div>
 
         <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             {steps.map((step, index) => (
               <div
                 key={step.title}

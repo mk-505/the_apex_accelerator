@@ -55,12 +55,10 @@ export const Footer = () => {
             </a>
             <div className="mt-5">
               <a
-                href="/application"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/discovery-call"
                 className="btn-luxe-primary text-xs px-5 py-2.5 inline-flex"
               >
-                Apply Now
+                Book a FREE Call
               </a>
             </div>
           </div>
