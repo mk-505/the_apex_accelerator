@@ -117,7 +117,7 @@ const DiscoveryCall = () => {
         <div
           className="calendly-inline-widget max-w-4xl mx-auto rounded-2xl border border-primary/20 overflow-hidden shadow-lg animate-slide-up [animation-delay:320ms]"
           data-url="https://calendly.com/theapexaccelerator/apex-discovery-call"
-          style={{ minWidth: "320px", height: "700px" }}
+          style={{ minWidth: "320px", height: "1050px" }}
         />
       </section>
 
