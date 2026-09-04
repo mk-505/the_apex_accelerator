@@ -56,6 +56,10 @@ export const Video = () => {
               </button>
             )}
           </div>
+
+          <p className="mt-4 text-center text-sm text-section-muted-foreground">
+            Program duration has changed to 24 weeks.
+          </p>
         </div>
       </div>
     </section>

@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     question: 'How much does the program cost?',
-    answer: 'The Apex Accelerator runs over two academic years and is structured so families only pay during the school year while students are actively participating.\n\nIn Year 1 (Grade 10 or 11), the program runs from September to June. Students begin with a $1,000 deposit, followed by monthly payments of $438 for 10 months during the school year.\n\nIn Year 2 (Grade 12), mentorship continues as students begin preparing their university applications. Payments continue at $438 per month for 6 months (September to February).\n\nThis structure allows students to receive long-term mentorship and guidance throughout the most important stages of their high school journey while spreading the investment across the program.',
+    answer: 'The Apex Accelerator is $135 per week for the duration of the program, plus a $300 deposit to secure your spot. The deposit is waived if you choose to pay for the program upfront.',
   },
   {
     question: 'What does the time commitment look like?',
