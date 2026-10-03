@@ -7,86 +7,91 @@ import {
 
 const faqs = [
   {
-    question: 'Who is The Apex Accelerator for?',
-    answer: 'We work with ambitious high school students targeting competitive programs. Whether you\'re aiming for engineering, business, medicine, or another selective path, we can help you stand out.',
+    question: 'Who is Apex for?',
+    answer:
+      'Ambitious high school students preparing for university admissions, scholarships, or both. Parents are welcome throughout, but the work is built around the student.',
   },
   {
-    question: 'When should I start working with you?',
-    answer: 'Ideally, students should start in Grade 10 or 11 to have time to build a compelling profile. If you start in Grade 10, for the applications phase of the program you\'ll take a gap year and rejoin during that phase.',
+    question: 'What grade should I be in?',
+    answer:
+      'There is no single ideal grade. We work with students early in high school who want to build strategically, students heading into Grade 12 who need application strategy, and students actively applying. The right package depends on how far along you are.',
   },
   {
-    question: 'How is Apex different from traditional admissions consulting?',
-    answer: 'Most admissions consultants focus only on applications during Grade 12. Apex focuses on the development that happens before the application. Students explore interests, build projects, develop leadership experiences, and grow their personal brand so that by the time applications begin, they already have a strong and authentic story to tell.',
+    question: 'Do I need to know what university I want to attend?',
+    answer:
+      'No. Apex can help you clarify your direction and determine what to prioritize. Plenty of students come in undecided, and narrowing that down is part of the assessment and positioning work.',
   },
   {
-    question: 'How much does the program cost?',
-    answer: 'The Apex Accelerator is $135 per week for the duration of the program, plus a $300 deposit to secure your spot. The deposit is waived if you choose to pay for the program upfront.',
+    question: 'Is this tutoring?',
+    answer:
+      'No. Apex focuses on application strategy, positioning, planning, and execution rather than subject tutoring. We don’t teach course content or prepare you for school tests.',
   },
   {
-    question: 'What does the time commitment look like?',
-    answer: 'Students participate in regular workshops, mentorship sessions, and project work. Workshops are done primarily on weekends, we teach students how to balance their time and recognize that they are able to fit more into their days. Your results as student will depend on how much effort and time you choose to put in. The program is designed to fit alongside school commitments while still encouraging meaningful progress (e.g. less intense session load during exams).',
+    question: 'Do you write my essays for me?',
+    answer:
+      'No. Apex helps students develop and communicate their own ideas, and provides feedback and editing support where it is included in the package. The writing stays yours.',
   },
   {
-    question: 'Do students need to know what they want to study before joining?',
-    answer: 'Not at all. In fact, many students join Apex because they are still exploring their interests. A key part of the program involves exploring different fields, developing ideas, and gradually identifying areas students want to pursue more deeply.',
+    question: 'Do you guarantee admission or scholarships?',
+    answer:
+      'No. Admissions and scholarships are ultimately determined by universities and scholarship organizations. Apex provides strategy, preparation, resources, and feedback, not outcomes.',
   },
   {
-    question: 'What types of projects do students build?',
-    answer: 'Projects vary depending on student interests. These may include research projects, startups, community initiatives, technical builds, competitions, or leadership programs. The goal is to create meaningful experiences that reflect a student\'s genuine interests and initiative.',
+    question: 'What’s included in application editing?',
+    answer:
+      'Application editing is part of Apex Advantage ($549 CAD). It covers edits and personalized feedback on your applications and essays, plus guidance through the application process. Editing follows a defined scope: the specific documents and number of revision rounds are confirmed in writing during purchase and onboarding. It is not an unlimited-edits service.',
   },
   {
-    question: 'Do you guarantee university admissions?',
-    answer: 'No program can guarantee admissions outcomes. What Apex guarantees is the development process — helping students build stronger profiles, clearer direction, and more compelling applications through structured mentorship and project-building.',
+    question: 'What’s included in the scholarship database?',
+    answer:
+      'A curated resource intended to help you identify scholarships that are actually relevant to your profile, program interests, and timeline, so you spend your applications on opportunities worth applying to. It is included with Apex Toolkit and Apex Advantage.',
   },
   {
-    question: 'How selective is the program?',
-    answer: 'Students are admitted through a written application and interview process. We keep the program intentionally selective and only accept a limited number of students each cycle so we can provide close mentorship and personalized support. This allows us to build cohorts of students who are motivated, curious, and excited to challenge themselves alongside like-minded peers.',
+    question: 'Can parents be involved?',
+    answer:
+      'Yes. Parents can join calls, ask questions, and stay informed where appropriate. The student stays at the centre of the process, since the plan only works if they own it.',
   },
   {
-    question: 'Can parents be involved in the process?',
-    answer: 'Yes. Parents will be kept involved throughout the entire process, receiving email updates on their kid\'s application. Parents are always welcome to reach out to us over email or even book a call with us for any questions, or concerns.',
+    question: 'Which package should I choose?',
+    answer:
+      'Apex Strategy ($199 CAD) is best for students who want a clear plan. Apex Toolkit ($339 CAD) is best for students who want the plan plus the resources to execute independently. Apex Advantage ($549 CAD) is best for students who want hands-on application support. If you’re unsure, book a free 15-minute call and we’ll tell you where to start.',
   },
 ];
 
 export const FAQ = () => {
   return (
-    <section id="faq" className="py-16 bg-section-muted">
+    <section id="faq" className="relative border-t border-primary/10 bg-section py-20 md:py-28">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-section-foreground mb-4">
-            Frequently Asked <span className="text-primary">Questions</span>
+        <div className="mx-auto max-w-3xl text-center" data-reveal="up">
+          <span className="section-eyebrow">FAQ</span>
+          <h2 className="section-heading mt-5">
+            Questions, answered <span className="text-primary">straight.</span>
           </h2>
-          <p className="text-section-muted-foreground text-lg max-w-2xl mx-auto">
-            Everything you need to know about The <span className="text-primary font-semibold">Apex</span> Accelerator
-          </p>
         </div>
 
-        <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="space-y-4">
+        <div className="mx-auto mt-12 max-w-3xl">
+          <Accordion type="single" collapsible className="space-y-3">
             {faqs.map((faq, index) => (
               <AccordionItem
-                key={index}
+                key={faq.question}
                 value={`item-${index}`}
-                className="luxe-section-card rounded-xl px-6"
+                className="luxe-section-card rounded-xl border-b px-6"
               >
-                <AccordionTrigger className="text-left font-semibold text-section-foreground hover:text-primary hover:no-underline">
+                <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary hover:no-underline">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-section-muted-foreground whitespace-pre-line">
+                <AccordionContent className="whitespace-pre-line leading-relaxed text-muted-foreground">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
 
-          <p
-            id="contact"
-            className="mt-8 text-center text-section-muted-foreground text-base"
-          >
-            If you have any questions, please feel free to reach out to us at{' '}
+          <p id="contact" className="mt-8 text-center text-sm text-muted-foreground">
+            Still have a question? Email us at{' '}
             <a
               href="mailto:contact@apexaccelerator.ca"
-              className="font-semibold text-primary hover:opacity-85 transition-opacity"
+              className="font-semibold text-primary transition-opacity hover:opacity-85"
             >
               contact@apexaccelerator.ca
             </a>

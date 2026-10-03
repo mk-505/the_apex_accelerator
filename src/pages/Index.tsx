@@ -1,13 +1,15 @@
 import { Navigation } from '@/components/Navigation';
 import { Hero } from '@/components/Hero';
-import { Team } from '@/components/Team';
-import { Services } from '@/components/Services';
-import { Mindset } from '@/components/Mindset';
-import { Video } from '@/components/Video';
-import { Testimonials } from '@/components/Testimonials';
-import { Apply } from '@/components/Apply';
+import { Problem } from '@/components/Problem';
 import { Process } from '@/components/Process';
+import { Packages } from '@/components/Packages';
+import { WhoFor } from '@/components/WhoFor';
+import { Team } from '@/components/Team';
+import { Network } from '@/components/Network';
+import { Difference } from '@/components/Difference';
+import { Testimonials } from '@/components/Testimonials';
 import { FAQ } from '@/components/FAQ';
+import { CTA } from '@/components/CTA';
 import { Footer } from '@/components/Footer';
 import { useScrollReveal } from '@/hooks/use-scroll-reveal';
 
@@ -18,14 +20,16 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       <Hero />
-      <Team />
-      <Services />
-      <Mindset />
-      <Video />
-      <Testimonials />
-      <Apply />
+      <Problem />
       <Process />
+      <Packages />
+      <WhoFor />
+      <Team />
+      <Network />
+      <Difference />
+      <Testimonials />
       <FAQ />
+      <CTA />
       <Footer />
     </div>
   );

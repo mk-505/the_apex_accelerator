@@ -1,41 +1,49 @@
 import { useLocation } from 'react-router-dom';
 import logo from '@/assets/apex-logo.png';
 
+const quickLinks = [
+  { label: 'Packages', href: '#packages' },
+  { label: 'How It Works', href: '#how-it-works' },
+  { label: 'About', href: '#about' },
+  { label: 'FAQ', href: '#faq' },
+];
+
+const packageLinks = [
+  { label: 'Apex Strategy · $199 CAD', href: '/discovery-call?package=strategy' },
+  { label: 'Apex Toolkit · $339 CAD', href: '/discovery-call?package=toolkit' },
+  { label: 'Apex Advantage · $549 CAD', href: '/discovery-call?package=advantage' },
+];
+
 export const Footer = () => {
   const location = useLocation();
-  const quickLinks = [
-    { label: 'Team', href: '#team' },
-    { label: 'Services', href: '#services' },
-    { label: 'Testimonials', href: '#testimonials' },
-    { label: 'Process', href: '#process' },
-    { label: 'FAQ', href: '#faq' },
-    { label: 'Contact', href: '#contact' },
-  ];
   const resolveHref = (href: string) => (location.pathname === '/' ? href : `/${href}`);
 
   return (
-    <footer className="border-t border-primary/15 bg-background/95" data-reveal="up">
+    <footer className="border-t border-primary/15 bg-background/95">
       <div className="container mx-auto px-6 py-14">
-        <div className="grid gap-10 md:grid-cols-3">
-          <div className="max-w-sm">
-            <div className="flex items-center gap-3 mb-4">
-              <img src={logo} alt="Apex Accelerator" className="h-8 w-auto" />
-            </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Private mentorship for ambitious students applying to top programs.
+        <div className="grid gap-10 md:grid-cols-4">
+          <div className="max-w-sm md:col-span-2">
+            <img src={logo} alt="Apex Accelerator" className="mb-4 h-8 w-auto" />
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              University and scholarship application strategy for ambitious high school students across Canada. We
+              assess your profile, position what you&apos;ve done, build your plan, and support you executing it.
             </p>
+            <a
+              href="mailto:contact@apexaccelerator.ca"
+              className="mt-5 inline-block text-sm font-semibold text-primary transition-opacity hover:opacity-80"
+            >
+              contact@apexaccelerator.ca
+            </a>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-primary mb-4">
-              Quick Links
-            </h3>
-            <div className="grid grid-cols-2 gap-3">
+            <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-primary">Site</h3>
+            <div className="flex flex-col gap-3">
               {quickLinks.map((link) => (
                 <a
                   key={link.label}
                   href={resolveHref(link.href)}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
                   {link.label}
                 </a>
@@ -44,32 +52,31 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-primary mb-4">
-              Reach Out
-            </h3>
-            <a
-              href="mailto:contact@apexaccelerator.ca"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              contact@apexaccelerator.ca
-            </a>
-            <div className="mt-5">
-              <a
-                href="/discovery-call"
-                className="btn-luxe-primary text-xs px-5 py-2.5 inline-flex"
-              >
-                Book a FREE Call
-              </a>
+            <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-primary">Packages</h3>
+            <div className="flex flex-col gap-3">
+              {packageLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {link.label}
+                </a>
+              ))}
             </div>
+            <a href="/discovery-call" className="btn-luxe-primary mt-5 inline-flex px-5 py-2.5 text-xs">
+              Book a Free Call
+            </a>
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-primary/15 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+        <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-primary/15 pt-6 md:flex-row md:items-center">
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} The Apex Accelerator. All rights reserved.
           </p>
-          <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground/80">
-            Built for high-performing applicants
+          <p className="max-w-md text-xs leading-relaxed text-muted-foreground/70 md:text-right">
+            Apex provides application strategy and preparation. Admissions and scholarship decisions are made by
+            universities and scholarship organizations.
           </p>
         </div>
       </div>

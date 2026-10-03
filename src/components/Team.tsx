@@ -1,4 +1,4 @@
-import { GraduationCap, Award, Sparkles, ExternalLink } from 'lucide-react';
+import { ArrowUpRight, Award, ExternalLink } from 'lucide-react';
 
 const manroopSchulichUrl = 'https://engsci.utoronto.ca/meet-engscis-2023-schulich-leaders/';
 
@@ -7,14 +7,14 @@ const founders = [
     name: 'Manroop',
     role: 'Co-Founder',
     image: '/manroop.png',
-    imageAlt: 'Manroop Kalsi — Co-Founder of The Apex Accelerator, UofT Engineering Science, Schulich Leader',
+    imageAlt: 'Manroop Kalsi, Co-Founder of The Apex Accelerator, UofT Engineering Science, Schulich Leader',
     intro: 'UofT Engineering Science',
     highlights: [
       'Schulich Leader offer at multiple schools ($120K each)',
-      'Recieved Principals Award of Academic Achievement',
+      'Received the Principal’s Award of Academic Achievement',
       'AI research in Human Computer Interactions (HCI)',
-      'Fun Fact: Manroop partnered with a mobile health clinic to implement digital patient records in Ghana at 16 years old',
-      'Schools ECs: DECA President, Robotics Team Lead, Hack Club Chapter Co-Founder',
+      'Partnered with a mobile health clinic to implement digital patient records in Ghana at 16',
+      'High school: DECA President, Robotics Team Lead, Hack Club Chapter Co-Founder',
     ],
     linkedInUrl: 'https://www.linkedin.com/in/manroop-kalsi/',
     portfolioUrl: 'https://manroopkalsi.vercel.app/',
@@ -23,14 +23,14 @@ const founders = [
     name: 'Shaun',
     role: 'Co-Founder',
     image: '/shaun.png',
-    imageAlt: 'Shaun Arulanandam — Co-Founder of The Apex Accelerator, UofT Engineering Science, AI researcher at Cornell and UofT',
+    imageAlt: 'Shaun Arulanandam, Co-Founder of The Apex Accelerator, UofT Engineering Science, AI researcher at Cornell and UofT',
     intro: 'UofT Engineering Science',
     highlights: [
       'Accepted across STEM programs with multiple major scholarships',
-      'Top 6 Average: 98.5%',
+      'Top six average: 98.5%',
       'AI research in Diffusion Models and LLMs at Cornell and UofT',
-      'Fun Fact: Shaun has been building businesses and learning how to turn ideas into revenue since he was young',
-      'School ECs: President and Founder of Math Club, Debate Club Executive, Various Fundraisers',
+      'Has been building businesses and turning ideas into revenue since early high school',
+      'High school: Founder and President of Math Club, Debate Club Executive, various fundraisers',
     ],
     linkedInUrl: 'https://www.linkedin.com/in/shaun-arulanandam-85a43b266/',
     portfolioUrl: 'https://spotify-clone-portfolio-shaun6359s-projects.vercel.app/',
@@ -39,44 +39,45 @@ const founders = [
 
 export const Team = () => {
   return (
-    <section id="team" className="relative py-24 bg-section">
+    <section id="about" className="relative border-t border-primary/10 bg-section py-20 md:py-28">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-14">
-          <span className="luxe-kicker mb-5">Meet the Team</span>
-          <h2 className="text-4xl md:text-6xl font-bold text-section-foreground mb-4">
-            Meet the <span className="text-primary">Founders</span>
+        <div className="mx-auto max-w-3xl text-center" data-reveal="up">
+          <span className="section-eyebrow">Why Apex</span>
+          <h2 className="section-heading mt-5">
+            We&apos;ve recently been through this <span className="text-primary">process ourselves.</span>
           </h2>
-          <p className="text-section-muted-foreground text-lg max-w-3xl mx-auto">
-            Real outcomes from mentors who recently went through this process and won at the highest level.
+          <p className="section-sub mx-auto mt-5 max-w-2xl">
+            Apex was built by students who navigated competitive Canadian university admissions, major scholarships,
+            extracurricular positioning, projects, and opportunities, recently enough to remember exactly how
+            unstructured it felt. We&apos;re making that process structured for the students coming after us.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {founders.map((founder) => (
-            <div key={founder.name} className="luxe-section-card p-8 hover:border-primary/45 hover:-translate-y-1">
-              <div className="flex items-start gap-5 mb-6">
-                <div className="relative shrink-0">
-                  <img
-                    src={founder.image}
-                    alt={founder.imageAlt}
-                    className="w-24 h-24 rounded-2xl object-cover border-2 border-primary/25"
-                  />
-                  <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                    <GraduationCap className="w-4 h-4 text-primary-foreground" />
-                  </div>
-                </div>
-
+        <div className="mx-auto mt-14 grid max-w-6xl gap-6 md:grid-cols-2">
+          {founders.map((founder, index) => (
+            <div
+              key={founder.name}
+              className="luxe-section-card p-7 md:p-8 hover:border-primary/35 hover:-translate-y-1"
+              data-reveal="up"
+              style={{ ['--reveal-delay' as string]: `${index * 110}ms` }}
+            >
+              <div className="mb-6 flex items-start gap-5">
+                <img
+                  src={founder.image}
+                  alt={founder.imageAlt}
+                  className="h-20 w-20 shrink-0 rounded-2xl border border-primary/25 object-cover"
+                />
                 <div>
-                  <h3 className="text-3xl font-bold text-section-foreground leading-none">{founder.name}</h3>
-                  <p className="text-primary font-semibold mt-1">{founder.role}</p>
-                  <p className="text-section-muted-foreground mt-3">{founder.intro}</p>
+                  <h3 className="text-2xl font-bold tracking-[-0.01em] text-foreground">{founder.name}</h3>
+                  <p className="mt-0.5 text-sm font-semibold text-primary">{founder.role}</p>
+                  <p className="mt-2 text-sm text-muted-foreground">{founder.intro}</p>
                 </div>
               </div>
 
-              <ul className="space-y-3 mb-6">
+              <ul className="space-y-3">
                 {founder.highlights.map((highlight) => (
-                  <li key={highlight} className="flex items-start gap-3 text-section-foreground/90">
-                    <Award className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <li key={highlight} className="flex items-start gap-3 text-sm leading-snug text-foreground/85">
+                    <Award className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                     {founder.name === 'Manroop' && highlight.startsWith('Schulich Leader') ? (
                       <span>
                         {highlight}{' '}
@@ -87,7 +88,7 @@ export const Team = () => {
                           aria-label="Open Schulich Leader article"
                           className="inline-flex align-middle text-primary hover:text-primary/80"
                         >
-                          <ExternalLink className="w-4 h-4" />
+                          <ExternalLink className="h-3.5 w-3.5" />
                         </a>
                       </span>
                     ) : (
@@ -97,42 +98,34 @@ export const Team = () => {
                 ))}
               </ul>
 
-              <div className="border-t border-section-border pt-5">
-                <p className="text-sm text-section-muted-foreground">
-                  LinkedIn:{' '}
-                  <a
-                    href={founder.linkedInUrl}
-                    className="text-primary font-semibold hover:underline"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    LinkedIn URL
-                  </a>
-                </p>
-                <p className="text-sm text-section-muted-foreground mt-2">
-                  Personal Portfolio:{' '}
-                  <a
-                    href={founder.portfolioUrl}
-                    className="text-primary font-semibold hover:underline"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    View Portfolio
-                  </a>
-                </p>
+              <div className="mt-7 flex flex-wrap items-center gap-4 border-t border-section-border pt-5">
+                <a
+                  href={founder.linkedInUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:opacity-80"
+                >
+                  <ArrowUpRight className="h-4 w-4" />
+                  LinkedIn
+                </a>
+                <a
+                  href={founder.portfolioUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:opacity-80"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                  Portfolio
+                </a>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-16 text-center">
-          <div className="luxe-section-card inline-flex items-center gap-3 p-6 max-w-3xl">
-            <Sparkles className="w-5 h-5 text-primary shrink-0" />
-            <p className="text-section-muted-foreground text-left">
-              Plus an extended mentor network across top Canadian and US programs to support your specific path.
-            </p>
-          </div>
-        </div>
+        <p className="mx-auto mt-10 max-w-2xl text-center text-sm text-muted-foreground" data-reveal="up">
+          Our own results are context for how we think about applications, not a promise of what any student will
+          receive. Admissions and scholarship decisions are made by universities and scholarship organizations.
+        </p>
       </div>
     </section>
   );

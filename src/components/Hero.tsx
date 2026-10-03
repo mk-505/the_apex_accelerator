@@ -1,110 +1,85 @@
-import { useState, useEffect } from 'react';
 import heroBg from '@/assets/hero-bg.jpg';
 
-const heroTexts = [
-  { text: 'The ', highlight: 'APEX', suffix: ' Accelerator' },
-  { text: 'We help young people ', highlight: 'create', suffix: ' their futures' },
-  { text: 'We level students up for ', highlight: 'top programs', suffix: '.' },
+const heroPoints = [
+  {
+    label: 'Assess',
+    copy: 'Where your profile actually stands today',
+  },
+  {
+    label: 'Position',
+    copy: 'How your experiences come together into one story',
+  },
+  {
+    label: 'Plan & Execute',
+    copy: 'What to do next, and support doing it',
+  },
 ];
 
 export const Hero = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsVisible(false);
-      setTimeout(() => {
-        setCurrentIndex((prev) => (prev + 1) % heroTexts.length);
-        setIsVisible(true);
-      }, 500);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0">
+    <section id="top" className="relative flex min-h-[92vh] items-center justify-center overflow-hidden">
+      {/* Background photo under a dark wash, with gold ambience over top */}
+      <div className="pointer-events-none absolute inset-0">
         <img
           src={heroBg}
-          alt="Students collaborating"
-          className="w-full h-full object-cover"
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full object-cover grayscale-[35%] contrast-[1.05]"
         />
-        <div className="absolute inset-0 bg-background/80" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_25%,hsl(38_62%_58%_/_0.26),transparent_36%),radial-gradient(circle_at_82%_0%,hsl(40_55%_60%_/_0.2),transparent_32%)]" />
+        <div className="absolute inset-0 bg-background/85" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-10%,hsl(40_53%_64%_/_0.18),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_80%,hsl(40_53%_64%_/_0.08),transparent_40%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-background" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 text-center pt-20">
-        <div className="luxe-kicker mb-8 animate-drift">
-          <span>Admissions Strategy</span>
-          <span className="h-1 w-1 rounded-full bg-primary" />
-          <span>Elite Results</span>
+      <div className="relative z-10 container mx-auto px-6 pt-28 pb-16 text-center">
+        <div className="luxe-kicker mb-8 max-w-full text-[0.6rem] sm:text-xs">
+          <span>University &amp; Scholarship Strategy</span>
+          <span className="hidden h-1 w-1 rounded-full bg-primary sm:block" />
+          <span className="hidden sm:inline">Canada</span>
         </div>
-        <h1
-          className={`font-serif text-4xl md:text-6xl lg:text-7xl leading-[0.95] text-foreground transition-all duration-500 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}
-        >
-          {heroTexts[currentIndex].text}
-          <span className="text-primary">{heroTexts[currentIndex].highlight}</span>
-          {heroTexts[currentIndex].suffix}
+
+        <h1 className="mx-auto max-w-4xl text-[2.1rem] leading-[1.08] tracking-[-0.03em] text-foreground sm:text-5xl lg:text-[4.1rem] font-bold">
+          Build a stronger university application{' '}
+          <span className="text-primary">with a plan built around you.</span>
         </h1>
 
-        <p className="mx-auto mt-8 max-w-3xl text-base md:text-lg text-foreground/80">
-          A selective mentorship accelerator for ambitious Grade 9-10 students in Canada — develop direction, build meaningful projects, and position yourself for top universities and future careers.
+        <p className="mx-auto mt-7 max-w-2xl text-base md:text-lg leading-relaxed text-foreground/75">
+          Personalized university and scholarship strategy for ambitious high school students. Understand where your
+          profile stands, how to position what you&apos;ve done, and exactly what to do next.
         </p>
 
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="/discovery-call"
-            className="btn-luxe-primary"
-          >
-            Book a Discovery Call
+        <div className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
+          <a href="#packages" className="btn-luxe-primary">
+            Explore Packages
           </a>
-          <a href="#services" className="btn-luxe-ghost">
-            Explore Program
+          <a href="/discovery-call" className="btn-luxe-ghost">
+            Book a Free Call
           </a>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
-          <div className="luxe-panel px-5 py-4 text-left">
-            <p className="text-primary text-xs uppercase tracking-[0.14em]">Mentorship</p>
-            <p className="text-foreground text-lg font-semibold">1-on-1 mentorship and small cohort guidance</p>
-          </div>
-          <div className="luxe-panel px-5 py-4 text-left">
-            <p className="text-primary text-xs uppercase tracking-[0.14em]">Projects & Personal Brand</p>
-            <p className="text-foreground text-lg font-semibold">Build projects and develop a personal brand</p>
-          </div>
-          <div className="luxe-panel px-5 py-4 text-left">
-            <p className="text-primary text-xs uppercase tracking-[0.14em]">University & Career Positioning</p>
-            <p className="text-foreground text-lg font-semibold">Strategic guidance for universities and beyond</p>
-          </div>
+        <p className="mt-5 text-xs uppercase tracking-[0.16em] text-muted-foreground/80">
+          Packages from $199 CAD · Grade 9 through Grade 12
+        </p>
+
+        <div className="mx-auto mt-16 grid max-w-4xl gap-3 sm:grid-cols-3">
+          {heroPoints.map((point) => (
+            <div key={point.label} className="luxe-panel px-5 py-5 text-left">
+              <p className="text-[0.68rem] font-bold uppercase tracking-[0.18em] text-primary">{point.label}</p>
+              <p className="mt-2 text-sm leading-snug text-foreground/85">{point.copy}</p>
+            </div>
+          ))}
         </div>
       </div>
 
-        {/* SEO content block — visually hidden, semantically rich */}
-        <p className="sr-only">
-          The Apex Accelerator is Canada's premier high school mentorship program for ambitious Grade 9 and Grade 10 students.
-          If you're a top student wondering when to start preparing for university, what universities look for beyond grades,
-          or how to build meaningful extracurriculars and projects in high school — this program was built for you.
-          We help students who have high grades but no clear direction, students looking for more than tutoring,
-          and students who want structured guidance toward competitive Canadian university programs like UofT Engineering Science,
-          Schulich School of Business, University of Waterloo, McMaster, and more.
-          Our founders are Schulich Leaders and UofT Engineering Science graduates who help students develop a personal brand,
-          build real projects, position themselves for scholarships, and prepare compelling university applications — starting in Grade 9 or 10,
-          not Grade 12. Serving students across Ontario and Canada, including Toronto, Mississauga, Brampton, Markham, Richmond Hill,
-          Vaughan, Oakville, Burlington, Hamilton, Ottawa, and beyond.
-        </p>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <svg className="w-6 h-6 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-      </div>
+      {/* Crawlable context in plain language, no keyword stuffing */}
+      <p className="sr-only">
+        The Apex Accelerator provides university application consulting and scholarship application help for high school
+        students across Canada. We assess a student&apos;s academics, extracurriculars and goals, position their profile,
+        build a personalized application roadmap, and support them through university and scholarship applications.
+        Founded by University of Toronto Engineering Science students in Ontario who recently went through competitive
+        Canadian university admissions and scholarship processes themselves.
+      </p>
     </section>
   );
 };

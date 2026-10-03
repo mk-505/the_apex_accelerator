@@ -1,35 +1,60 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
+import { useLocation } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { BookOpen, UserCheck, Sparkles } from "lucide-react";
+import { Compass, ListChecks, HandHeart } from "lucide-react";
 
 const callPoints = [
   {
-    icon: BookOpen,
-    title: "Learn about the program",
+    icon: Compass,
+    title: "Where you're at",
     description:
-      "We'll walk you through exactly how The Apex Accelerator works — what the mentorship looks like, what students build, and what outcomes to expect.",
+      "Grades, extracurriculars, projects, interests, target programs: whatever you've got so far. No prep, no polished pitch needed.",
   },
   {
-    icon: UserCheck,
-    title: "See how it's personalized to you",
+    icon: ListChecks,
+    title: "What you're trying to figure out",
     description:
-      "No two students follow the same path. We'll talk through your interests, goals, and where you're at so you can understand how we'd tailor the program specifically for you.",
+      "Positioning, scholarships, what to prioritize next, how to approach application season. We'll tell you how we'd approach it.",
   },
   {
-    icon: Sparkles,
-    title: "Find out if it's the right fit",
+    icon: HandHeart,
+    title: "Whether Apex can actually help",
     description:
-      "We're selective about who we work with — and so should you be. This call is a chance for both sides to make sure we're genuinely aligned before any commitment.",
+      "If a package makes sense, we'll say which one and why. If it doesn't, we'll say that too, and point you somewhere more useful.",
   },
 ];
 
+const packageDetails: Record<string, { name: string; price: string; promise: string }> = {
+  strategy: {
+    name: "Apex Strategy",
+    price: "$199 CAD",
+    promise: "Know where you stand and exactly what to do next.",
+  },
+  toolkit: {
+    name: "Apex Toolkit",
+    price: "$339 CAD",
+    promise: "Leave with the strategy and the tools to execute it yourself.",
+  },
+  advantage: {
+    name: "Apex Advantage",
+    price: "$549 CAD",
+    promise: "Don't just know what to do. Get support actually doing it.",
+  },
+};
+
 const DiscoveryCall = () => {
+  const location = useLocation();
+  const selectedPackage = useMemo(() => {
+    const slug = new URLSearchParams(location.search).get("package");
+    return slug ? packageDetails[slug] : undefined;
+  }, [location.search]);
+
   useEffect(() => {
     const PAGE_URL = "https://apexaccelerator.ca/discovery-call";
-    const PAGE_TITLE = "Book a Free Discovery Call | The Apex Accelerator";
+    const PAGE_TITLE = "Book a Free Call | Apex Accelerator University Application Strategy";
     const PAGE_DESC =
-      "Book a free discovery call with The Apex Accelerator. We'll learn about your goals and see if our high school mentorship program is the right fit for you.";
+      "Book a free 15-minute call with The Apex Accelerator. Tell us where you're at with university and scholarship applications, and we'll tell you which package fits, or if we're not the right help.";
 
     document.title = PAGE_TITLE;
 
@@ -76,7 +101,7 @@ const DiscoveryCall = () => {
 
     return () => {
       setLink("canonical", "https://apexaccelerator.ca/");
-      document.title = "The Apex Accelerator | High School Mentorship & University Prep for Grade 9-10 Students";
+      document.title = "Apex Accelerator | University & Scholarship Application Strategy";
       document.getElementById("calendly-script")?.remove();
     };
   }, []);
@@ -85,37 +110,71 @@ const DiscoveryCall = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
 
-      <section className="pt-32 pb-8 container mx-auto px-6">
-        <div className="max-w-2xl mx-auto text-center">
-          <div className="luxe-kicker mb-6 animate-fade-in justify-center">
-            <span>Free · No Pressure · 30 Minutes</span>
+      <section className="container mx-auto px-6 pt-32 pb-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <div className="luxe-kicker mb-6 justify-center">
+            <span>Free · 15 Minutes · No Prep</span>
           </div>
-          <h1 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4 animate-slide-up">
-            Book a <span className="text-primary">Discovery Call</span>
+          <h1 className="text-4xl font-bold tracking-[-0.03em] text-foreground md:text-5xl">
+            Book a <span className="text-primary">free call</span>
           </h1>
-          <p className="text-lg text-muted-foreground animate-slide-up [animation-delay:120ms]">
-            A quick 30-minute conversation — no prep needed, no commitment required.
+          <p className="mt-5 text-base leading-relaxed text-muted-foreground md:text-lg">
+            15 minutes. No preparation required. Just tell us where you&apos;re at, where you want to go, and what
+            you&apos;re trying to figure out.
           </p>
         </div>
       </section>
 
-      <section className="pb-12 container mx-auto px-6">
-        <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-5 animate-slide-up [animation-delay:200ms]">
+      {selectedPackage && (
+        <section className="container mx-auto px-6 pb-4">
+          <div className="luxe-panel mx-auto max-w-2xl px-6 py-5 text-left">
+            <p className="text-[0.68rem] font-bold uppercase tracking-[0.18em] text-primary">You selected</p>
+            <div className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <span className="text-xl font-bold text-foreground">{selectedPackage.name}</span>
+              <span className="text-sm font-semibold text-primary">{selectedPackage.price}</span>
+            </div>
+            <p className="mt-2 text-sm text-muted-foreground">{selectedPackage.promise}</p>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              Mention {selectedPackage.name} when you book and we&apos;ll confirm it fits before anything is paid.
+              Prefer to skip the call? Email{" "}
+              <a
+                href={`mailto:contact@apexaccelerator.ca?subject=${encodeURIComponent(
+                  `${selectedPackage.name} (${selectedPackage.price})`,
+                )}`}
+                className="font-semibold text-primary hover:underline"
+              >
+                contact@apexaccelerator.ca
+              </a>{" "}
+              and we&apos;ll send payment and onboarding details directly.
+            </p>
+          </div>
+        </section>
+      )}
+
+      <section className="container mx-auto px-6 pb-12 pt-6">
+        <div className="mx-auto grid max-w-4xl gap-5 md:grid-cols-3">
           {callPoints.map((point) => (
             <div key={point.title} className="luxe-panel px-6 py-6">
-              <div className="w-10 h-10 rounded-full bg-primary/15 border border-primary/30 flex items-center justify-center mb-4">
-                <point.icon className="w-5 h-5 text-primary" />
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-primary/25 bg-primary/10">
+                <point.icon className="h-4 w-4 text-primary" />
               </div>
-              <h3 className="font-bold text-foreground mb-2">{point.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{point.description}</p>
+              <h2 className="font-bold text-foreground">{point.title}</h2>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{point.description}</p>
             </div>
           ))}
         </div>
+        <p className="mx-auto mt-6 max-w-2xl text-center text-sm text-muted-foreground">
+          This is a fit conversation, not a sales call. Pricing is on the{" "}
+          <a href="/#packages" className="font-semibold text-primary hover:underline">
+            packages section
+          </a>
+          , so you don&apos;t need to talk to us to see it.
+        </p>
       </section>
 
-      <section className="pb-20 container mx-auto px-6">
+      <section className="container mx-auto px-6 pb-20">
         <div
-          className="calendly-inline-widget max-w-4xl mx-auto rounded-2xl border border-primary/20 overflow-hidden shadow-lg animate-slide-up [animation-delay:320ms]"
+          className="calendly-inline-widget mx-auto max-w-4xl overflow-hidden rounded-2xl border border-primary/20 shadow-lg"
           data-url="https://calendly.com/theapexaccelerator/apex-discovery-call"
           style={{ minWidth: "320px", height: "1050px" }}
         />
