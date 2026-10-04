@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { X, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
-type Logo = { label: string; src?: string };
+type Logo = { label: string; src: string };
 
 const testimonials: {
   name: string;
@@ -18,11 +18,11 @@ const testimonials: {
     now: 'BBA at the Schulich School of Business',
     themes: ['Clarity', 'Application prep', 'Networking'],
     image: '/poojan.jpeg',
-    imageAlt: 'Poojan S., worked with the founders of The Apex Accelerator, now a BBA student at Schulich School of Business',
+    imageAlt:
+      'Poojan S., worked with the founders of The Apex Accelerator, now a BBA student at Schulich School of Business',
     linkedinUrl: 'https://www.linkedin.com/in/shahpoojan1/',
     logos: [
-      // No freely licensed Schulich logo file was available to source, so this stays a text badge.
-      { label: 'Schulich School of Business' },
+      { label: 'Schulich School of Business', src: '/logos/schulich.png' },
       { label: 'Deloitte', src: '/logos/deloitte.svg' },
     ],
     description:
@@ -33,10 +33,14 @@ const testimonials: {
     now: 'Mechatronics Engineering at the University of Waterloo',
     themes: ['Positioning', 'Direction', 'Coherent story'],
     image: '/rhythm.png',
-    imageAlt: 'Rhythm P., worked with the founders of The Apex Accelerator, now in Mechatronics Engineering at University of Waterloo',
+    imageAlt:
+      'Rhythm P., worked with the founders of The Apex Accelerator, now in Mechatronics Engineering at University of Waterloo',
     linkedinUrl: 'https://www.linkedin.com/in/rhythm-panchal-b3a008288/',
     logos: [
-      { label: 'University of Waterloo', src: '/logos/uwaterloo.png' },
+      {
+        label: 'University of Waterloo Engineering',
+        src: '/logos/uwaterloo.png',
+      },
       { label: 'Y Combinator', src: '/logos/ycombinator.png' },
     ],
     description:
@@ -55,20 +59,20 @@ const testimonials: {
   },
 ];
 
-const LogoBadge = ({ logo }: { logo: Logo }) => {
-  if (!logo.src) {
-    return (
-      <span className="inline-flex h-7 items-center rounded-lg bg-white px-2.5 text-[0.68rem] font-semibold text-neutral-800">
-        {logo.label}
-      </span>
-    );
-  }
-  return (
-    <span className="inline-flex h-7 items-center rounded-lg bg-white px-2 py-1">
-      <img src={logo.src} alt={logo.label} title={logo.label} className="h-full max-w-[88px] object-contain" />
-    </span>
-  );
-};
+const Emblems = ({ logos, size = 'sm' }: { logos: Logo[]; size?: 'sm' | 'lg' }) => (
+  <span className="inline-flex items-center gap-2.5">
+    <span className="h-5 w-px bg-primary/30" aria-hidden="true" />
+    {logos.map((logo) => (
+      <img
+        key={logo.label}
+        src={logo.src}
+        alt={logo.label}
+        title={logo.label}
+        className={`${size === 'lg' ? 'h-8 w-8' : 'h-7 w-7'} rounded-[5px] object-contain drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]`}
+      />
+    ))}
+  </span>
+);
 
 export const Testimonials = () => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -111,16 +115,13 @@ export const Testimonials = () => {
                 </span>
               </div>
 
-              <h3 className="mt-5 text-lg font-bold text-foreground">{testimonial.name}</h3>
-              <p className="mt-1 text-sm text-muted-foreground">{testimonial.now}</p>
-
-              <div className="mt-4 flex flex-wrap gap-2">
-                {testimonial.logos.map((logo) => (
-                  <LogoBadge key={logo.label} logo={logo} />
-                ))}
+              <div className="mt-5 flex items-center gap-2.5">
+                <h3 className="text-lg font-bold text-foreground">{testimonial.name}</h3>
+                <Emblems logos={testimonial.logos} />
               </div>
+              <p className="mt-1.5 text-sm text-muted-foreground">{testimonial.now}</p>
 
-              <ul className="mt-4 flex flex-wrap gap-2">
+              <ul className="mt-5 flex flex-wrap gap-2">
                 {testimonial.themes.map((theme) => (
                   <li
                     key={theme}
@@ -131,12 +132,17 @@ export const Testimonials = () => {
                 ))}
               </ul>
 
-              <p className="mt-6 text-xs font-semibold uppercase tracking-[0.14em] text-primary/80">Read the full quote</p>
+              <p className="mt-6 text-xs font-semibold uppercase tracking-[0.14em] text-primary/80">
+                Read the full quote
+              </p>
             </button>
           ))}
         </div>
 
-        <p className="mx-auto mt-10 max-w-2xl text-center text-xs leading-relaxed text-muted-foreground" data-reveal="up">
+        <p
+          className="mx-auto mt-10 max-w-2xl text-center text-xs leading-relaxed text-muted-foreground"
+          data-reveal="up"
+        >
           Apex doesn&apos;t claim credit for any admissions or scholarship decision. Universities and scholarship
           organizations make those calls.
         </p>
@@ -183,30 +189,27 @@ export const Testimonials = () => {
               </div>
 
               <div className="p-6 pt-0">
-                <div className="mb-4 flex items-center gap-4">
+                <div className="mb-6 flex items-center gap-4">
                   <img
                     src={selectedTestimonial.image}
                     alt={selectedTestimonial.imageAlt}
                     className="h-16 w-16 rounded-full border border-primary/25 object-cover"
                   />
                   <div>
-                    <a
-                      href={selectedTestimonial.linkedinUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-2 text-xl font-bold text-foreground transition-colors hover:text-primary"
-                    >
-                      {selectedTestimonial.name}
-                      <ArrowUpRight className="h-4 w-4" />
-                    </a>
-                    <p className="text-sm text-muted-foreground">{selectedTestimonial.now}</p>
+                    <div className="flex items-center gap-3">
+                      <a
+                        href={selectedTestimonial.linkedinUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 text-xl font-bold text-foreground transition-colors hover:text-primary"
+                      >
+                        {selectedTestimonial.name}
+                        <ArrowUpRight className="h-4 w-4" />
+                      </a>
+                      <Emblems logos={selectedTestimonial.logos} size="lg" />
+                    </div>
+                    <p className="mt-1 text-sm text-muted-foreground">{selectedTestimonial.now}</p>
                   </div>
-                </div>
-
-                <div className="mb-6 flex flex-wrap gap-2">
-                  {selectedTestimonial.logos.map((logo) => (
-                    <LogoBadge key={logo.label} logo={logo} />
-                  ))}
                 </div>
 
                 <blockquote className="relative rounded-xl border border-primary/20 bg-primary/5 px-8 py-7">
@@ -214,9 +217,7 @@ export const Testimonials = () => {
                     &ldquo;
                   </span>
                   <p className="leading-relaxed text-foreground/85">{selectedTestimonial.description}</p>
-                  <footer className="mt-4 text-sm font-semibold text-primary">
-                    {selectedTestimonial.name}
-                  </footer>
+                  <footer className="mt-4 text-sm font-semibold text-primary">{selectedTestimonial.name}</footer>
                   <span className="absolute bottom-1 right-4 text-4xl leading-none text-primary/40" aria-hidden="true">
                     &rdquo;
                   </span>
