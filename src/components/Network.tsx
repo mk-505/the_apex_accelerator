@@ -9,7 +9,7 @@ const groups = [
 
 export const Network = () => {
   return (
-    <section className="relative overflow-hidden border-t border-primary/10 bg-background py-20 md:py-24">
+    <section className="relative overflow-hidden border-t border-primary/10 bg-section py-20 md:py-24">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_30%,hsl(40_53%_64%_/_0.07),transparent_42%)]" />
       </div>

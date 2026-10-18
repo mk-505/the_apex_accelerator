@@ -6,6 +6,7 @@ type Logo = { label: string; src: string };
 const testimonials: {
   name: string;
   now: string;
+  highlight?: string;
   themes: string[];
   image: string;
   imageAlt: string;
@@ -31,6 +32,7 @@ const testimonials: {
   {
     name: 'Rhythm P.',
     now: 'Mechatronics Engineering at the University of Waterloo',
+    highlight: 'Received a $120K full-ride scholarship offer to University of Toronto Engineering',
     themes: ['Positioning', 'Direction', 'Coherent story'],
     image: '/rhythm.png',
     imageAlt:
@@ -81,7 +83,7 @@ export const Testimonials = () => {
   const canGoNext = selectedIndex !== null && selectedIndex < testimonials.length - 1;
 
   return (
-    <section id="testimonials" className="relative border-t border-primary/10 bg-background py-20 md:py-24">
+    <section id="testimonials" className="relative border-t border-primary/10 bg-section py-20 md:py-24">
       <div className="container mx-auto px-6">
         <div className="mx-auto max-w-3xl text-center" data-reveal="up">
           <span className="section-eyebrow">In Their Words</span>
@@ -96,46 +98,44 @@ export const Testimonials = () => {
 
         <div className="mx-auto mt-14 grid max-w-6xl gap-5 md:grid-cols-3">
           {testimonials.map((testimonial, index) => (
-            <button
+            <article
               key={testimonial.name}
-              type="button"
-              onClick={() => setSelectedIndex(index)}
-              className="luxe-section-card group p-7 text-left hover:border-primary/40 hover:-translate-y-1"
+              className="luxe-section-card group flex flex-col p-7 text-left hover:border-primary/40 hover:-translate-y-1"
               data-reveal="up"
               style={{ ['--reveal-delay' as string]: `${index * 100}ms` }}
             >
-              <div className="flex items-start justify-between gap-4">
+              <div className="flex items-center gap-4">
                 <img
                   src={testimonial.image}
                   alt={testimonial.imageAlt}
-                  className="h-16 w-16 rounded-full border border-primary/25 object-cover"
+                  loading="lazy"
+                  className="h-14 w-14 rounded-full border border-primary/25 object-cover"
                 />
-                <span className="flex h-8 w-8 items-center justify-center rounded-full border border-primary/30 bg-primary/10 transition-colors duration-300 group-hover:bg-primary">
-                  <ArrowUpRight className="h-4 w-4 text-primary transition-colors duration-300 group-hover:text-primary-foreground" />
-                </span>
+                <div>
+                  <div className="flex items-center gap-2.5">
+                    <h3 className="text-lg font-bold text-foreground">{testimonial.name}</h3>
+                    <Emblems logos={testimonial.logos} />
+                  </div>
+                  <p className="mt-0.5 text-sm text-muted-foreground">{testimonial.now}</p>
+                  {testimonial.highlight && (
+                    <p className="mt-1 text-xs font-semibold leading-snug text-primary">{testimonial.highlight}</p>
+                  )}
+                </div>
               </div>
 
-              <div className="mt-5 flex items-center gap-2.5">
-                <h3 className="text-lg font-bold text-foreground">{testimonial.name}</h3>
-                <Emblems logos={testimonial.logos} />
-              </div>
-              <p className="mt-1.5 text-sm text-muted-foreground">{testimonial.now}</p>
+              <blockquote className="mt-5 line-clamp-5 text-sm leading-relaxed text-foreground/85">
+                &ldquo;{testimonial.description}&rdquo;
+              </blockquote>
 
-              <ul className="mt-5 flex flex-wrap gap-2">
-                {testimonial.themes.map((theme) => (
-                  <li
-                    key={theme}
-                    className="rounded-full border border-section-border bg-section-muted px-3 py-1 text-[0.72rem] text-foreground/75"
-                  >
-                    {theme}
-                  </li>
-                ))}
-              </ul>
-
-              <p className="mt-6 text-xs font-semibold uppercase tracking-[0.14em] text-primary/80">
+              <button
+                type="button"
+                onClick={() => setSelectedIndex(index)}
+                className="mt-auto inline-flex items-center gap-2 pt-5 text-xs font-semibold uppercase tracking-[0.14em] text-primary/80 transition-colors hover:text-primary"
+              >
                 Read the full quote
-              </p>
-            </button>
+                <ArrowUpRight className="h-3.5 w-3.5" />
+              </button>
+            </article>
           ))}
         </div>
 
@@ -209,6 +209,9 @@ export const Testimonials = () => {
                       <Emblems logos={selectedTestimonial.logos} size="lg" />
                     </div>
                     <p className="mt-1 text-sm text-muted-foreground">{selectedTestimonial.now}</p>
+                    {selectedTestimonial.highlight && (
+                      <p className="mt-1 text-sm font-semibold text-primary">{selectedTestimonial.highlight}</p>
+                    )}
                   </div>
                 </div>
 

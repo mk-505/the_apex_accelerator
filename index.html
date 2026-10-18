@@ -5,10 +5,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Apply the saved light/dark choice before first paint (see src/components/ThemeToggle.tsx) -->
+  <script>
+    try { if (localStorage.getItem('apex-theme') === 'light') document.documentElement.classList.add('light'); } catch (e) {}
+  </script>
+
   <!-- Primary Meta Tags -->
   <title>Apex Accelerator | University &amp; Scholarship Application Strategy</title>
-  <meta name="description"
-    content="Personalized university and scholarship application strategy for ambitious high school students across Canada. Build a stronger profile, create a clear plan, and get support executing your applications." />
+  <meta name="description" content="University and scholarship application strategy for Canadian high school students in Grades 9–12. Get a written, step-by-step roadmap from $249 CAD, plus optional coaching and essay support." />
   <meta name="author" content="The Apex Accelerator" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="canonical" href="https://apexaccelerator.ca/" />
@@ -17,8 +21,6 @@
   <meta name="geo.region" content="CA-ON" />
   <meta name="geo.placename" content="Toronto, Ontario, Canada" />
 
-  <!-- Keywords -->
-  <meta name="keywords" content="university application consulting Canada, university application help Ontario, scholarship application help Canada, high school university admissions help, university application strategy, scholarship strategy for high school students, Canadian university admissions consulting, university application consultant Toronto, apex accelerator" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -26,8 +28,7 @@
   <meta property="og:url" content="https://apexaccelerator.ca/" />
   <meta property="og:site_name" content="The Apex Accelerator" />
   <meta property="og:title" content="Apex Accelerator | University &amp; Scholarship Application Strategy" />
-  <meta property="og:description"
-    content="Personalized university and scholarship application strategy for ambitious high school students across Canada. Assess your profile, position what you've done, get a clear plan, and get support executing it." />
+  <meta property="og:description" content="University and scholarship application strategy for Canadian high school students in Grades 9–12. Get a written, step-by-step roadmap from $249 CAD, plus optional coaching and essay support." />
   <meta property="og:image" content="https://apexaccelerator.ca/the-apex-accelerator-site.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -37,8 +38,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@apexaccelerator" />
   <meta name="twitter:title" content="Apex Accelerator | University &amp; Scholarship Application Strategy" />
-  <meta name="twitter:description"
-    content="Personalized university and scholarship application strategy for ambitious high school students across Canada." />
+  <meta name="twitter:description" content="University and scholarship application strategy for Canadian high school students in Grades 9–12. Get a written, step-by-step roadmap from $249 CAD, plus optional coaching and essay support." />
   <meta name="twitter:image" content="https://apexaccelerator.ca/the-apex-accelerator-site.png" />
 
   <!-- Fonts -->
@@ -61,11 +61,12 @@
     "logo": {
       "@type": "ImageObject",
       "url": "https://apexaccelerator.ca/apex-logo.png",
-      "width": 200,
-      "height": 60
+      "width": 463,
+      "height": 113
     },
     "image": "https://apexaccelerator.ca/the-apex-accelerator-site.png",
-    "description": "University and scholarship application strategy for ambitious high school students in Canada. Apex assesses a student's profile, positions their experiences, builds a personalized roadmap, and supports them executing their applications.",
+    "description": "University and scholarship application strategy for ambitious Canadian high school students in Grades 9–12. Apex reviews a student's profile, delivers a written step-by-step roadmap, and offers optional coaching, essay editing and scholarship application support.",
+    "knowsAbout": ["University admissions in Canada", "Scholarship applications", "Ontario university applications (OUAC)", "University application essays", "Extracurricular planning for high school students"],
     "email": "contact@apexaccelerator.ca",
     "address": {
       "@type": "PostalAddress",
@@ -125,193 +126,7 @@
   }
   </script>
 
-  <!-- 3. Service + the three packages -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "@id": "https://apexaccelerator.ca/#service",
-    "name": "University & Scholarship Application Strategy",
-    "serviceType": "University application consulting",
-    "description": "Personalized university and scholarship application strategy for high school students: profile assessment, positioning, a next-step roadmap, application resources, and application editing support.",
-    "url": "https://apexaccelerator.ca/#packages",
-    "provider": {
-      "@id": "https://apexaccelerator.ca/#organization"
-    },
-    "areaServed": {
-      "@type": "Country",
-      "name": "Canada"
-    },
-    "audience": {
-      "@type": "EducationalAudience",
-      "educationalRole": "student",
-      "audienceType": "High school students preparing for university admissions and scholarships"
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Apex Packages",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "name": "Apex Strategy",
-          "price": "199",
-          "priceCurrency": "CAD",
-          "url": "https://apexaccelerator.ca/#packages",
-          "description": "2-hour 1-on-1 strategy consultation: profile review, university and program goals, positioning, strengths and gaps, application strategy, scholarship positioning, and a personalized next-step roadmap with priorities for the next 6-12 months.",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Apex Strategy: personalized university application strategy session",
-            "provider": { "@id": "https://apexaccelerator.ca/#organization" }
-          }
-        },
-        {
-          "@type": "Offer",
-          "name": "Apex Toolkit",
-          "price": "339",
-          "priceCurrency": "CAD",
-          "url": "https://apexaccelerator.ca/#packages",
-          "description": "Everything in Apex Strategy plus a scholarship database, university and scholarship application resources, application timelines and checklists, essay and application frameworks, templates, and access to the Apex resource library.",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Apex Toolkit: strategy plus application resources",
-            "provider": { "@id": "https://apexaccelerator.ca/#organization" }
-          }
-        },
-        {
-          "@type": "Offer",
-          "name": "Apex Advantage",
-          "price": "549",
-          "priceCurrency": "CAD",
-          "url": "https://apexaccelerator.ca/#packages",
-          "description": "Everything in Apex Toolkit plus application and essay edits, personalized feedback, defined application review and revision support, guidance throughout the application process, and access to the Apex network where relevant. Editing follows a defined scope confirmed at onboarding.",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Apex Advantage: hands-on application support",
-            "provider": { "@id": "https://apexaccelerator.ca/#organization" }
-          }
-        }
-      ]
-    }
-  }
-  </script>
-
-  <!-- 4. FAQPage -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Who is Apex for?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ambitious high school students preparing for university admissions, scholarships, or both. Parents are welcome throughout, but the work is built around the student."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What grade should I be in?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "There is no single ideal grade. Apex works with students early in high school who want to build strategically, students heading into Grade 12 who need application strategy, and students actively applying. The right package depends on how far along you are."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I need to know what university I want to attend?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. Apex can help you clarify your direction and determine what to prioritize. Narrowing that down is part of the assessment and positioning work."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is this tutoring?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. Apex focuses on application strategy, positioning, planning, and execution rather than subject tutoring. We do not teach course content or prepare students for school tests."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you write my essays for me?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. Apex helps students develop and communicate their own ideas, and provides feedback and editing support where it is included in the package. The writing stays the student's."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you guarantee admission or scholarships?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. Admissions and scholarships are ultimately determined by universities and scholarship organizations. Apex provides strategy, preparation, resources, and feedback."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is included in application editing?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Application editing is part of Apex Advantage ($549 CAD). It covers edits and personalized feedback on applications and essays, plus guidance through the application process. Editing follows a defined scope: the specific documents and number of revision rounds are confirmed in writing during purchase and onboarding. It is not an unlimited-edits service."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is included in the scholarship database?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A curated resource intended to help students identify scholarships that are relevant to their profile, program interests, and timeline. It is included with Apex Toolkit and Apex Advantage."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can parents be involved?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Parents can join calls, ask questions, and stay informed where appropriate. The student stays at the centre of the process."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Which package should I choose?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Apex Strategy ($199 CAD) is best for students who want a clear plan. Apex Toolkit ($339 CAD) is best for students who want the plan plus resources to execute independently. Apex Advantage ($549 CAD) is best for students who want hands-on application support. A free 15-minute call can help you decide."
-        }
-      }
-    ]
-  }
-  </script>
-
-  <!-- 5. BreadcrumbList -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://apexaccelerator.ca/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Packages",
-        "item": "https://apexaccelerator.ca/#packages"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Book a Free Call",
-        "item": "https://apexaccelerator.ca/discovery-call"
-      }
-    ]
-  }
-  </script>
+  <!-- Service/Offer and FAQPage data are rendered by the Packages and FAQ components. -->
 </head>
 
 <body>

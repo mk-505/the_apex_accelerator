@@ -19,7 +19,7 @@ const points = [
 
 export const Difference = () => {
   return (
-    <section className="relative border-t border-primary/10 bg-section py-20 md:py-24">
+    <section className="relative border-t border-primary/10 bg-background py-20 md:py-24">
       <div className="container mx-auto px-6">
         <div className="mx-auto max-w-3xl text-center" data-reveal="up">
           <span className="section-eyebrow">What Makes Apex Different</span>

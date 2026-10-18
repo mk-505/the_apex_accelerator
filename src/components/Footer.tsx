@@ -1,18 +1,19 @@
 import { useLocation } from 'react-router-dom';
 import logo from '@/assets/apex-logo.png';
+import { formatPrice, packages } from '@/lib/packages';
 
 const quickLinks = [
   { label: 'Packages', href: '#packages' },
+  { label: 'Your Roadmap', href: '#roadmap' },
   { label: 'How It Works', href: '#how-it-works' },
   { label: 'About', href: '#about' },
   { label: 'FAQ', href: '#faq' },
 ];
 
-const packageLinks = [
-  { label: 'Apex Strategy · $199 CAD', href: '/discovery-call?package=strategy' },
-  { label: 'Apex Toolkit · $339 CAD', href: '/discovery-call?package=toolkit' },
-  { label: 'Apex Advantage · $549 CAD', href: '/discovery-call?package=advantage' },
-];
+const packageLinks = packages.map((pkg) => ({
+  label: `${pkg.name} · ${formatPrice(pkg.price)} CAD`,
+  href: `/discovery-call?package=${pkg.slug}`,
+}));
 
 export const Footer = () => {
   const location = useLocation();
@@ -23,10 +24,16 @@ export const Footer = () => {
       <div className="container mx-auto px-6 py-14">
         <div className="grid gap-10 md:grid-cols-4">
           <div className="max-w-sm md:col-span-2">
-            <img src={logo} alt="Apex Accelerator" className="mb-4 h-8 w-auto" />
+            <img src={logo} alt="Apex Accelerator" className="theme-dark-only mb-4 h-8 w-auto" />
+            <img
+              src="/APEX_LOGO_WHITE-removebg-preview.png"
+              alt="Apex Accelerator"
+              className="theme-light-only mb-4 h-8 w-auto"
+            />
             <p className="text-sm leading-relaxed text-muted-foreground">
-              University and scholarship application strategy for ambitious high school students across Canada. We
-              assess your profile, position what you&apos;ve done, build your plan, and support you executing it.
+              University and scholarship application strategy for ambitious high school students across Canada, based in
+              Toronto. We review your profile, give you a written step-by-step roadmap, and support you while you carry
+              it out.
             </p>
             <a
               href="mailto:contact@apexaccelerator.ca"

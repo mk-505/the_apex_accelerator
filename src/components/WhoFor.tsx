@@ -1,34 +1,37 @@
 const scenarios = [
   {
     stage: 'Grade 9–10',
-    quote: 'I’m early in high school.',
-    detail: 'I want to make smart decisions now instead of scrambling in Grade 12.',
-    start: 'Start with Apex Strategy',
-  },
-  {
-    stage: 'Grade 10–11',
-    quote: 'I have a strong profile, but I don’t know how it all fits together.',
-    detail: 'I’ve done a lot, but I don’t know how to turn it into a compelling application.',
-    start: 'Start with Apex Toolkit',
-  },
-  {
-    stage: 'Grade 11–12',
-    quote: 'I’m entering application season.',
+    quote: 'I’m early in high school and want to get this right.',
     detail:
-      'I need help figuring out what to prioritize, how to approach scholarships, and how to make my applications stronger.',
-    start: 'Start with Apex Toolkit',
+      'Build the right habits, find a direction and start small projects now, instead of scrambling in Grade 12.',
+    start: 'Start with Apex Strategy, or Momentum for ongoing coaching',
+  },
+  {
+    stage: 'Grade 11',
+    quote: 'This is my big profile-building year.',
+    detail:
+      'You need a clear theme, two or three big moves like research, an internship or a passion project, and a summer that counts.',
+    start: 'Best fit: Apex Momentum',
+  },
+  {
+    stage: 'Grade 12',
+    quote: 'I’m in application season.',
+    detail:
+      'You need a final school list, strong essays, a plan for scholarship deadlines and practice for interviews.',
+    start: 'Best fit: Apex Advantage',
   },
   {
     stage: 'Any grade',
-    quote: 'I know what I want, but I need someone to review my work.',
-    detail: 'I want another perspective on my essays, applications, and overall positioning.',
-    start: 'Start with Apex Advantage',
+    quote: 'I just want to know exactly what to do next.',
+    detail:
+      'Get a written plan first, then decide how much support you want. Upgrade within 30 days and your $249 is credited in full.',
+    start: 'Start with Apex Strategy',
   },
 ];
 
 export const WhoFor = () => {
   return (
-    <section className="relative border-t border-primary/10 bg-background py-20 md:py-28">
+    <section className="relative border-t border-primary/10 bg-section py-20 md:py-28">
       <div className="container mx-auto px-6">
         <div className="mx-auto max-w-3xl text-center" data-reveal="up">
           <span className="section-eyebrow">Who Is This For?</span>
@@ -36,8 +39,7 @@ export const WhoFor = () => {
             Wherever you are in high school, <span className="text-primary">start from where you are.</span>
           </h2>
           <p className="section-sub mx-auto mt-5 max-w-2xl">
-            There&apos;s no single grade you have to be in. What changes is the plan, and how much of it is still ahead
-            of you.
+            Grades 9 to 12 all work. What changes is the plan, and how much of it is still ahead of you.
           </p>
         </div>
 

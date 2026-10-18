@@ -1,8 +1,18 @@
 {
-  "rewrites": [
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "source": "/workshops",
+      "destination": "/discovery-call",
+      "permanent": true
+    },
+    {
+      "source": "/application",
+      "destination": "/discovery-call",
+      "permanent": true
     }
   ]
 }

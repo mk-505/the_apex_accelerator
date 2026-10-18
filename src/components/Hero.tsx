@@ -6,18 +6,18 @@ const heroPoints = [
     copy: 'Where your profile actually stands today',
   },
   {
-    label: 'Position',
-    copy: 'How your experiences come together into one story',
+    label: 'Plan',
+    copy: 'A written, step-by-step roadmap for the next 6–12 months',
   },
   {
-    label: 'Plan & Execute',
-    copy: 'What to do next, and support doing it',
+    label: 'Execute',
+    copy: 'Coaching and accountability while you carry it out',
   },
 ];
 
 export const Hero = () => {
   return (
-    <section id="top" className="relative flex min-h-[92vh] items-center justify-center overflow-hidden">
+    <section id="top" className="force-dark relative flex text-foreground min-h-[92vh] items-center justify-center overflow-hidden">
       {/* Background photo under a dark wash, with gold ambience over top */}
       <div className="pointer-events-none absolute inset-0">
         <img
@@ -40,13 +40,13 @@ export const Hero = () => {
         </div>
 
         <h1 className="mx-auto max-w-4xl text-[2.1rem] leading-[1.08] tracking-[-0.03em] text-foreground sm:text-5xl lg:text-[4.1rem] font-bold">
-          Build a stronger university application{' '}
-          <span className="text-primary">with a plan built around you.</span>
+          A clear plan for university and scholarship applications,{' '}
+          <span className="text-primary">built around you.</span>
         </h1>
 
         <p className="mx-auto mt-7 max-w-2xl text-base md:text-lg leading-relaxed text-foreground/75">
-          Personalized university and scholarship strategy for ambitious high school students. Understand where your
-          profile stands, how to position what you&apos;ve done, and exactly what to do next.
+          Personalized application strategy for ambitious high school students across Canada. We review your profile,
+          tell you exactly what to do and in what order, and support you while you do it.
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
@@ -59,7 +59,7 @@ export const Hero = () => {
         </div>
 
         <p className="mt-5 text-xs uppercase tracking-[0.16em] text-muted-foreground/80">
-          Packages from $199 CAD · Grade 9 through Grade 12
+          Packages from $249 CAD · Grades 9 to 12 · Across Canada
         </p>
 
         <div className="mx-auto mt-16 grid max-w-4xl gap-3 sm:grid-cols-3">
@@ -71,15 +71,6 @@ export const Hero = () => {
           ))}
         </div>
       </div>
-
-      {/* Crawlable context in plain language, no keyword stuffing */}
-      <p className="sr-only">
-        The Apex Accelerator provides university application consulting and scholarship application help for high school
-        students across Canada. We assess a student&apos;s academics, extracurriculars and goals, position their profile,
-        build a personalized application roadmap, and support them through university and scholarship applications.
-        Founded by University of Toronto Engineering Science students in Ontario who recently went through competitive
-        Canadian university admissions and scholarship processes themselves.
-      </p>
     </section>
   );
 };

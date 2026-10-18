@@ -1,98 +1,63 @@
 import { Check, Minus } from 'lucide-react';
-
-type Package = {
-  slug: string;
-  name: string;
-  price: string;
-  tagline: string;
-  summary: string;
-  inheritsFrom?: string;
-  features: string[];
-  promise: string;
-  cta: string;
-  featured?: boolean;
-};
-
-const packages: Package[] = [
-  {
-    slug: 'strategy',
-    name: 'Apex Strategy',
-    price: '199',
-    tagline: '“Tell me what I should do.”',
-    summary: 'A personalized strategy session built around your actual profile, not a generic consultation.',
-    features: [
-      '2-hour 1-on-1 strategy consultation',
-      'Review of your current academic and extracurricular profile',
-      'Discussion of your university and program goals',
-      'Profile positioning',
-      'Identification of your strengths and gaps',
-      'University application strategy',
-      'Scholarship positioning guidance',
-      'Personalized next-step roadmap',
-      'Clear priorities for the next 6–12 months',
-    ],
-    promise: 'Know where you stand and exactly what to do next.',
-    cta: 'Get My Strategy',
-  },
-  {
-    slug: 'toolkit',
-    name: 'Apex Toolkit',
-    price: '339',
-    tagline: '“Give me the strategy and the tools to do it.”',
-    summary: 'Everything in Apex Strategy, plus the resources to execute the plan on your own.',
-    inheritsFrom: 'Apex Strategy',
-    features: [
-      'Scholarship database',
-      'University application resources',
-      'Scholarship application resources',
-      'Application timelines and checklists',
-      'Essay and application frameworks',
-      'Guidance for positioning extracurriculars',
-      'Application planning resources',
-      'Templates and practical tools',
-      'Access to the Apex resource library',
-    ],
-    promise: 'Leave with the strategy and the tools to execute it yourself.',
-    cta: 'Get the Toolkit',
-    featured: true,
-  },
-  {
-    slug: 'advantage',
-    name: 'Apex Advantage',
-    price: '549',
-    tagline: '“Help me actually do it.”',
-    summary: 'Everything in Apex Toolkit, plus hands-on support while you build and submit your applications.',
-    inheritsFrom: 'Apex Toolkit',
-    features: [
-      'Application and essay edits',
-      'Personalized feedback on your work',
-      'Defined application review and revision support',
-      'Guidance throughout the application process',
-      'Access to the Apex network',
-      'Introductions to relevant university students, professionals, or mentors where appropriate',
-      'Additional personalized support',
-    ],
-    promise: 'Don’t just know what to do. Get support actually doing it.',
-    cta: 'Get Apex Advantage',
-  },
-];
+import { formatPrice, packages, UPGRADE_CREDIT } from '@/lib/packages';
 
 type Cell = boolean | string;
 
 const comparison: { row: string; values: [Cell, Cell, Cell] }[] = [
-  { row: 'Strategy consultation', values: ['2 hours', '2 hours', '2 hours'] },
-  { row: 'Personalized profile assessment', values: [true, true, true] },
-  { row: 'Positioning strategy', values: [true, true, true] },
-  { row: 'Personalized roadmap', values: [true, true, true] },
-  { row: 'Scholarship database', values: [false, true, true] },
-  { row: 'Application resources', values: [false, true, true] },
-  { row: 'Essay / application frameworks', values: [false, true, true] },
-  { row: 'Application timeline', values: [false, true, true] },
-  { row: 'Templates / checklists', values: [false, true, true] },
-  { row: 'Application edits', values: [false, false, 'Defined scope'] },
-  { row: 'Personalized application feedback', values: [false, false, true] },
-  { row: 'Apex network access', values: [false, false, 'Where relevant'] },
+  { row: '2-hour 1-on-1 strategy session', values: [true, true, true] },
+  { row: 'Written Apex Roadmap', values: [true, true, true] },
+  { row: 'Reach / match / safe school list', values: [true, true, true] },
+  { row: 'Scholarship shortlist', values: [true, true, true] },
+  { row: 'Apex resource library', values: [true, true, true] },
+  { row: '30-minute follow-up call', values: [true, true, true] },
+  { row: '45-minute coaching sessions', values: [false, '6 over 3 months', '12 over 6 months'] },
+  { row: 'Milestone tracking', values: [false, true, true] },
+  { row: 'Message support between sessions', values: [false, true, true] },
+  { row: 'Passion project guidance', values: [false, true, true] },
+  { row: 'Updated next-phase roadmap', values: [false, true, true] },
+  { row: 'Final school list + strategy per school', values: [false, false, true] },
+  { row: 'Essay and application editing', values: [false, false, true] },
+  { row: 'Scholarship application support', values: [false, false, true] },
+  { row: 'Mock interview prep', values: [false, false, true] },
+  { row: 'Introductions from the Apex network', values: [false, false, 'Where relevant'] },
 ];
+
+const offerSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://apexaccelerator.ca/#service',
+  name: 'University & Scholarship Application Strategy',
+  serviceType: 'University application consulting',
+  description:
+    'Personalized university and scholarship application strategy for Canadian high school students in Grades 9–12: a profile review, a written step-by-step roadmap, and optional coaching, essay editing and scholarship application support.',
+  url: 'https://apexaccelerator.ca/#packages',
+  provider: { '@id': 'https://apexaccelerator.ca/#organization' },
+  areaServed: { '@type': 'Country', name: 'Canada' },
+  audience: {
+    '@type': 'EducationalAudience',
+    educationalRole: 'student',
+    audienceType: 'High school students in Grades 9–12 preparing for university admissions and scholarships',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Apex Packages',
+    itemListElement: packages.map((pkg) => ({
+      '@type': 'Offer',
+      name: pkg.name,
+      price: String(pkg.price),
+      priceCurrency: 'CAD',
+      url: `https://apexaccelerator.ca/discovery-call?package=${pkg.slug}`,
+      description: [pkg.summary, pkg.inheritsFrom && `Everything in ${pkg.inheritsFrom}: ${pkg.features.join('; ')}.`, pkg.bestFor && `Best for: ${pkg.bestFor}.`]
+        .filter(Boolean)
+        .join(' '),
+      itemOffered: {
+        '@type': 'Service',
+        name: `${pkg.name}: ${pkg.tagline.replace(/[“”]/g, '')}`,
+        provider: { '@id': 'https://apexaccelerator.ca/#organization' },
+      },
+    })),
+  },
+};
 
 const CellValue = ({ value, label }: { value: Cell; label: string }) => {
   if (value === true) {
@@ -116,7 +81,9 @@ const CellValue = ({ value, label }: { value: Cell; label: string }) => {
 
 export const Packages = () => {
   return (
-    <section id="packages" className="relative border-t border-primary/10 bg-section py-20 md:py-28">
+    <section id="packages" className="relative border-t border-primary/10 bg-background py-20 md:py-28">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(offerSchema) }} />
+
       <div className="container mx-auto px-6">
         <div className="mx-auto max-w-3xl text-center" data-reveal="up">
           <span className="section-eyebrow">Packages</span>
@@ -136,7 +103,7 @@ export const Packages = () => {
               key={pkg.slug}
               className={`luxe-section-card relative flex h-full flex-col p-7 md:p-8 ${
                 pkg.featured
-                  ? 'border-primary/45 bg-section-card lg:-mt-4 lg:pb-10 shadow-[0_28px_60px_hsl(0_0%_0%/0.6)]'
+                  ? 'border-primary/45 bg-section-card lg:-mt-4 lg:pb-10 [box-shadow:var(--shadow-strong)]'
                   : 'hover:border-primary/35'
               }`}
               data-reveal="up"
@@ -152,23 +119,28 @@ export const Packages = () => {
                 Package {index + 1}
               </p>
               <h3 className="mt-2 text-2xl font-bold tracking-[-0.02em] text-foreground">{pkg.name}</h3>
+              <p className="mt-1 text-sm text-primary/90">{pkg.tagline}</p>
 
               <div className="mt-5 flex items-end gap-2">
-                <span className="price-amount">${pkg.price}</span>
+                <span className="price-amount">{formatPrice(pkg.price)}</span>
                 <span className="pb-1.5 text-sm font-semibold uppercase tracking-[0.12em] text-muted-foreground">
                   CAD
                 </span>
               </div>
-              <p className="mt-1 text-sm text-primary/90">{pkg.tagline}</p>
+              {pkg.paymentPlan && <p className="mt-1 text-xs text-muted-foreground">or {pkg.paymentPlan}</p>}
 
-              <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{pkg.summary}</p>
+              {pkg.bestFor && (
+                <p className="mt-4 rounded-lg border border-section-border bg-section-muted px-3 py-2 text-xs text-foreground/85">
+                  <span className="font-semibold text-primary">Best for:</span> {pkg.bestFor}
+                </p>
+              )}
+
+              {pkg.summary && <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{pkg.summary}</p>}
 
               <div className="my-6 hairline" />
 
               {pkg.inheritsFrom && (
-                <p className="mb-4 text-sm font-semibold text-foreground">
-                  Everything in {pkg.inheritsFrom}, plus:
-                </p>
+                <p className="mb-4 text-sm font-semibold text-foreground">Everything in {pkg.inheritsFrom}:</p>
               )}
 
               <ul className="space-y-2.5">
@@ -182,10 +154,9 @@ export const Packages = () => {
                 ))}
               </ul>
 
-              {pkg.slug === 'advantage' && (
+              {pkg.note && (
                 <p className="mt-5 rounded-xl border border-section-border bg-section-muted px-4 py-3 text-xs leading-relaxed text-muted-foreground">
-                  Editing and application support follow a defined scope: the exact number of documents and revision
-                  rounds is confirmed in writing during purchase and onboarding. This is not an unlimited-edits service.
+                  {pkg.note}
                 </p>
               )}
 
@@ -202,14 +173,15 @@ export const Packages = () => {
           ))}
         </div>
 
-        {/* Pricing note */}
+        {/* Upgrade credit + pricing note */}
         <div className="mx-auto mt-10 max-w-3xl text-center" data-reveal="up">
-          <p className="text-sm text-muted-foreground">
+          <p className="luxe-panel inline-block px-5 py-3 text-sm font-semibold text-foreground">{UPGRADE_CREDIT}</p>
+          <p className="mt-5 text-sm text-muted-foreground">
             Not sure which package fits?{' '}
             <a href="/discovery-call" className="font-semibold text-primary hover:underline">
               Book a free 15-minute call
             </a>{' '}
-            and we&apos;ll help you figure out where you should start. All prices in CAD.
+            and we&apos;ll help you figure out where to start. All prices in CAD.
           </p>
         </div>
 
@@ -221,7 +193,9 @@ export const Packages = () => {
 
           <div className="mt-7 hidden overflow-x-auto rounded-2xl border border-section-border bg-section-card/70 md:block">
             <table className="w-full min-w-[640px] border-collapse text-left">
-              <caption className="sr-only">Feature comparison of the Apex Strategy, Toolkit and Advantage packages</caption>
+              <caption className="sr-only">
+                Feature comparison of the Apex Strategy, Apex Momentum and Apex Advantage packages
+              </caption>
               <thead>
                 <tr className="border-b border-section-border">
                   <th scope="col" className="px-6 py-5 text-[0.68rem] font-bold uppercase tracking-[0.18em] text-muted-foreground">
@@ -230,17 +204,14 @@ export const Packages = () => {
                   {packages.map((pkg) => (
                     <th key={pkg.slug} scope="col" className="px-4 py-5 text-center">
                       <span className="block text-sm font-bold text-foreground">{pkg.name.replace('Apex ', '')}</span>
-                      <span className="block text-xs text-primary">${pkg.price} CAD</span>
+                      <span className="block text-xs text-primary">{formatPrice(pkg.price)} CAD</span>
                     </th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {comparison.map((item, index) => (
-                  <tr
-                    key={item.row}
-                    className={index % 2 === 1 ? 'bg-section-muted/40' : undefined}
-                  >
+                  <tr key={item.row} className={index % 2 === 1 ? 'bg-section-muted/40' : undefined}>
                     <th scope="row" className="px-6 py-3.5 text-sm font-normal text-foreground/85">
                       {item.row}
                     </th>
@@ -261,7 +232,7 @@ export const Packages = () => {
               <div key={pkg.slug} className="rounded-2xl border border-section-border bg-section-card/70 p-5">
                 <div className="flex items-baseline justify-between">
                   <h4 className="text-base font-bold text-foreground">{pkg.name}</h4>
-                  <span className="text-sm font-semibold text-primary">${pkg.price} CAD</span>
+                  <span className="text-sm font-semibold text-primary">{formatPrice(pkg.price)} CAD</span>
                 </div>
                 <ul className="mt-4 space-y-2">
                   {comparison.map((item) => {

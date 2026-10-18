@@ -1,8 +1,9 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Compass, ListChecks, HandHeart } from "lucide-react";
+import { formatPrice, packageBySlug, type ApexPackage } from "@/lib/packages";
 
 const callPoints = [
   {
@@ -25,74 +26,16 @@ const callPoints = [
   },
 ];
 
-const packageDetails: Record<string, { name: string; price: string; promise: string }> = {
-  strategy: {
-    name: "Apex Strategy",
-    price: "$199 CAD",
-    promise: "Know where you stand and exactly what to do next.",
-  },
-  toolkit: {
-    name: "Apex Toolkit",
-    price: "$339 CAD",
-    promise: "Leave with the strategy and the tools to execute it yourself.",
-  },
-  advantage: {
-    name: "Apex Advantage",
-    price: "$549 CAD",
-    promise: "Don't just know what to do. Get support actually doing it.",
-  },
-};
-
 const DiscoveryCall = () => {
   const location = useLocation();
-  const selectedPackage = useMemo(() => {
-    const slug = new URLSearchParams(location.search).get("package");
-    return slug ? packageDetails[slug] : undefined;
+  // Read the query string after mount so the pre-rendered HTML (which has no query) hydrates cleanly.
+  const [selectedPackage, setSelectedPackage] = useState<ApexPackage | undefined>();
+
+  useEffect(() => {
+    setSelectedPackage(packageBySlug(new URLSearchParams(location.search).get("package")));
   }, [location.search]);
 
   useEffect(() => {
-    const PAGE_URL = "https://apexaccelerator.ca/discovery-call";
-    const PAGE_TITLE = "Book a Free Call | Apex Accelerator University Application Strategy";
-    const PAGE_DESC =
-      "Book a free 15-minute call with The Apex Accelerator. Tell us where you're at with university and scholarship applications, and we'll tell you which package fits, or if we're not the right help.";
-
-    document.title = PAGE_TITLE;
-
-    const setMeta = (selector: string, attr: string, value: string) => {
-      let el = document.querySelector(selector) as HTMLMetaElement | null;
-      if (!el) {
-        el = document.createElement("meta");
-        if (selector.startsWith("meta[name")) el.setAttribute("name", attr);
-        else el.setAttribute("property", attr);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", value);
-    };
-
-    const setLink = (rel: string, href: string) => {
-      let el = document.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement | null;
-      if (!el) {
-        el = document.createElement("link");
-        el.setAttribute("rel", rel);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("href", href);
-    };
-
-    setMeta('meta[name="description"]', "description", PAGE_DESC);
-    setMeta('meta[name="robots"]', "robots", "index, follow");
-    setLink("canonical", PAGE_URL);
-
-    setMeta('meta[property="og:type"]', "og:type", "website");
-    setMeta('meta[property="og:url"]', "og:url", PAGE_URL);
-    setMeta('meta[property="og:title"]', "og:title", PAGE_TITLE);
-    setMeta('meta[property="og:description"]', "og:description", PAGE_DESC);
-    setMeta('meta[property="og:image"]', "og:image", "https://apexaccelerator.ca/the-apex-accelerator-site.png");
-
-    setMeta('meta[name="twitter:card"]', "twitter:card", "summary_large_image");
-    setMeta('meta[name="twitter:title"]', "twitter:title", PAGE_TITLE);
-    setMeta('meta[name="twitter:description"]', "twitter:description", PAGE_DESC);
-
     const script = document.createElement("script");
     script.src = "https://assets.calendly.com/assets/external/widget.js";
     script.async = true;
@@ -100,8 +43,6 @@ const DiscoveryCall = () => {
     document.head.appendChild(script);
 
     return () => {
-      setLink("canonical", "https://apexaccelerator.ca/");
-      document.title = "Apex Accelerator | University & Scholarship Application Strategy";
       document.getElementById("calendly-script")?.remove();
     };
   }, []);
@@ -131,15 +72,18 @@ const DiscoveryCall = () => {
             <p className="text-[0.68rem] font-bold uppercase tracking-[0.18em] text-primary">You selected</p>
             <div className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
               <span className="text-xl font-bold text-foreground">{selectedPackage.name}</span>
-              <span className="text-sm font-semibold text-primary">{selectedPackage.price}</span>
+              <span className="text-sm font-semibold text-primary">{formatPrice(selectedPackage.price)} CAD</span>
             </div>
             <p className="mt-2 text-sm text-muted-foreground">{selectedPackage.promise}</p>
+            {selectedPackage.paymentPlan && (
+              <p className="mt-1 text-xs text-muted-foreground">Payment plan available: {selectedPackage.paymentPlan}</p>
+            )}
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
               Mention {selectedPackage.name} when you book and we&apos;ll confirm it fits before anything is paid.
               Prefer to skip the call? Email{" "}
               <a
                 href={`mailto:contact@apexaccelerator.ca?subject=${encodeURIComponent(
-                  `${selectedPackage.name} (${selectedPackage.price})`,
+                  `${selectedPackage.name} (${formatPrice(selectedPackage.price)} CAD)`,
                 )}`}
                 className="font-semibold text-primary hover:underline"
               >

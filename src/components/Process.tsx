@@ -6,32 +6,32 @@ const steps = [
     title: 'Assess',
     icon: ClipboardList,
     description:
-      'We look at where you are now: academics, extracurriculars, leadership, projects, experience, interests, goals, and target programs.',
-    tags: ['Academics', 'Extracurriculars', 'Goals', 'Target programs'],
+      'Before your session you complete a short intake questionnaire: marks, activities, goals, your typical week, and what you’re worried about. Parents fill in their own section. We review all of it before we meet.',
+    tags: ['Academics', 'Extracurriculars', 'Goals', 'Habits'],
   },
   {
     number: '02',
     title: 'Position',
     icon: Compass,
     description:
-      'We identify the strongest parts of your profile and determine how your experiences can come together into a coherent story.',
-    tags: ['Strengths', 'Gaps', 'Narrative', 'Fit'],
+      'In a 2-hour 1-on-1 session we look at the full picture: your marks against target averages, your extracurriculars, your habits and your goals. Together we set your reach / match / safe list, pick the scholarships worth aiming for, choose the big moves that fit you, like research, an internship or a passion project, and define what your application should make readers remember.',
+    tags: ['School list', 'Scholarships', 'Extracurriculars', 'Big moves'],
   },
   {
     number: '03',
     title: 'Plan',
     icon: Map,
     description:
-      'You receive a personalized roadmap outlining what to prioritize next: opportunities, projects, applications, scholarships, and other areas that can strengthen your profile.',
-    tags: ['Priorities', 'Timeline', 'Scholarships', 'Next 6–12 months'],
+      'Within 3 business days you receive your written Apex Roadmap: the habits to fix, the two or three big moves to make, your weekly schedule, a scholarship shortlist and a dated checklist for the next 30 days.',
+    tags: ['Roadmap', 'Big moves', 'Scholarships', 'Next 30 days'],
   },
   {
     number: '04',
     title: 'Execute',
     icon: Rocket,
     description:
-      'Depending on your package, Apex provides resources, application feedback, edits, and access to our broader network to help you actually execute the plan.',
-    tags: ['Resources', 'Feedback', 'Edits', 'Network'],
+      'With Momentum or Advantage, we coach you every two weeks and help you actually do the work: building out your passion project, landing research or an internship, strengthening your extracurriculars and sticking to your habits. When application season comes, we help with your school list, essays, scholarship applications and interview prep.',
+    tags: ['Passion projects', 'Internships', 'Accountability', 'Applications'],
   },
 ];
 
@@ -47,8 +47,8 @@ export const Process = () => {
           <span className="section-eyebrow">How It Works</span>
           <h2 className="section-heading mt-5">The Apex Process</h2>
           <p className="section-sub mx-auto mt-5 max-w-2xl">
-            Four steps, in order. Everything we do sits somewhere on this line, and your package decides how far down
-            it we go with you.
+            Four steps, in order. Every package covers the first three. Your package decides how much support you get
+            with the fourth.
           </p>
         </div>
 
