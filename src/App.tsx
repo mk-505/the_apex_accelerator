@@ -3,12 +3,29 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { useEffect, useRef } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import DiscoveryCall from "./pages/DiscoveryCall";
 
 const queryClient = new QueryClient();
+
+const MetaPixelRouteTracker = () => {
+  const { pathname, search } = useLocation();
+  const isFirstPageView = useRef(true);
+
+  useEffect(() => {
+    if (isFirstPageView.current) {
+      isFirstPageView.current = false;
+      return;
+    }
+
+    (window as Window & { fbq?: (...args: string[]) => void }).fbq?.("track", "PageView");
+  }, [pathname, search]);
+
+  return null;
+};
 
 // Shared by the browser entry (main.tsx) and the pre-render entry (entry-server.tsx).
 export const AppProviders = ({ children }: { children: ReactNode }) => (
@@ -35,6 +52,7 @@ export const AppRoutes = () => (
 const App = () => (
   <AppProviders>
     <BrowserRouter>
+      <MetaPixelRouteTracker />
       <AppRoutes />
     </BrowserRouter>
   </AppProviders>
