@@ -36,6 +36,18 @@ const DiscoveryCall = () => {
   }, [location.search]);
 
   useEffect(() => {
+    const handleCalendlyMessage = (event: MessageEvent) => {
+      if (
+        event.origin === "https://calendly.com" &&
+        typeof event.data === "object" &&
+        event.data?.event === "calendly.event_scheduled"
+      ) {
+        (window as Window & { fbq?: (...args: string[]) => void }).fbq?.("track", "Schedule");
+      }
+    };
+
+    window.addEventListener("message", handleCalendlyMessage);
+
     const script = document.createElement("script");
     script.src = "https://assets.calendly.com/assets/external/widget.js";
     script.async = true;
@@ -43,6 +55,7 @@ const DiscoveryCall = () => {
     document.head.appendChild(script);
 
     return () => {
+      window.removeEventListener("message", handleCalendlyMessage);
       document.getElementById("calendly-script")?.remove();
     };
   }, []);
