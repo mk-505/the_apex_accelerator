@@ -32,6 +32,11 @@ const faqs = [
       'Yes. Apex Momentum is $1,199 CAD, or 3 monthly payments of $400. Apex Advantage is $2,999 CAD, or 6 monthly payments of $500. Apex Strategy is a single payment of $249 CAD.',
   },
   {
+    question: 'Can I add application support to Strategy or Momentum?',
+    answer:
+      'Yes. University application support is $449, scholarship application support is $549, or get both with the complete application bundle for $849 (save $149). Ongoing community support in Discord is included with each option, whether purchased on its own or added to a package; add-ons do not include a consultation. Added to Strategy, the bundle total is $1,098; added to Momentum, it is $2,048. When added to a package, add-ons must be purchased within 30 days of your initial package purchase. Application support is included in Apex Advantage.',
+  },
+  {
     question: 'How does essay and application editing work?',
     answer:
       'Editing is part of Apex Advantage. It covers your essays and supplementary applications, plus support with your scholarship applications, including essays and reference strategy. You write, and we give feedback and edits.',

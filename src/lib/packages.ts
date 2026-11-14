@@ -56,12 +56,13 @@ export const packages: ApexPackage[] = [
       'Six 45-minute coaching sessions, every two weeks',
       'Milestone tracking against the roadmap',
       'Message support between sessions (replies within 2 business days)',
+      'Ongoing community support in Discord',
+      'Networking guidance: learn how to reach out to university students, researchers, and industry professionals',
       'Passion project guidance: scoping, planning, progress check-ins',
       'Updated roadmap at the end of 3 months with the next-phase plan',
     ],
     promise: 'A plan only works if you follow it. We make sure you do.',
     cta: 'Start Momentum',
-    featured: true,
   },
   {
     slug: 'advantage',
@@ -77,11 +78,12 @@ export const packages: ApexPackage[] = [
       'Essay and supplementary application editing',
       'Scholarship application support, including essays and reference strategy',
       'Mock interview prep',
-      'Introductions to relevant university students, professionals, or mentors where appropriate',
+      'Ongoing community support in Discord',
     ],
     note: 'Starting in Grade 11? Your coaching focuses on building your profile first. Application editing and scholarship application support are saved for Grade 12, when application season opens.',
     promise: 'Don’t just know what to do. Get support actually doing it.',
     cta: 'Get Apex Advantage',
+    featured: true,
   },
 ];
 

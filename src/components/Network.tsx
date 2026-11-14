@@ -23,13 +23,12 @@ export const Network = () => {
             </h2>
             <p className="section-sub mt-5">
               Beyond the two of us, Apex has a broader network of university students, graduates, professionals, and
-              mentors across different programs and career paths. When a student&apos;s questions are better answered by
-              someone already inside that program or field, we try to connect them.
+              mentors across different programs and career paths. We help students learn how to find the right people,
+              start a conversation, and build professional connections of their own.
             </p>
             <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-              Network access is included with <span className="font-semibold text-foreground">Apex Advantage</span>,
-              where relevant and appropriate. We don&apos;t promise a specific introduction or a specific person, only
-              that we&apos;ll use the network we have when it genuinely helps.
+              Networking guidance is included with <span className="font-semibold text-foreground">Apex Momentum and
+              Apex Advantage</span>. Students get support identifying relevant people and reaching out with confidence.
             </p>
             <a href="#packages" className="btn-luxe-outline mt-8">
               See What&apos;s Included

@@ -13,13 +13,33 @@ const comparison: { row: string; values: [Cell, Cell, Cell] }[] = [
   { row: '45-minute coaching sessions', values: [false, '6 over 3 months', '12 over 6 months'] },
   { row: 'Milestone tracking', values: [false, true, true] },
   { row: 'Message support between sessions', values: [false, true, true] },
+  { row: 'Ongoing Discord community support', values: [false, true, true] },
   { row: 'Passion project guidance', values: [false, true, true] },
   { row: 'Updated next-phase roadmap', values: [false, true, true] },
   { row: 'Final school list + strategy per school', values: [false, false, true] },
   { row: 'Essay and application editing', values: [false, false, true] },
   { row: 'Scholarship application support', values: [false, false, true] },
   { row: 'Mock interview prep', values: [false, false, true] },
-  { row: 'Introductions from the Apex network', values: [false, false, 'Where relevant'] },
+  { row: 'Networking guidance for connecting with students, researchers, and professionals', values: [false, true, true] },
+];
+
+const applicationAddOns = [
+  {
+    name: 'University application support',
+    price: 449,
+    description: 'University application writing support + edits, with ongoing community support in Discord.',
+  },
+  {
+    name: 'Scholarship application support',
+    price: 549,
+    description: 'Scholarship application writing support + edits, with ongoing community support in Discord.',
+  },
+  {
+    name: 'Complete application bundle',
+    price: 849,
+    description: 'University + scholarship application writing support and edits, with ongoing community support in Discord.',
+    saving: 149,
+  },
 ];
 
 const offerSchema = {
@@ -111,7 +131,7 @@ export const Packages = () => {
             >
               {pkg.featured && (
                 <span className="absolute -top-3 left-7 rounded-full border border-primary/40 bg-primary px-3 py-1 text-[0.62rem] font-bold uppercase tracking-[0.16em] text-primary-foreground">
-                  Recommended
+                  Best value
                 </span>
               )}
 
@@ -171,6 +191,35 @@ export const Packages = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mx-auto mt-6 max-w-6xl rounded-3xl border border-primary/15 bg-section-muted p-6 md:p-8" data-reveal="up">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <h3 className="text-sm font-bold uppercase tracking-[0.12em] text-foreground">
+              Add to Package 1 or 2 <span className="mx-1 text-primary">/</span> All included in Package 3
+            </h3>
+            <p className="text-xs text-muted-foreground">With the application bundle: $1,098 with Strategy · $2,048 with Momentum</p>
+          </div>
+          <div className="mt-5 grid gap-5 md:grid-cols-3 md:divide-x md:divide-primary/20">
+            {applicationAddOns.map((addon) => (
+              <div key={addon.name} className="md:px-5 first:md:pl-0 last:md:pr-0">
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl font-bold tracking-tight text-foreground">{formatPrice(addon.price)}</span>
+                  {addon.saving && (
+                    <span className="rounded-full bg-foreground px-3 py-1 text-[0.6rem] font-bold uppercase tracking-wide text-background">
+                      Save {formatPrice(addon.saving)}
+                    </span>
+                  )}
+                </div>
+                <h4 className="mt-1 font-bold text-foreground">{addon.name}</h4>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{addon.description}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-5 text-xs leading-relaxed text-muted-foreground">
+            Also available on their own. When added to a package, add-ons may only be purchased within 30 days of your initial package purchase.
+            Discord community support is included with each application support add-on; add-ons do not include a consultation.
+          </p>
         </div>
 
         {/* Upgrade credit + pricing note */}
